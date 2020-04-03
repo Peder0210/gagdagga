@@ -66,9 +66,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="j" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="872" y="134" key="CommitChangelistDialog2" timestamp="1585919527358">
-      <screen x="0" y="0" width="1664" height="1069" />
+    <state x="662" y="105" key="CommitChangelistDialog2" timestamp="1585921621411">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1585921621411" />
     <state x="872" y="134" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919527358" />
     <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1585921103120">
       <screen x="0" y="0" width="1440" height="900" />
@@ -90,9 +91,18 @@
     </state>
     <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585921103119" />
     <state width="809" height="291" key="GridCell.Tab.0.right/0.0.1664.1069@0.0.1664.1069" timestamp="1585919134631" />
-    <state x="840" y="272" key="Vcs.Push.Dialog.v2" timestamp="1585919551829">
-      <screen x="0" y="0" width="1664" height="1069" />
+    <state x="436" y="173" key="MultipleFileMergeDialog" timestamp="1585921676846">
+      <screen x="0" y="0" width="1440" height="900" />
     </state>
+    <state x="436" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921676846" />
+    <state x="640" y="229" key="Vcs.Push.Dialog.v2" timestamp="1585921643801">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1585921643801" />
     <state x="840" y="272" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919551829" />
+    <state x="427" y="248" key="git4idea.merge.GitPullDialog" timestamp="1585921671999">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="427" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921671999" />
   </component>
 </project>
