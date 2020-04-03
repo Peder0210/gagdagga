@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+        <div style="" class="topnav">
+            <a href="/login">Login</a>
+            <a class="active" href="/register">Register</a>
+        </div>
+    </head>
+    <style>
+        /* Add a black background color to the top navigation */
+        .topnav {
+            background-color: #4C4480;
+            overflow: hidden;
+        }
+
+        /* Style the links inside the navigation bar */
+        .topnav a {
+            float: left;
+            color: #f2f2f2;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        /* Change the color of links on hover */
+        .topnav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /* Add a color to the active/current link */
+        .topnav a.active {
+            background-color: #C43796;
+            color: white;
+        }
+    </style>
+<body>
+
+<h1>Opret bruger</h1>
+<div>
+    <form action ="/register/store" method="POST">
+    <br>
+    <input
+            id="name"
+            type="text"
+            placeholder="Navn"
+            autocomplete="new-username"
+            name="Navn"
+
+
+    />
+    <br>
+    <br>
+
+        <p>Birthday:</p>
+        <br>
+
+        <input type="date" id="Birthday" name="Birthday"
+               value="2020-04-01"
+               min="1900-01-01" max="2020-04-01">
+        <!--    <input
+                  id="birthYear"
+                  type="number"
+                  placeholder="Fødselsår"
+                  autocomplete="off"
+                  name="Birthday"
+          />  -->
+    <br>
+
+    <br>
+
+        <p>Choose a gender:</p>
+
+        <select name="Gender">
+            <option value="Man" >Man</option>
+            <option value="Woman" >Kvinde</option>
+            <option value="Andet" >Andet</option>
+
+        </select>
+    <br>
+    <br>
+      <input
+              id="phoneNumber"
+              type="number"
+              placeholder="Tlf nummer"
+              autocomplete="off"
+              name="MobilNummer"
+      />
+    <br>
+    <br>
+      <input
+              id="email"
+              type="text"
+              placeholder="Email"
+              autocomplete="new-email"
+              name="Email"
+      />
+    <br>
+    <br>
+
+    <input
+            id="username"
+            type="text"
+            placeholder="Bruger"
+            autocomplete="new-user"
+            name="Username"
+    />
+    <br>
+    <br>
+    <input
+            id="password"
+            type="password"
+            placeholder="Adgangskode"
+            autocomplete="new-password"
+            name="Password"
+    />
+    <br>
+    <br>
+    <a
+            href="Login.html">
+        <button
+        >Go to Login</button></a>
+
+
+        <input
+                id="registration_btn"
+                type="submit"
+                value="Register"
+
+        />
+    <br>
+    </form>
+</div>
+    <script src="classes/User.js"></script>
+</div>
+</body>
+</html>

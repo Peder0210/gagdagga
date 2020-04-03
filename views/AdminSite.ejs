@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <div class="topnav">
+        <a class="active" href="/adminSite">Opret undervisningstime</a>
+        <a href="/classSiteAdmin">Alle undervisningstimer</a>
+        <a class="navLogOut" onclick="logOutAdmin()">Log af</a>
+    </div>
+
+        <h1> Opret undervisningstime</h1>
+
+</head>
+<style>
+    /* Her har vi lavet en navigationslinje/bar ved hjælp af eksemplet i denne kilde: https://www.w3schools.com/howto/howto_js_topnav.asp
+    /* Add a black background color to the top navigation */
+    .topnav {
+        overflow: hidden;
+        background-color: #4C4480;
+    }
+
+    /* Style the links inside the navigation bar */
+    .topnav a {
+        float: left;
+        color: #f2f2f2;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-size: 17px;
+    }
+    .navLogOut {
+        float: right !important;
+    }
+    /* Change the color of links on hover */
+    .topnav a:hover {
+        background-color: #ddd;
+        color: black;
+    }
+
+    /* Add a color to the active/current link */
+    .topnav a.active {
+        background-color: #C43796;
+        color: white;
+    }
+</style>
+<body>
+
+<br>
+<form action="/AdminSite" method="POST">
+<text>Undervisningstitel:</text>
+
+    <input
+            type="text"
+            id="title"
+            value=""
+            placeholder="Undervisningstitel"
+            name="Title">
+
+<br>
+<br>
+     Sted:
+
+    <input
+            type="text"
+            id="location"
+            value=""
+            placeholder="Sted"
+            name="Locales">
+    <br>
+    <br>
+    Tid:
+    <input
+            type="text"
+            id="time"
+            value=""
+            placeholder="Time"
+            name="Time">
+    <br>
+    <br>
+    Duration:
+    <input
+            type="text"
+            id="duration"
+            value=""
+            placeholder="Duration"
+            name="Duration">
+    <br>
+    <br>
+    Participants:
+    <input
+            type="text"
+            id="participants"
+            value=""
+            placeholder="Participants"
+            name="Participants">
+    <br>
+    <br>
+    Teachers:
+    <input
+            type="text"
+            id="teachers"
+            value=""
+            placeholder="Teachers"
+            name="Teachers">
+    <br>
+
+    <!--  <select id="time">
+          <option
+                  value=""
+                  selected="selected">-Vælg tidspunkt-</option>
+
+          <option value="17.00">17.00</option>
+          <option value="17.30">17.30</option>
+          <option value="18.00">18.00</option>
+          <option value="18.30">18.30</option>
+          <option value="19.00">19.00</option>
+          <option value="19.30">19.30</option>
+          <option value="20.00">20.00</option>
+          <option value="20.30">20.30</option>
+          <option value="21.00">21.00</option>
+
+
+      </select>
+
+  <br>
+  <br>
+
+      Dato:
+      <select id="date">
+          <option value="" selected="selected">-Dag-</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+          <option value="6">6</option>
+          <option value="13">13</option>
+          <option value="17">17</option>
+          <option value="20">20</option>
+
+      </select>
+
+  <select id="month">
+      <option value="" selected="selected">Måned</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+      <option value="12">12</option>
+
+  </select>
+
+
+  <select id="year">
+      <option value="" selected="selected">År</option>
+      <option value="2019">2019</option>
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+
+  </select>
+
+
+
+<br>
+<br>
+    Lokale:
+<input
+        type="text"
+        id="room"
+        value=""
+        placeholder="Lokale">
+
+<br>
+    <br>
+    Underviser:
+
+<input
+        type="text"
+        id="teacher"
+        value=""
+        placeholder="Underviser">
+
+<br>
+<br>
+    Varighed:
+<select id="duration hours">
+    <option value="" selected="selected">-Antal timer-</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+
+</select>
+
+<select id="duration minutes">
+    <option value=""  selected="selected">-Antal minutter-</option>
+    <option value="0">0</option>
+    <option value="15">15</option>
+    <option value="20">20</option>
+    <option value="25">25</option>
+    <option value="30">30</option>
+    <option value="35">35</option>
+    <option value="40">40</option>
+    <option value="45">45</option>
+    <option value="50">50</option>
+    <option value="55">55</option>
+    <option value="60">60</option>
+
+</select>
+
+<br>
+<br>
+-->
+    <br>
+    <br>
+    <input
+        id="createClass_btn"
+        type="submit"
+        value="Opret undervisningstime"/>
+
+</form>
+<br>
+
+<script src="classes/DancingClass.js"></script>
+<script src="classes/Admin.js"></script>
+
+</body>
+</html>
