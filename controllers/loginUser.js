@@ -19,8 +19,9 @@ module.exports = (req,res) =>{
 
                 }
                 else{
-                    console.log("Password is wrong");
-                    res.redirect('/login')
+                    let error = "Passwordiswrong";
+                    console.log(error);
+                    res.redirect('/login?error='+error)
                 }
             })
         } else {
