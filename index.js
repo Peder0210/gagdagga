@@ -14,6 +14,8 @@ const logoutController = require("./controllers/logout")
 const createLesson = require("./controllers/createLesson")
 const Lesson = require("./models/lesson")
 const getInfo = require("./controllers/getInfo");
+const loginAdministrator = require('./controllers/loginAdministrator');
+
 
 const validateMiddleWare = (req,res,next) => {
     if(req.body.Navn == ''){
@@ -116,5 +118,6 @@ app.get("/userInfo", (req,res) =>{
 
 });
 
+app.post('/login2', loginAdministrator);
 app.use((req,res) =>res.render('notfound'));
 
