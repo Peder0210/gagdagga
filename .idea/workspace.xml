@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -12,6 +11,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="ProjectId" id="1a21jjSYLmIbVr9OZZ5LVh71JB8" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -25,6 +25,8 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
@@ -55,7 +57,14 @@
       <option name="project" value="LOCAL" />
       <updated>1585919529268</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="j">
+      <created>1586093204184</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1586093204185</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -66,9 +75,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="j" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="662" y="105" key="CommitChangelistDialog2" timestamp="1585921621411">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="447" y="5" key="CommitChangelistDialog2" timestamp="1586246108873">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586246108873" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1585921621411" />
     <state x="872" y="134" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919527358" />
     <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1585921103120">
@@ -95,11 +105,16 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="436" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921676846" />
-    <state x="640" y="229" key="Vcs.Push.Dialog.v2" timestamp="1585921643801">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="480" y="204" key="Vcs.Push.Dialog.v2" timestamp="1586093221699">
+      <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586093221699" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1585921643801" />
     <state x="840" y="272" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919551829" />
+    <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586245345093">
+      <screen x="0" y="0" width="1280" height="800" />
+    </state>
+    <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586245345093" />
     <state x="427" y="248" key="git4idea.merge.GitPullDialog" timestamp="1585921671999">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
