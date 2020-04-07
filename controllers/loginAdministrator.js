@@ -12,16 +12,19 @@ module.exports = (req,res) =>{
                     console.log("Hello Admin. You are now logged in!");
                 }
                 else{
-                    console.log("Incorrect information entered. Password is wrong");
+                    let error = "Passwordiswrong";
+                    console.log(error);
                     console.log(Password);
                     console.log(administrator.Password);
-                    res.redirect('/login2')
+                    res.redirect('/login?error='+error);
+
                 }
         } else {
-            console.log("Administrator doesn't exist");
+            let error = "Administratordoesn'texist";
+            console.log(error);
             console.log(Password);
             console.log(administrator);
-            res.redirect('/login2')
+            res.redirect('/login?error'+error);
         }
     })
 };

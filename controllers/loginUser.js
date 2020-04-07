@@ -25,8 +25,9 @@ module.exports = (req,res) =>{
                 }
             })
         } else {
-            console.log("User doesn't exist");
-            res.redirect('/login')
+            let error = "Userdoesn'texist";
+            console.log(error);
+            res.redirect('/login?error='+error)
         }
     })
 };
