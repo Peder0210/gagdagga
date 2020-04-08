@@ -38,6 +38,18 @@
 </style>
 <body>
 
+<body onload="onclick()">
+
+<script>
+    function onclick () {
+        console.log("hej")
+        var url = window.location.pathname + window.location.search;
+        var getQuery = url.split('?')[1];
+        var params = getQuery.split('=')[1];
+        alert(params);
+    }
+</script>
+
 <br>Log in <br>
 <br>
 <form action="/login2" method="POST">

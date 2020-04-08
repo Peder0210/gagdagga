@@ -8,7 +8,7 @@ module.exports = (req,res) =>{
     administrator.findOne({Username:Username},(error,administrator) =>{
         if(administrator){
                 if(Password===administrator.Password){
-                    res.redirect('/adminSite')
+                    res.redirect('/adminSite?username='+Username)
                     console.log("Hello Admin. You are now logged in!");
                 }
                 else{
@@ -24,7 +24,7 @@ module.exports = (req,res) =>{
             console.log(error);
             console.log(Password);
             console.log(administrator);
-            res.redirect('/login?error'+error);
+            res.redirect('/login?error='+error);
         }
     })
 };
