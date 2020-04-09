@@ -50,10 +50,54 @@
 
 <br>
 
-<body id="body" onload="showAllClasses()">
+
+<body onload="kasper()">
+<br>
+<script>
+    function kasper () {
+
+
+
+        fetch("http://localhost:3000/lessonInfo").then((res) => {
+            return  res.json();
+        }).then((data) =>{
+            /* document.getElementById("navn").innerHTML = data.Navn;
+             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
+             document.getElementById("køn").innerHTML = data.Gender;
+             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
+             document.getElementById("email").innerHTML = data.Email;
+             document.getElementById("username").innerHTML = data.Username;
+
+     */
+            var parent = document.getElementById("output");
+
+
+            for(i=0;i<Object.keys(data).length;i++){
+
+                // Text
+                var div1 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(Object.keys(data)[i]));
+                div1.appendChild(p);
+
+                // Value
+                var div2 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
+                div2.appendChild(p);
+
+                parent.appendChild(div1);
+                parent.appendChild(div2);
+            }
+        }).catch((e) => {
+            console.log(e);
+        })
+    }
+
+</script>
+<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 </body>
 
-<script src="classes/DancingClass.js"></script>
-<script src="classes/User.js"></script>
+
 
 </html>

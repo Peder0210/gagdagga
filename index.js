@@ -15,6 +15,7 @@ const createLesson = require("./controllers/createLesson")
 const Lesson = require("./models/lesson")
 const getInfo = require("./controllers/getInfo");
 const loginAdministrator = require('./controllers/loginAdministrator');
+const mongotest = require('./controllers/mongo');
 
 
 const validateMiddleWare = (req,res,next) => {
@@ -118,6 +119,19 @@ app.get("/userInfo", (req,res) =>{
 
 });
 
+app.get("/lessonInfo", (req,res) =>{
+    Lesson.findOne({Title:"g"},(error,result)=>{
+        if(result){
+            res.send(JSON.stringify(result))
+        }
+        else{
+            res.send("No profiles found")
+        }
+    })
+
+});
 app.post('/login2', loginAdministrator);
 app.use((req,res) =>res.render('notfound'));
+
+
 

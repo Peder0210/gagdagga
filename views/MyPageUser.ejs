@@ -49,50 +49,54 @@
 <body onload="kasper()">
 <br>
 <script>
-function kasper () {
+    function kasper () {
+        console.log("hej")
+        var url = window.location.pathname + window.location.search;
+        var getQuery = url.split('?')[1];
+        var params = getQuery.split('=')[1];
+        console.log(params);
+
+
+        fetch("http://localhost:3000/userInfo?username=" + params).then((res) => {
+            return  res.json();
+        }).then((data) =>{
+            /* document.getElementById("navn").innerHTML = data.Navn;
+             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
+             document.getElementById("køn").innerHTML = data.Gender;
+             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
+             document.getElementById("email").innerHTML = data.Email;
+             document.getElementById("username").innerHTML = data.Username;
+
+     */
+            var parent = document.getElementById("output");
+
+
+            for(i=0;i<Object.keys(data).length;i++){
+if(i==0||i==2||i==7||i==8){
     console.log("hej")
-    var url = window.location.pathname + window.location.search;
-    var getQuery = url.split('?')[1];
-    var params = getQuery.split('=')[1];
-    console.log(params);
+} else{
+                // Text
+                var div1 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(Object.keys(data)[i]));
+                console.log(Object.keys(data)[0]);
+                div1.appendChild(p);
 
+                // Value
+                var div2 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
+                div2.appendChild(p);
 
-    fetch("http://localhost:3000/userInfo?username=" + params).then((res) => {
-       return  res.json();
-    }).then((data) =>{
-       /* document.getElementById("navn").innerHTML = data.Navn;
-        document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-        document.getElementById("køn").innerHTML = data.Gender;
-        document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-        document.getElementById("email").innerHTML = data.Email;
-        document.getElementById("username").innerHTML = data.Username;
-
-*/
-       var parent = document.getElementById("output");
-
-
-        for(i=0;i<Object.keys(data).length;i++){
-
-            // Text
-            var div1 = document.createElement("div");
-            var p = document.createElement("p");
-            p.appendChild(document.createTextNode(Object.keys(data)[i]));
-            div1.appendChild(p);
-
-            // Value
-            var div2 = document.createElement("div");
-            var p = document.createElement("p");
-            p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-            div2.appendChild(p);
-
-            parent.appendChild(div1);
-            parent.appendChild(div2);
-        }
-    }).catch((e) => {
-        console.log(e);
-    })
-}
+                parent.appendChild(div1);
+                parent.appendChild(div2);
+            }}
+        }).catch((e) => {
+            console.log(e);
+        })
+    }
 </script>
+
 
 <!--<p>Din konto's navn:</p>
 <p id="navn" value=""></p>
