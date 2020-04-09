@@ -22,7 +22,7 @@ module.exports = (req,res) =>{
         } else {
             let error = "Administratordoesn'texist";
             console.log(error);
-            console.log(Password);
+            //console.log(Password);
             console.log(administrator);
             res.redirect('/login?error='+error);
         }
