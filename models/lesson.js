@@ -5,7 +5,7 @@ const lessonsSchema = new Schema ({
     Title: String,
     Locales: String,
     Time: String,
-    Duration: String,
+    Duration: Number,
     Participants: String,
     Teachers: String,
 

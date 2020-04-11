@@ -50,10 +50,102 @@
 
 <br>
 
-<body>
+<body onload="kasper()">
+<br>
+<script>
+    function kasper () {
+        fetch("http://localhost:3000/lessonboard").then((res) => {
+            return  res.json();
+        }).then((data) =>{
+            /* document.getElementById("navn").innerHTML = data.Navn;
+             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
+             document.getElementById("køn").innerHTML = data.Gender;
+             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
+             document.getElementById("email").innerHTML = data.Email;
+             document.getElementById("username").innerHTML = data.Username;
 
-<body id="body" onload="showAllClasses()">
+     */
+            var parent = document.getElementById("output");
+
+            for(var j = 0; j< data.length; j++) {
+                var div3 = document.createElement("div");
+                var h1 = document.createElement("h1");
+                h1.appendChild(document.createTextNode("Ny Lektion!!"));
+                div3.appendChild(h1);
+                parent.appendChild(div3);
+                console.log(data[j].Duration)
+
+                var div4 = document.createElement("div");
+                var h1 = document.createElement("h1");
+                h1.appendChild(document.createTextNode(""));
+                div4.appendChild(h1);
+                parent.appendChild(div4);
+
+            for(let i = 0;i<Object.keys(data[j]).length;i++){
+                if(i==0||i==7){
+                    console.log("hej")
+                } else {
+                let array = [ "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+                let array2 = array[i];
+                console.log(array2)
+
+                // Text
+                var div1 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
+                div1.appendChild(p);
+
+                // Value
+                var div2 = document.createElement("div");
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(data[j][array2]));
+                div2.appendChild(p);
+
+                parent.appendChild(div1);
+                parent.appendChild(div2);
+
+            } } }
+        }).catch((e) => {
+            console.log(e);
+        })
+    }
+
+</script>
+<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 </body>
+
+<!-- <body>
+ <body id="body" onload="showAllClasses()">
+<br>
+ Main Content
+<div class="container">
+    <div class=""row>
+        <div class="col-lg-8 col-md-10 mx-auto">
+
+            <div class="post-preview">
+                <h2 class="post-title">
+
+                </h2>
+                <h3 class="postsubtitle">
+
+                    <br>
+
+                    <br>
+
+                    <br>
+
+                    <br>
+
+                </h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body> -->
+<script src="index.js"></script>
+<script src="lesson.js"></script>
 <script src="classes/DancingClass.js"></script>
 <script src="classes/Admin.js"></script>
 

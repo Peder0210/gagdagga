@@ -98,9 +98,9 @@ app.post('/login', loginUserController);
 
 app.get("/auth/login", logoutController)
 
-app.post('/AdminSite', (req,res) => {
+app.post('/AdminSite', async (req,res) => {
     console.log(req.body);
-    Lesson.create(req.body,(error,lesson) =>{
+    await Lesson.create(req.body,(error,lesson) =>{
         res.redirect('/AdminSite')
     })
 });
@@ -119,7 +119,7 @@ app.get("/userInfo", (req,res) =>{
 
 });
 
-app.get("/lessonInfo", (req,res) =>{
+ app.get("/lessonInfo", (req,res) =>{
     Lesson.findOne({Title:"g"},(error,result)=>{
         if(result){
             res.send(JSON.stringify(result))
@@ -127,11 +127,29 @@ app.get("/lessonInfo", (req,res) =>{
         else{
             res.send("No profiles found")
         }
-    })
+    });
+     })
 
+/* app.get('/classSiteAdmin', async (req,res)=>{
+    const lessonposts = await Lesson.findOne({ })
+    res.render('index', {
+        lessonposts
+    });
+}) */
+
+app.get('/lessonboard', (req,res)=> {
+    Lesson.find({Duration: {$gt: 0}}, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
 });
+
+
 app.post('/login2', loginAdministrator);
-app.use((req,res) =>res.render('notfound'));
+app.use((req,res) =>res.render('notfound'))
 
 
 
