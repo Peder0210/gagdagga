@@ -4,6 +4,7 @@ const express = require('express');
 const app = new express();
 const path = require('path');
 const ejs = require('ejs');
+const joi = require('joi');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const UserData = require('./models/userData');
@@ -35,7 +36,7 @@ app.set('view engine','ejs');
 app.use(express.static('puplic'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-app.use('/register/store',validateMiddleWare);
+//app.use('/register/store',validateMiddleWare);
 
 
 
@@ -87,10 +88,35 @@ app.get('/myPageUser', (req,res) =>{
 
 app.post('/register/store', (req,res) => {
     console.log(req.body);
+const schema = joi.object().keys({
+    Email : joi.string().trim().email().required(),
+    Password : joi.string().min(5).max(10).required(),
+    Navn : joi.string().required(),
+    Birthday : joi.string().required(),
+    Gender : joi.string().required(),
+    MobilNummer : joi.string().required(),
+    Username : joi.string().required()
 
-    UserData.create(req.body,(error,userdata) =>{
-        res.redirect('/login')
-    })
+
+
+
+
+
+
+
+
+});
+joi.validate(req.body,schema,(err,result)=>{
+    if(err){
+        console.log(err);
+        res.send("An error has occured");
+    }
+    console.log(result);
+    UserData.create(req.body);
+
+
+});
+    res.redirect('/login')
 });
 
 
@@ -130,12 +156,12 @@ app.get("/userInfo", (req,res) =>{
     });
      })
 
-/* app.get('/classSiteAdmin', async (req,res)=>{
+ app.get('/classSiteAdmin', async (req,res)=>{
     const lessonposts = await Lesson.findOne({ })
     res.render('index', {
         lessonposts
     });
-}) */
+})
 
 app.get('/lessonboard', (req,res)=> {
     Lesson.find({Duration: {$gt: 0}}, (error, result) => {
