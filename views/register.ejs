@@ -37,7 +37,17 @@
             color: white;
         }
     </style>
-<body>
+    <body onload="kasper()">
+    <br>
+    <script>
+        function kasper () {
+            console.log("hej")
+            var url = window.location.pathname + window.location.search;
+            var getQuery = url.split('?')[1];
+            var params = getQuery.split('=')[1];
+            alert(params);
+        }
+    </script>
 
 <h1>Opret bruger</h1>
 <div>

@@ -90,11 +90,11 @@ app.post('/register/store', (req,res) => {
     console.log(req.body);
 const schema = joi.object().keys({
     Email : joi.string().trim().email().required(),
-    Password : joi.string().min(5).max(10).required(),
+    Password : joi.string().min(3).max(50).required(),
     Navn : joi.string().required(),
     Birthday : joi.string().required(),
     Gender : joi.string().required(),
-    MobilNummer : joi.string().required(),
+    MobilNummer : joi.string().min(8).max(8).required(),
     Username : joi.string().required()
 
 
@@ -107,9 +107,11 @@ const schema = joi.object().keys({
 
 });
 joi.validate(req.body,schema,(err,result)=>{
-    if(err){
+    if(err) {
         console.log(err);
-        res.send("An error has occured");
+        let error = "Information is wrong or missing";
+
+        res.redirect('/register?error=' + error);
     }
     console.log(result);
     UserData.create(req.body);
@@ -122,7 +124,7 @@ joi.validate(req.body,schema,(err,result)=>{
 
 app.post('/login', loginUserController);
 
-app.get("/auth/login", logoutController)
+app.get("/auth/login", logoutController);
 
 app.post('/AdminSite', async (req,res) => {
     console.log(req.body);
