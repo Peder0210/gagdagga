@@ -50,9 +50,11 @@
 
 <br>
 
-<body onload="kasper()">
+<body onload="kasper()" >
 <br>
-<script>
+<script src="models/lesson.js"></script>
+<script src="controllers/ggggg.js"></script>
+<script type="text/javascript"  >
     function kasper () {
         fetch("http://localhost:3000/lessonboard").then((res) => {
             return  res.json();
@@ -66,7 +68,7 @@
 
      */
             var parent = document.getElementById("output");
-
+            let array3 = []
             for(var j = 0; j< data.length; j++) {
                 var div3 = document.createElement("div");
                 var h1 = document.createElement("h1");
@@ -81,13 +83,22 @@
                 div4.appendChild(h1);
                 parent.appendChild(div4);
 
+                let array = [ "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+
+
+                array3.push(data[j][array[1]])
+                console.log(array3)
+                console.log(array3[0])
+
             for(let i = 0;i<Object.keys(data[j]).length;i++){
                 if(i==0||i==7){
                     console.log("hej")
                 } else {
-                let array = [ "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+
                 let array2 = array[i];
+
                 console.log(array2)
+console.log(array)
 
                 // Text
                 var div1 = document.createElement("div");
@@ -104,14 +115,52 @@
                 parent.appendChild(div1);
                 parent.appendChild(div2);
 
-            } } }
+            } }
+let id = j
+                var div5 = document.createElement("div");
+                var button = document.createElement("button");
+
+console.log(array3[j])
+                button.id = array3[j]
+                button.addEventListener("click", function() {
+alert("wow")
+                 let array4 = this.id
+fetch('/deletelesson/'+array4,{method: 'DELETE'}).then(function(response) {
+console.log(array4)
+    if(response.ok){
+        console.log("Click was recorded");
+        return
+    }
+    throw new Error('Request failed')
+}).catch(function(error){
+    console.log(error)
+})
+                })
+                console.log(id)
+                button.appendChild(document.createTextNode("Tryk her for at se min kode kasper"));
+                div5.appendChild(button);
+                parent.appendChild(div5);
+
+
+                var div6 = document.createElement("div");
+                var h2 = document.createElement("h1");
+                h2.appendChild(document.createTextNode(""));
+                div6.appendChild(h2);
+                parent.appendChild(div6);
+
+            }
         }).catch((e) => {
             console.log(e);
         })
+
     }
 
 </script>
-<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
+
+
+<div id="output" style="display:grid;grid-template-columns:auto auto;">
+
+</div>
 </body>
 
 <!-- <body>
@@ -148,5 +197,6 @@
 <script src="lesson.js"></script>
 <script src="classes/DancingClass.js"></script>
 <script src="classes/Admin.js"></script>
+
 
 </html>

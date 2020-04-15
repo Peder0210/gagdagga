@@ -175,7 +175,16 @@ app.get('/lessonboard', (req,res)=> {
     }) //find alle duration hvor man laver et null
 });
 
-
+app.delete('/deletelesson/:lesson', (req,res)=> {
+console.log(req.params.lesson);
+    Lesson.deleteOne({Title: req.params.lesson}, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
 app.post('/login2', loginAdministrator);
 app.use((req,res) =>res.render('notfound'))
 
