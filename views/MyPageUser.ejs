@@ -6,22 +6,12 @@
         <a class="active" href="/myPageUser">Min side</a>
         <a href="/myClasses">Mine undervisningstimer</a>
         <a href="/classSiteUser">Alle undervisningstimer</a>
-       <!-- <a class="nav-link" onclick=logOut() href="Login">Log af</a> -->
-        <a class="nav-link" onclick="logOut()">Log ud</a>
+        <li class="nav-item">
+            <a class="nav-link" href="/logout">Log ud</a>
+        </li>
 
         <script>
 
-           function logOut(){
-                console.log("test");
-                if(req.session){
-                    req.session.destroy(function(err) {
-                        if(err) {
-                            return next(err);
-                        } else {
-                            return res.redirect("login");
-                        }
-                    });
-                }}
 
         </script>
 

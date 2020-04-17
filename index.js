@@ -140,9 +140,14 @@ app.post('/AdminSite', async (req,res) => {
 
 
 app.get("/userInfo", (req,res) =>{
+
   UserData.findOne({Username:req.query.username},(error,result)=>{
        if(result){
-           res.send(JSON.stringify(result))
+           if(req.session.userId == result._id)
+
+                res.send(JSON.stringify(result))  // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+           else
+               res.send();
        }
        else{
            res.send("No profiles found")
