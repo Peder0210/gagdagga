@@ -17,6 +17,8 @@ const Lesson = require("./models/lesson")
 const getInfo = require("./controllers/getInfo");
 const loginAdministrator = require('./controllers/loginAdministrator');
 const mongotest = require('./controllers/mongo');
+//const authMiddleware = require("./middleware/autMiddleware");
+const redirectIfAuthenticatedMiddleware = require("./middleware/redirectIfAuthenticatedMiddleware");
 
 
 const validateMiddleWare = (req,res,next) => {
@@ -48,11 +50,11 @@ app.get('/adminsite', (req,res) =>{
    res.render('adminsite')
 });
 
-app.get('/classSiteUser', (req,res) =>{
+app.get('/classSiteUser', /*authMiddleware,*/ (req,res)=>{
     res.render('classSiteUser')
 });
 
-app.get('/classSiteAdmin', (req,res) =>{
+app.get('/classSiteAdmin', /*authMiddleware,*/ ( req,res) => {
     res.render('classSiteAdmin')
 });
 
@@ -68,17 +70,19 @@ app.get('/logoutUser', (req,res) =>{
     res.render('logoutUser')
 });
 
-app.get('/myClasses', (req,res) =>{
+app.get('/myClasses', /*authMiddleware*/ (req,res) =>{
     res.render('myClasses')
 });
 
-app.get('/register', (req,res) =>{
+app.get('/register', redirectIfAuthenticatedMiddleware, (req,res) =>{
     res.render('register')
 });
 
-app.get('/login', (req,res) =>{
+app.get('/login', redirectIfAuthenticatedMiddleware, (req,res) =>{
     res.render('login')
 });
+
+app.get("/logout", logoutController)
 
 app.get('/myPageUser', (req,res) =>{
     var id = req.params.id;
@@ -124,7 +128,7 @@ joi.validate(req.body,schema,(err,result)=>{
 
 app.post('/login', loginUserController);
 
-app.get("/auth/login", logoutController);
+//app.get("/auth/login", logoutController);
 
 app.post('/AdminSite', async (req,res) => {
     console.log(req.body);

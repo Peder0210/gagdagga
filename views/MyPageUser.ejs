@@ -6,9 +6,25 @@
         <a class="active" href="/myPageUser">Min side</a>
         <a href="/myClasses">Mine undervisningstimer</a>
         <a href="/classSiteUser">Alle undervisningstimer</a>
-        <li class="nav-item">
-            <a class="nav-link" href="Login">Log af</a>
-        </li>
+       <!-- <a class="nav-link" onclick=logOut() href="Login">Log af</a> -->
+        <a class="nav-link" onclick="logOut()">Log ud</a>
+
+        <script>
+
+           function logOut(){
+                console.log("test");
+                if(req.session){
+                    req.session.destroy(function(err) {
+                        if(err) {
+                            return next(err);
+                        } else {
+                            return res.redirect("login");
+                        }
+                    });
+                }}
+
+        </script>
+
     </div>
     <h1>Min side</h1>
 </head>
@@ -96,6 +112,9 @@ if(i==0||i==2||i==7||i==8){
         })
     }
 </script>
+
+
+
 
 
 <!--<p>Din konto's navn:</p>
