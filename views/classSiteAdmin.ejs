@@ -83,15 +83,15 @@
                 div4.appendChild(h1);
                 parent.appendChild(div4);
 
-                let array = [ "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+                let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
 
 
-                array3.push(data[j][array[1]])
+                array3.push(data[j][array[2]])
                 console.log(array3)
                 console.log(array3[0])
 
             for(let i = 0;i<Object.keys(data[j]).length;i++){
-                if(i==0||i==7){
+                if(i==1||i==8){
                     console.log("hej")
                 } else {
 

@@ -55,46 +55,114 @@
 
 <body onload="kasper()">
 <br>
-<script>
-    function kasper () {
+
+    <script type="text/javascript"  >
+        function kasper () {
+            fetch("http://localhost:3000/lessonboard").then((res) => {
+                return  res.json();
+            }).then((data) =>{
+                /* document.getElementById("navn").innerHTML = data.Navn;
+                 document.getElementById("fødselsÅr").innerHTML = data.Birthday;
+                 document.getElementById("køn").innerHTML = data.Gender;
+                 document.getElementById("telefonNr").innerHTML = data.MobilNummer;
+                 document.getElementById("email").innerHTML = data.Email;
+                 document.getElementById("username").innerHTML = data.Username;
+
+         */
+                var parent = document.getElementById("output");
+                let listOfLessons = []
+                let cookie = document.cookie
+                var cookieUsername = cookie.split('=')[1];
+                console.log(cookieUsername)
+                for(var j = 0; j< data.length; j++) {
+                    var div3 = document.createElement("div");
+                    var h1 = document.createElement("h1");
+                    h1.appendChild(document.createTextNode("Lektion!!"));
+                    div3.appendChild(h1);
+                    parent.appendChild(div3);
+                    console.log(data[j].Duration)
+
+                    var div4 = document.createElement("div");
+                    var h1 = document.createElement("h1");
+                    h1.appendChild(document.createTextNode(""));
+                    div4.appendChild(h1);
+                    parent.appendChild(div4);
+
+                    let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
 
 
+                    listOfLessons.push(data[j][array[2]])
+                    console.log(listOfLessons)
+                    console.log(listOfLessons[0])
 
-        fetch("http://localhost:3000/lessonInfo").then((res) => {
-            return  res.json();
-        }).then((data) =>{
-            /* document.getElementById("navn").innerHTML = data.Navn;
-             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-             document.getElementById("køn").innerHTML = data.Gender;
-             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-             document.getElementById("email").innerHTML = data.Email;
-             document.getElementById("username").innerHTML = data.Username;
+                    for(let i = 0;i<Object.keys(data[j]).length;i++){
+                        if(i==1||i==8){
+                            console.log("hej")
+                        } else {
 
-     */
-            var parent = document.getElementById("output");
+                            let array2 = array[i];
+
+                            console.log(array2)
+                            console.log(array)
+
+                            // Text
+                            var div1 = document.createElement("div");
+                            var p = document.createElement("p");
+                            p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
+                            div1.appendChild(p);
+
+                            // Value
+                            var div2 = document.createElement("div");
+                            var p = document.createElement("p");
+                            p.appendChild(document.createTextNode(data[j][array2]));
+                            div2.appendChild(p);
+
+                            parent.appendChild(div1);
+                            parent.appendChild(div2);
+
+                        } }
+                    let id = j
+                    var div5 = document.createElement("div");
+                    var button = document.createElement("button");
+
+                    console.log(listOfLessons[j])
+                    button.id = listOfLessons[j]
+                    button.addEventListener("click", function() {
+                        alert("wow")
+                        let lessonID = this.id
+                        let params = [lessonID,cookieUsername]
+                        console.log(lessonID)
+                        console.log(cookieUsername)
+                        console.log(params)
+                        fetch('/booklesson/'+params,{method: 'PUT'}).then(function(response) {
+                            console.log(lessonID)
+                            if(response.ok){
+                                console.log("Click was recorded");
+                                return
+                            }
+                            throw new Error('Request failed')
+                        }).catch(function(error){
+                            console.log(error)
+                        })
+                    })
+                    console.log(id)
+                    button.appendChild(document.createTextNode("Book lektion"));
+                    div5.appendChild(button);
+                    parent.appendChild(div5);
 
 
-            for(i=0;i<Object.keys(data).length;i++){
+                    var div6 = document.createElement("div");
+                    var h2 = document.createElement("h1");
+                    h2.appendChild(document.createTextNode(""));
+                    div6.appendChild(h2);
+                    parent.appendChild(div6);
 
-                // Text
-                var div1 = document.createElement("div");
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                div1.appendChild(p);
+                }
+            }).catch((e) => {
+                console.log(e);
+            })
 
-                // Value
-                var div2 = document.createElement("div");
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                div2.appendChild(p);
-
-                parent.appendChild(div1);
-                parent.appendChild(div2);
-            }
-        }).catch((e) => {
-            console.log(e);
-        })
-    }
+        }
 
 </script>
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>

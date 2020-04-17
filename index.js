@@ -184,9 +184,42 @@ app.get('/lessonboard', (req,res)=> {
     }) //find alle duration hvor man laver et null
 });
 
+app.get('/mylessonboard/:lesson', (req,res)=> {
+
+    Lesson.find({Participantnames: req.params.lesson}, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
+
+
+
+
+
 app.delete('/deletelesson/:lesson', (req,res)=> {
 console.log(req.params.lesson);
     Lesson.deleteOne({Title: req.params.lesson}, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
+
+
+app.put('/booklesson/:lesson', (req,res)=> {
+    var username2 = req.params.lesson.split(',')[1];
+    var lesson2 = req.params.lesson.split(',')[0];
+    console.log(req.params.lesson);
+    console.log(`hej+${username2}+${lesson2}`);
+
+    var myquery = {Title: lesson2};
+    var newvalues = {$push: {Participantnames: username2}};
+    Lesson.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
             res.send(JSON.stringify(result))
         } else {

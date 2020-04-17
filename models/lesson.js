@@ -8,7 +8,7 @@ const lessonsSchema = new Schema ({
     Duration: Number,
     Participants: String,
     Teachers: String,
-
+    Participantnames: { type: Array, default: [] }
 });
 
 const lesson = mongoose.model('lesson', lessonsSchema);

@@ -60,6 +60,7 @@
         var url = window.location.pathname + window.location.search;
         var getQuery = url.split('?')[1];
         var params = getQuery.split('=')[1];
+        document.cookie = `username=${params}`
         console.log(params);
 
 
