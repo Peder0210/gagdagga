@@ -134,7 +134,7 @@
                     console.log(lessonID)
                     console.log(cookieUsername)
                     console.log(params)
-                    fetch('/booklesson/'+params,{method: 'PUT'}).then(function(response) {
+                    fetch('/cancellesson/'+params,{method: 'PUT'}).then(function(response) {
                         console.log(lessonID)
                         if(response.ok){
                             console.log("Click was recorded");
@@ -146,7 +146,7 @@
                     })
                 })
                 console.log(id)
-                button.appendChild(document.createTextNode("Book lektion"));
+                button.appendChild(document.createTextNode("Afbestil"));
                 div5.appendChild(button);
                 parent.appendChild(div5);
 

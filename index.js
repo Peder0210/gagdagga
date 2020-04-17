@@ -227,6 +227,25 @@ app.put('/booklesson/:lesson', (req,res)=> {
         }
     }) //find alle duration hvor man laver et null
 });
+
+
+
+app.put('/cancellesson/:lesson', (req,res)=> {
+    var username2 = req.params.lesson.split(',')[1];
+    var lesson2 = req.params.lesson.split(',')[0];
+    console.log(req.params.lesson);
+    console.log(`hej+${username2}+${lesson2}`);
+
+    var myquery = {Title: lesson2};
+    var newvalues = {$pull: {Participantnames: username2}};
+    Lesson.updateOne(myquery,newvalues, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
 app.post('/login2', loginAdministrator);
 app.use((req,res) =>res.render('notfound'))
 
