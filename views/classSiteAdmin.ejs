@@ -72,7 +72,9 @@
             for(var j = 0; j< data.length; j++) {
                 var div3 = document.createElement("div");
                 var h1 = document.createElement("h1");
-                h1.appendChild(document.createTextNode("Ny Lektion!!"));
+                var lessonnumber = j+1
+
+                h1.appendChild(document.createTextNode(`Lektion Nr. ${lessonnumber} `));
                 div3.appendChild(h1);
                 parent.appendChild(div3);
                 console.log(data[j].Duration)
@@ -137,7 +139,7 @@ console.log(array4)
 })
                 })
                 console.log(id)
-                button.appendChild(document.createTextNode("SLet lektionen"));
+                button.appendChild(document.createTextNode("Slet lektionen"));
                 div5.appendChild(button);
                 parent.appendChild(div5);
 
@@ -147,6 +149,31 @@ console.log(array4)
                 h2.appendChild(document.createTextNode(""));
                 div6.appendChild(h2);
                 parent.appendChild(div6);
+
+
+                var div7 = document.createElement("div");
+                var button2 = document.createElement("button");
+
+                console.log(array3[j])
+                button2.id = array3[j]
+                button2.addEventListener("click", function() {
+                    alert("wow")
+                    let array8 = this.id
+                    document.cookie = `lesson=${array8}`
+                   window.location.replace("/changelesson")
+                })
+                console.log(id)
+                button2.appendChild(document.createTextNode("Ændre informationer"));
+                div7.appendChild(button2);
+                parent.appendChild(div7);
+
+
+                var div8 = document.createElement("div");
+                var h3 = document.createElement("h1");
+                h3.appendChild(document.createTextNode(""));
+                div8.appendChild(h3);
+                parent.appendChild(div8);
+
 
             }
         }).catch((e) => {

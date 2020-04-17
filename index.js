@@ -54,6 +54,10 @@ app.get('/classSiteUser', /*authMiddleware,*/ (req,res)=>{
     res.render('classSiteUser')
 });
 
+
+app.get('/changelesson', /*authMiddleware,*/ (req,res)=>{
+    res.render('changelesson')
+});
 app.get('/classSiteAdmin', /*authMiddleware,*/ ( req,res) => {
     res.render('classSiteAdmin')
 });
@@ -238,6 +242,39 @@ app.put('/cancellesson/:lesson', (req,res)=> {
 
     var myquery = {Title: lesson2};
     var newvalues = {$pull: {Participantnames: username2}};
+    Lesson.updateOne(myquery,newvalues, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result))
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
+
+app.get("/changelessoninfo/:lesson", (req,res) =>{
+
+    Lesson.findOne({Title:req.params.lesson},(error,result)=>{
+        if(result) {
+
+
+            res.send(JSON.stringify(result))  // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+        }
+        else{
+            res.send("No profiles found")
+        }
+    })
+
+});
+
+
+app.put('/changeinfolesson/:lesson', (req,res)=> {
+
+console.log(req.params.lesson);
+    var values = req.params.lesson.split(',');
+    var myquery = {Title: values[0]};
+    console.log(myquery);
+    console.log(values[1]);
+    var newvalues = {$set: { Title: values[1], Locales: values[2], Time: values[3], Duration: values[4], Participants: values[5], Teachers: values[6]}};
     Lesson.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
             res.send(JSON.stringify(result))

@@ -72,7 +72,15 @@
                 var parent = document.getElementById("output");
                 let listOfLessons = []
                 let cookie = document.cookie
-                var cookieUsername = cookie.split('=')[1];
+
+                console.log(cookie)
+                if(cookie.includes(";")) {
+                    var getQuery = cookie.split(';');
+
+                    var cookieUsername = getQuery[1].split('=')[1];
+                } else{
+                    var cookieUsername = cookie.split("=")[1]
+                }
                 console.log(cookieUsername)
                 for(var j = 0; j< data.length; j++) {
                     var div3 = document.createElement("div");

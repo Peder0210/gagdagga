@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body onload="kasper()">
+<br>
+<script>
+    function kasper () {
+        var x = document.cookie
+        console.log(x)
+        if(x.includes(";")) {
+            var getQuery = x.split(';');
+            console.log(getQuery)
+console.log(getQuery.length)
+            for(i=0;i<getQuery.length;i++){
+                if(getQuery[i].includes("lesson")){
+                    var lessonname = getQuery[i].split("=")[1]
+                    console.log(lessonname)
+                }
+            }
+        } else {
+            var lessonname = x.split("=")[1]
+        }
+console.log(lessonname)
+
+        fetch("/changelessoninfo/" + lessonname).then((res) => {
+            return  res.json();
+        }).then((data) =>{
+
+
+            var parent = document.getElementById("output");
+
+
+            for(i=0;i<Object.keys(data).length;i++){
+
+
+                if(i==8 ||i==1||i==0){
+                    console.log("hej")
+                } else{
+                    // Text
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(Object.keys(data)[i]));
+                    console.log(Object.keys(data)[0]);
+                    div1.appendChild(p);
+
+                    // Value
+                    var div2 = document.createElement("div");
+                    var input = document.createElement("input");
+                    input.id = i
+                    input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
+                    div2.appendChild(input);
+
+                    parent.appendChild(div1);
+                    parent.appendChild(div2);
+                }}
+
+
+            var div5 = document.createElement("div");
+            var button = document.createElement("button");
+
+
+            button.addEventListener("click", function() {
+                let array = [lessonname]
+                for(j=0;j<Object.keys(data).length;j++){
+                    if(j==8||j==1||j==0){
+                        console.log("hej")
+                    } else {
+                       let value1 =  document.getElementById(j).value
+                        if(value1==""){
+                            console.log("Hej")
+                        } else{
+                            array.push(value1)
+                        }
+                    }
+                }
+                console.log(array)
+                fetch('/changeinfolesson/'+array,{method: 'PUT'}).then(function(response) {
+
+                    if(response.ok){
+                        console.log("Click was recorded");
+                        return
+                    }
+                    throw new Error('Request failed')
+                }).catch(function(error){
+                    console.log(error)
+                })
+            })
+            button.appendChild(document.createTextNode("Ændre information"));
+            div5.appendChild(button);
+            parent.appendChild(div5);
+
+
+        }).catch((e) => {
+            console.log(e);
+        })}
+</script>
+
+
+
+
+
+<!--<p>Din konto's navn:</p>
+<p id="navn" value=""></p>
+<p>Din fødselsdag:</p>
+<p id="fødselsÅr" value=""></p>
+<p>Dit køn:</p>
+<p id="køn" value=""></p>
+<p>Dit telefonnummer:</p>
+<p id="telefonNr" value=""></p>
+<p> Din Email:</p>
+<p id="email" value=""></p>
+<p> Dit username</p>
+<p id="username" value=""></p>
+
+
+-->
+<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
+<br>
+
+
+</body>
+</html>

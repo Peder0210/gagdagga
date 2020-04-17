@@ -1,14 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
+    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="joi added">
+      <change afterPath="$PROJECT_DIR$/views/changelesson.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/MyClasses.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/MyClasses.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/classSiteAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/classSiteAdmin.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/classSiteUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/classSiteUser.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -25,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/models" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testy - Kopi (3)" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -57,6 +68,12 @@
       <workItem from="1585919013100" duration="945000" />
       <workItem from="1586330105624" duration="1899000" />
       <workItem from="1586423823150" duration="1502000" />
+      <workItem from="1586696693813" duration="1658000" />
+      <workItem from="1586792079805" duration="3658000" />
+      <workItem from="1586856441757" duration="12186000" />
+      <workItem from="1586935024246" duration="7427000" />
+      <workItem from="1587116859602" duration="8035000" />
+      <workItem from="1587126524718" duration="18064000" />
     </task>
     <task id="LOCAL-00001" summary="j">
       <created>1585919529268</created>
@@ -100,7 +117,49 @@
       <option name="project" value="LOCAL" />
       <updated>1586347831840</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="joi added">
+      <created>1586795063968</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1586795063968</updated>
+    </task>
+    <task id="LOCAL-00008" summary="alert added">
+      <created>1586857612578</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1586857612578</updated>
+    </task>
+    <task id="LOCAL-00009" summary="can delete lessons">
+      <created>1586943811851</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1586943811851</updated>
+    </task>
+    <task id="LOCAL-00010" summary="joi added">
+      <created>1587117775984</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1587117775985</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Booking compelte">
+      <created>1587134185313</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1587134185313</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Added cancel booking button">
+      <created>1587148376923</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1587148376923</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -111,15 +170,28 @@
     <MESSAGE value="Login2" />
     <MESSAGE value="Login ændring" />
     <MESSAGE value="Administrator login ændring" />
-    <option name="LAST_COMMIT_MESSAGE" value="Administrator login ændring" />
+    <MESSAGE value="alert added" />
+    <MESSAGE value="can delete lessons" />
+    <MESSAGE value="joi added" />
+    <MESSAGE value="Booking compelte" />
+    <MESSAGE value="Added cancel booking button" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added cancel booking button" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="662" y="105" key="CommitChangelistDialog2" timestamp="1586347831485">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1587148375210">
+      <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="872" y="134" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919527358" />
+    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1587148375210" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1586877484613">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1586877484613" />
+    <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1587133447438">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="613" y="291" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1587133447438" />
     <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1585921103120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -144,22 +216,31 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="436" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921676846" />
-    <state x="640" y="229" key="Vcs.Push.Dialog.v2" timestamp="1586347841956">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1587148383453">
+      <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="840" y="272" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1585919551829" />
-    <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586435602472">
-      <screen x="0" y="23" width="1280" height="712" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1587148383453" />
+    <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1587154426926" />
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587158977688">
+      <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586257655319" />
     <state x="476" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586425521033" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1586248995031" />
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1587158977688" />
     <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1586435602472" />
-    <state x="427" y="248" key="git4idea.merge.GitPullDialog" timestamp="1585921671999">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="493" y="295" key="git4idea.merge.GitPullDialog" timestamp="1586943816288">
+      <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="427" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921671999" />
+    <state x="493" y="295" key="git4idea.merge.GitPullDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1586943816288" />
+    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1586792536190">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1664.1069@0.0.1664.1069" timestamp="1586792536190" />
   </component>
 </project>
