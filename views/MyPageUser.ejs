@@ -58,10 +58,31 @@
     function kasper () {
         console.log("hej")
         var url = window.location.pathname + window.location.search;
+        console.log(url)
+        if(url == "/MyPageUser"){
+            var x = document.cookie
+            console.log(x)
+            if(x.includes(";")) {
+                var getQuery = x.split(';');
+                console.log(getQuery)
+                console.log(getQuery.length)
+                for(i=0;i<getQuery.length;i++){
+                    if(getQuery[i].includes("username")){
+                        var params = getQuery[i].split("=")[1]
+                        console.log(username)
+                    }
+                }
+
+
+            } else {
+                var params = x.split("=")[1]
+
+            }
+        } else{
         var getQuery = url.split('?')[1];
         var params = getQuery.split('=')[1];
         document.cookie = `username=${params}`
-        console.log(params);
+        console.log(params);}
 
 
         fetch("http://localhost:3000/userInfo?username=" + params).then((res) => {
@@ -97,11 +118,29 @@ if(i==0||i==2||i==7||i==8){
 
                 parent.appendChild(div1);
                 parent.appendChild(div2);
+
+
+
             }}
+
+            var div3= document.createElement("div");
+            var button = document.createElement("button");
+
+
+
+            button.addEventListener("click", function() {
+
+                window.location.replace("/changeuserinfo")
+            })
+
+            button.appendChild(document.createTextNode("Ændre informationer"));
+            div3.appendChild(button);
+            parent.appendChild(div3);
         }).catch((e) => {
             console.log(e);
         })
     }
+
 </script>
 
 

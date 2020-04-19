@@ -66,6 +66,9 @@ app.get('/loggedIn', (req,res) =>{
     res.render('loggedIn')
 });
 
+app.get('/changeuserinfo', (req,res) =>{
+    res.render('changeuserinfo')
+});
 app.get('/logoutAdmin', (req,res) =>{
     res.render('logoutAdmin')
 });
@@ -82,7 +85,7 @@ app.get('/register', redirectIfAuthenticatedMiddleware, (req,res) =>{
     res.render('register')
 });
 
-app.get('/login', redirectIfAuthenticatedMiddleware, (req,res) =>{
+app.get('/login',redirectIfAuthenticatedMiddleware, (req,res) =>{
     res.render('login')
 });
 
@@ -283,6 +286,41 @@ console.log(req.params.lesson);
         }
     }) //find alle duration hvor man laver et null
 });
+
+
+app.get("/getuserinfo/:lesson", (req,res) =>{
+
+    UserData.findOne({Username:req.params.lesson},(error,result)=>{
+        if(result) {
+
+
+            res.send(JSON.stringify(result))  // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+        }
+        else{
+            res.send("No profiles found")
+        }
+    })
+
+});
+
+
+app.put('/changeuserinfo/:userinfo', (req,res)=> {
+
+    console.log(req.params.userinfo);
+    var values = req.params.userinfo.split(',');
+    var myquery = {Username: values[0]};
+    console.log(myquery);
+    console.log(values[1]);
+    var newvalues = {$set: { Navn: values[1], Gender: values[2], Email: values[3], Username: values[4]}};
+    UserData.updateOne(myquery,newvalues, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result));
+        } else {
+            res.send("No profiles found")
+        }
+    }) //find alle duration hvor man laver et null
+});
+
 app.post('/login2', loginAdministrator);
 app.use((req,res) =>res.render('notfound'))
 
