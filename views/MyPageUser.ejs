@@ -59,7 +59,7 @@
         console.log("hej")
         var url = window.location.pathname + window.location.search;
         console.log(url)
-        if(url == "/MyPageUser"){
+        if(url == "/MyPageUser"  ||url== "/myPageUser"){
             var x = document.cookie
             console.log(x)
             if(x.includes(";")) {
@@ -69,7 +69,7 @@
                 for(i=0;i<getQuery.length;i++){
                     if(getQuery[i].includes("username")){
                         var params = getQuery[i].split("=")[1]
-                        console.log(username)
+
                     }
                 }
 
@@ -79,9 +79,9 @@
 
             }
         } else{
-        var getQuery = url.split('?')[1];
-        var params = getQuery.split('=')[1];
-        document.cookie = `username=${params}`
+            var getQuery = url.split('?')[1];
+            var params = getQuery.split('=')[1];
+
         console.log(params);}
 
 

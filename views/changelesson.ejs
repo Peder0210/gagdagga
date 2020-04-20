@@ -50,6 +50,7 @@ console.log(lessonname)
                     var div2 = document.createElement("div");
                     var input = document.createElement("input");
                     input.id = i
+                    input.value = data[Object.keys(data)[i]]
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
                     div2.appendChild(input);
 
@@ -76,7 +77,7 @@ console.log(lessonname)
                         }
                     }
                 }
-                console.log(array)
+
                 fetch('/changeinfolesson/'+array,{method: 'PUT'}).then(function(response) {
 
                     if(response.ok){

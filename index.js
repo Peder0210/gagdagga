@@ -273,6 +273,9 @@ app.get("/changelessoninfo/:lesson", (req,res) =>{
 app.put('/changeinfolesson/:lesson', (req,res)=> {
 
 console.log(req.params.lesson);
+let lessondata = JSON.parse(req.params.lesson);
+console.log("hej"+lessondata)
+
     var values = req.params.lesson.split(',');
     var myquery = {Title: values[0]};
     console.log(myquery);
@@ -306,8 +309,10 @@ app.get("/getuserinfo/:lesson", (req,res) =>{
 
 app.put('/changeuserinfo/:userinfo', (req,res)=> {
 
-    console.log(req.params.userinfo);
-    var values = req.params.userinfo.split(',');
+
+   let value = req.params.userinfo;
+   var values = JSON.parse(value);
+
     var myquery = {Username: values[0]};
     console.log(myquery);
     console.log(values[1]);
