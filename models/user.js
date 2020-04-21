@@ -12,10 +12,10 @@ const userDataSchema = new Schema ({
         type: String,
         required: true
     },
-    Navn: String,
-    Birthday: Date,
+    Name: String,
+    Birthday: String,
     Gender: String,
-    MobilNummer: Number,
+    Phonenumber: String,
     Email: String,
 
 });
@@ -28,5 +28,5 @@ userDataSchema.pre('save', function(next){
         next()
     })
 });
-const userData = mongoose.model('userData', userDataSchema);
-module.exports = userData;
+const user = mongoose.model('user', userDataSchema);
+module.exports = user;

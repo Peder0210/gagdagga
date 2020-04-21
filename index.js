@@ -7,7 +7,7 @@ const ejs = require('ejs');
 const joi = require('joi');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const UserData = require('./models/userData');
+const User = require('./models/user');
 const loginController = require('./controllers/logins');
 const loginUserController = require('./controllers/loginUser');
 const expressSession = require('express-session');
@@ -96,8 +96,21 @@ app.get('/myPageUser', (req,res) =>{
     res.render('myPageUser', {user: id});
 
 });
+app.post('/registerUser/:userInfo', (req,res) => {
 
-app.post('/register/store', (req,res) => {
+    let userInfo = JSON.parse(req.params.userInfo);
+ console.log(userInfo);
+    User.create(userInfo);
+    res.redirect('/login');
+
+
+
+
+
+});
+
+
+/*app.post('/register/store', (req,res) => {
     console.log(req.body);
 const schema = joi.object().keys({
     Email : joi.string().trim().email().required(),
@@ -120,9 +133,7 @@ const schema = joi.object().keys({
 joi.validate(req.body,schema,(err,result)=>{
     if(err) {
         console.log(err);
-        let error = "Information is wrong or missing";
-
-        res.redirect('/register?error=' + error);
+        res.send("Information is wrong or invalid")
     }
     console.log(result);
     UserData.create(req.body);
@@ -132,7 +143,7 @@ joi.validate(req.body,schema,(err,result)=>{
     res.redirect('/login')
 });
 
-
+*/
 app.post('/login', loginUserController);
 
 //app.get("/auth/login", logoutController);
@@ -148,7 +159,7 @@ app.post('/AdminSite', async (req,res) => {
 
 app.get("/userInfo", (req,res) =>{
 
-  UserData.findOne({Username:req.query.username},(error,result)=>{
+  User.findOne({Username:req.query.username},(error,result)=>{
        if(result){
            if(req.session.userId == result._id)
 
@@ -293,7 +304,7 @@ console.log("hej"+lessondata)
 
 app.get("/getuserinfo/:lesson", (req,res) =>{
 
-    UserData.findOne({Username:req.params.lesson},(error,result)=>{
+    User.findOne({Username:req.params.lesson},(error,result)=>{
         if(result) {
 
 
@@ -317,7 +328,7 @@ app.put('/changeuserinfo/:userinfo', (req,res)=> {
     console.log(myquery);
     console.log(values[1]);
     var newvalues = {$set: { Navn: values[1], Gender: values[2], Email: values[3], Username: values[4]}};
-    UserData.updateOne(myquery,newvalues, (error, result) => {
+    User.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
             res.send(JSON.stringify(result));
         } else {

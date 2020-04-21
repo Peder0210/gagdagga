@@ -37,101 +37,107 @@
             color: white;
         }
     </style>
-    <body onload="kasper()">
+    <body>
     <br>
     <script>
-        function kasper () {
+      /*  function kasper () {
             console.log("hej")
             var url = window.location.pathname + window.location.search;
             var getQuery = url.split('?')[1];
             var params = getQuery.split('=')[1];
             alert(params);
-        }
+        }*/
     </script>
 
-<h1>Opret bruger</h1>
+<h1>Sign up here!</h1>
+
 <div>
-    <form action ="/register/store" method="POST">
-    <br>
+    <form>
+<p>Name:</p>
+
     <input
-            id="name"
+            id="Name"
             type="text"
-            placeholder="Navn"
-            autocomplete="new-username"
-            name="Navn"
             required="true"
-
-
+            placeholder="Name"
     />
     <br>
-    <br>
-
         <p>Birthday:</p>
+        <input
+                id="Day"
+                type="text"
+                required="true"
+                size="4"
+                placeholder="Day"
+        />
+
+        <select  id="Month"  required="true">
+            <option value="01" >01</option>
+            <option value="02" >02</option>
+            <option value="03" >03</option>
+            <option value="04" >04</option>
+            <option value="05" >05</option>
+            <option value="06" >06</option>
+            <option value="07" >07</option>
+            <option value="08" >08</option>
+            <option value="09" >09</option>
+            <option value="10" >10</option>
+            <option value="11" >11</option>
+            <option value="12" >12</option>
+        </select>
+
+        <input
+                id="Year"
+                type="text"
+                required="true"
+                size="4"
+                placeholder="Year"
+        />
         <br>
 
-        <input type="date" id="Birthday" name="Birthday"
-               value="2020-04-01"
-               min="1900-01-01" max="2020-04-01">
-        <!--    <input
-                  id="birthYear"
-                  type="number"
-                  placeholder="Fødselsår"
-                  autocomplete="off"
-                  name="Birthday"
-          />  -->
-    <br>
+        <p>Gender:</p>
 
-    <br>
-
-        <p>Choose a gender:</p>
-
-        <select name="Gender">
+        <select  id="Gender"  required="true">
             <option value="Man" >Man</option>
-            <option value="Woman" >Kvinde</option>
-            <option value="Andet" >Andet</option>
-            required="true"
-
+            <option value="Woman" >Woman</option>
+            <option value="Else" >Else</option>
         </select>
+
     <br>
-    <br>
+
+<p>Phonenumber:</p>
       <input
-              id="phoneNumber"
-              type="number"
-              placeholder="Tlf nummer"
-              autocomplete="off"
-              name="MobilNummer"
+              id="Phonenumber"
+              type="string"
+              placeholder="Phonenumber"
               required="true"
               minlength=8,
       />
     <br>
-    <br>
+
+        <p>Email:</p>
       <input
-              id="email"
+              id="Email"
               type="text"
               placeholder="Email"
-              autocomplete="new-email"
-              name="Email"
               required="true"
       />
     <br>
-    <br>
 
+<p>Username:</p>
     <input
-            id="username"
+            id="Username"
             type="text"
-            placeholder="Bruger"
-            autocomplete="new-user"
-            name="Username"
+            placeholder="Username"
             required="true"
     />
     <br>
-    <br>
+
+        <p>Password:</p>
     <input
-            id="password"
+            id="Password"
             type="password"
             placeholder="Adgangskode"
-            autocomplete="new-password"
-            name="Password"
             required="true"
     />
     <br>
@@ -145,12 +151,39 @@
         <input
                 id="registration_btn"
                 type="submit"
-                value="Register"
+                value="Create User"
 
         />
     <br>
     </form>
 </div>
+    <script>
+        document.getElementById("registration_btn").addEventListener("click", function() {
+            let obj = { Name: document.getElementById("Name").value,
+                Birthday: `${document.getElementById("Day").value}-${document.getElementById("Month").value}-${document.getElementById("Year").value}`,
+                Gender: document.getElementById("Gender").value,
+                Phonenumber: document.getElementById("Phonenumber").value,
+                Email: document.getElementById("Email").value ,
+                Username: document.getElementById("Username").value,
+                Password: document.getElementById("Password").value
+            }
+            console.log(obj)
+            let params = JSON.stringify(obj)
+            console.log(params)
+                fetch('/registerUser/'+params,{method: 'POST'}).then(function(response) {
+
+                    if(response.ok){
+                        console.log("User was created");
+                        return
+                    }
+                    throw new Error('Request failed')
+                }).catch(function(error){
+                    console.log(error)
+                })
+
+        }
+        )
+        </script>
     <script src="classes/User.js"></script>
 </div>
 </body>
