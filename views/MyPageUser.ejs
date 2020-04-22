@@ -10,11 +10,6 @@
             <a class="nav-link" href="/logout">Log ud</a>
         </li>
 
-        <script>
-
-
-        </script>
-
     </div>
     <h1>Min side</h1>
 </head>
@@ -57,6 +52,7 @@
 <script>
     function kasper () {
         console.log("hej")
+        console.log(req.session.userId)
         var url = window.location.pathname + window.location.search;
         console.log(url)
         if(url == "/MyPageUser"  ||url== "/myPageUser"){
