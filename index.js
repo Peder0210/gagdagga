@@ -284,15 +284,12 @@ app.get("/changelessoninfo/:lesson", (req,res) =>{
 
 app.put('/changeinfolesson/:lesson', (req,res)=> {
 
-console.log(req.params.lesson);
-let lessondata = JSON.parse(req.params.lesson);
-console.log("hej"+lessondata)
 
-    var values = req.params.lesson.split(',');
-    var myquery = {Title: values[0]};
+let lessondata = JSON.parse(req.params.lesson);
+
+    var myquery = {Title: lessondata[0]};
     console.log(myquery);
-    console.log(values[1]);
-    var newvalues = {$set: { Title: values[1], Locales: values[2], Time: values[3], Duration: values[4], Participants: values[5], Teachers: values[6]}};
+    var newvalues = {$set: { Title: lessondata[1], Locales: lessondata[2], Time: lessondata[3], Duration: lessondata[4], Participants: lessondata[5], Teachers: lessondata[6]}};
     Lesson.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
             res.send(JSON.stringify(result))

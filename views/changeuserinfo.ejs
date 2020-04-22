@@ -20,25 +20,16 @@
                     console.log(username)
                 }
             }
-
-
         } else {
             var username = x.split("=")[1]
-
         }
         console.log(username)
-
         fetch("/getuserinfo/" + username).then((res) => {
             return  res.json();
         }).then((data) =>{
-
-
             var parent = document.getElementById("output");
-
-console.log(data[Object.keys(data)[0]])
+            console.log(data[Object.keys(data)[0]])
             for(i=0;i<Object.keys(data).length;i++){
-
-
                 if(i==0 ||i==8||i==2||i==4||i==7){
                     console.log("hej")
                 } else{
@@ -48,7 +39,6 @@ console.log(data[Object.keys(data)[0]])
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
                     console.log(Object.keys(data)[0]);
                     div1.appendChild(p);
-
                     // Value
                     var div2 = document.createElement("div");
                     var input = document.createElement("input");
@@ -56,16 +46,11 @@ console.log(data[Object.keys(data)[0]])
                     input.value = data[Object.keys(data)[i]]
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
                     div2.appendChild(input);
-
                     parent.appendChild(div1);
                     parent.appendChild(div2);
                 }}
-
-
             var div5 = document.createElement("div");
             var button = document.createElement("button");
-
-
             button.addEventListener("click", function() {
                 let array = [username]
                 //[1,10,9,8,7]
@@ -82,10 +67,9 @@ console.log(data[Object.keys(data)[0]])
                     }
                 }
                 console.log(array)
-let stringed = JSON.stringify(array)
+                let stringed = JSON.stringify(array)
                 console.log(stringed)
                 fetch('/changeuserinfo/'+stringed,{method: 'PUT'}).then(function(response) {
-
                     if(response.ok){
                         console.log("Click was recorded");
                         document.cookie = `username=${array[4]}`
@@ -99,8 +83,6 @@ let stringed = JSON.stringify(array)
             button.appendChild(document.createTextNode("Ændre information"));
             div5.appendChild(button);
             parent.appendChild(div5);
-
-
         }).catch((e) => {
             console.log(e);
         })}
@@ -122,8 +104,6 @@ let stringed = JSON.stringify(array)
 <p id="email" value=""></p>
 <p> Dit username</p>
 <p id="username" value=""></p>
-
-
 -->
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 <br>

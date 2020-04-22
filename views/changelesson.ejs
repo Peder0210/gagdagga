@@ -77,12 +77,12 @@ console.log(lessonname)
                         }
                     }
                 }
-
-                fetch('/changeinfolesson/'+array,{method: 'PUT'}).then(function(response) {
+let params = JSON.stringify(array)
+                fetch('/changeinfolesson/'+params,{method: 'PUT'}).then(function(response) {
 
                     if(response.ok){
                         console.log("Click was recorded");
-                        return
+                        return  window.location.replace("/adminSite")
                     }
                     throw new Error('Request failed')
                 }).catch(function(error){
