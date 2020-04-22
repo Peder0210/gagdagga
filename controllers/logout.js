@@ -8,7 +8,7 @@ module.exports = ( req,res) => {
                 return console.log(err)
                 // return next(err);
             } else {
-                return res.redirect("/");
+                return res.redirect("login");
             }
         });
     }
