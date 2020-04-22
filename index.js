@@ -1,37 +1,38 @@
-const http = require('http'); // leila has been here :)
-const fs = require('fs'); //luka was here
+//const http = require('http'); // leila has been here :)
+//const fs = require('fs'); //luka was here
 const express = require('express');
 const app = new express();
-const path = require('path');
-const ejs = require('ejs');
-const joi = require('joi');
+//const path = require('path');
+//const ejs = require('ejs');
+//const joi = require('joi');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User = require('./models/user');
-const loginController = require('./controllers/logins');
+//const loginController = require('./controllers/logins');
 const loginUserController = require('./controllers/loginUser');
 const expressSession = require('express-session');
 const logoutController = require("./controllers/logout")
-const createLesson = require("./controllers/createLesson")
+//const createLesson = require("./controllers/createLesson")
 const Lesson = require("./models/lesson")
-const getInfo = require("./controllers/getInfo");
+//const getInfo = require("./controllers/getInfo");
 const loginAdministrator = require('./controllers/loginAdministrator');
-const mongotest = require('./controllers/mongo');
+//const mongotest = require('./controllers/mongo');
 //const authMiddleware = require("./middleware/autMiddleware");
 const redirectIfAuthenticatedMiddleware = require("./middleware/redirectIfAuthenticatedMiddleware");
 
 
-const validateMiddleWare = (req,res,next) => {
+/*const validateMiddleWare = (req,res,next) => {
     if(req.body.Navn == ''){
         console.log('User not created');
         return res.redirect('/register')
     }
     next()
-};
+};*/
 
-app.use(expressSession({
+app.use(expressSession({ //Opretter en session.
     secret: 'Temno Player'
 }));
+
 mongoose.connect('mongodb://localhost:27017/wow'), {useNewUrlParser:true};
 var db = mongoose.connection;
 app.set('view engine','ejs');
@@ -62,26 +63,26 @@ app.get('/classSiteAdmin', /*authMiddleware,*/ ( req,res) => {
     res.render('classSiteAdmin')
 });
 
-app.get('/loggedIn', (req,res) =>{
+/*app.get('/loggedIn', (req,res) =>{
     res.render('loggedIn')
-});
+});*/
 
 app.get('/changeuserinfo', (req,res) =>{
     res.render('changeuserinfo')
 });
-app.get('/logoutAdmin', (req,res) =>{
+/*app.get('/logoutAdmin', (req,res) =>{
     res.render('logoutAdmin')
-});
+}); */
 
-app.get('/logoutUser', (req,res) =>{
+/*app.get('/logoutUser', (req,res) =>{
     res.render('logoutUser')
-});
+}); */
 
 app.get('/myClasses', /*authMiddleware*/ (req,res) =>{
     res.render('myClasses')
 });
 
-app.get('/register', redirectIfAuthenticatedMiddleware, (req,res) =>{
+app.get('/register', redirectIfAuthenticatedMiddleware, (req,res) =>{ //Redirect if autheticated middleware gør at man må ikke komme ind på login eller register hvis man allerede er logget ind. Man bliver redirected til mypageuser i stedet.
     res.render('register')
 });
 
@@ -159,7 +160,7 @@ app.post('/AdminSite', async (req,res) => {
 
 app.get("/userInfo", (req,res) =>{
 
-  User.findOne({Username:req.query.username},(error,result)=>{
+  User.findOne({Username:req.query.username},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
        if(result){
            if(req.session.userId == result._id)
 
@@ -174,7 +175,7 @@ app.get("/userInfo", (req,res) =>{
 
 });
 
- app.get("/lessonInfo", (req,res) =>{
+ app.get("/lessonInfo", (req,res) =>{ //Vi finder lesson vha. dens titel som er dens unikke id.
     Lesson.findOne({Title:"g"},(error,result)=>{
         if(result){
             res.send(JSON.stringify(result))
@@ -185,7 +186,7 @@ app.get("/userInfo", (req,res) =>{
     });
      })
 
- app.get('/classSiteAdmin', async (req,res)=>{
+ app.get('/classSiteAdmin', async (req,res)=>{   // Sætter variablen lessons ligmed hvad vi opretter på adminsite.
     const lessonposts = await Lesson.findOne({ })
     res.render('index', {
         lessonposts
@@ -199,7 +200,7 @@ app.get('/lessonboard', (req,res)=> {
         } else {
             res.send("No profiles found")
         }
-    }) //find alle duration hvor man laver et null
+    }) //find alle duration hvor man laver et null (det gør vi med alle).
 });
 
 app.get('/mylessonboard/:lesson', (req,res)=> {
@@ -210,7 +211,7 @@ app.get('/mylessonboard/:lesson', (req,res)=> {
         } else {
             res.send("No profiles found")
         }
-    }) //find alle duration hvor man laver et null
+    }) //find alle participant names hvor man laver et null
 });
 
 
@@ -225,15 +226,15 @@ console.log(req.params.lesson);
         } else {
             res.send("No profiles found")
         }
-    }) //find alle duration hvor man laver et null
+    }) //find en lesson hvor man laver et null og sletter denne bestemte lesson.
 });
 
 
-app.put('/booklesson/:lesson', (req,res)=> {
+app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver string værdi under objektet.
     var username2 = req.params.lesson.split(',')[1];
     var lesson2 = req.params.lesson.split(',')[0];
     console.log(req.params.lesson);
-    console.log(`hej+${username2}+${lesson2}`);
+    console.log(`hej+${username2}+${lesson2}`); //Vi tester at vores variabler virker.
 
     var myquery = {Title: lesson2};
     var newvalues = {$push: {Participantnames: username2}};
