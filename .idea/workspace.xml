@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="joi added">
-      <change afterPath="$PROJECT_DIR$/views/changelesson.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/MyClasses.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/MyClasses.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/classSiteAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/classSiteAdmin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/classSiteUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/classSiteUser.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changeUserInfo.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changeUserInfo.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/changelesson.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelesson.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,10 +182,11 @@
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
     <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1587148375210" />
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1586877484613">
-      <screen x="0" y="0" width="1664" height="1069" />
+    <state x="72" y="85" width="1138" height="589" key="DiffContextDialog" timestamp="1587470703026">
+      <screen x="0" y="23" width="1280" height="712" />
     </state>
     <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1586877484613" />
+    <state x="72" y="85" width="1138" height="589" key="DiffContextDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470703026" />
     <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1587133447438">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
@@ -212,10 +211,16 @@
     </state>
     <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585921103119" />
     <state width="809" height="291" key="GridCell.Tab.0.right/0.0.1664.1069@0.0.1664.1069" timestamp="1585919134631" />
-    <state x="436" y="173" key="MultipleFileMergeDialog" timestamp="1585921676846">
-      <screen x="0" y="0" width="1440" height="900" />
+    <state x="388" y="160" key="MultipleFileMergeDialog" timestamp="1587470746827">
+      <screen x="0" y="23" width="1280" height="712" />
     </state>
     <state x="436" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921676846" />
+    <state x="388" y="160" key="MultipleFileMergeDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470746827" />
+    <state x="394" y="102" key="VCS.ChangeListViewerDialog" timestamp="1587541508230">
+      <screen x="0" y="23" width="1280" height="715" />
+    </state>
+    <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
+    <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
     <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1587148383453">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
@@ -226,18 +231,24 @@
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1587154426926" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587158977688">
-      <screen x="0" y="0" width="1664" height="1069" />
+    <state x="423" y="312" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1587541541575">
+      <screen x="0" y="23" width="1280" height="715" />
     </state>
     <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586257655319" />
     <state x="476" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586425521033" />
     <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1587158977688" />
-    <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1586435602472" />
+    <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1587536062919" />
+    <state x="423" y="312" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.715@0.23.1280.715" timestamp="1587541541575" />
     <state x="493" y="295" key="git4idea.merge.GitPullDialog" timestamp="1586943816288">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="427" y="248" key="git4idea.merge.GitPullDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921671999" />
     <state x="493" y="295" key="git4idea.merge.GitPullDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1586943816288" />
+    <state x="250" y="198" key="git4idea.ui.GitUnstashDialog" timestamp="1587541540081">
+      <screen x="0" y="23" width="1280" height="715" />
+    </state>
+    <state x="250" y="197" key="git4idea.ui.GitUnstashDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470741296" />
+    <state x="250" y="198" key="git4idea.ui.GitUnstashDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541540081" />
     <state x="911" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1586792536190">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
