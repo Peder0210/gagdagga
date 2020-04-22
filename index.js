@@ -144,6 +144,37 @@ joi.validate(req.body,schema,(err,result)=>{
     res.redirect('/login')
 });
 
+
+app.post('/lesson/store', (req,res) => {
+    console.log(req.body);
+    const schema = joi.object().keys({
+        Title: joi.string().required(),
+        Locales : joi.string().required(),
+        Tid: joi.string().required(),
+        Duration: joi.number().required(),
+        Participants: joi.string().required(),
+        Teachers: joi.string().required(),
+
+
+
+    });
+    joi.validate(req.body,schema,(error,result)=>{
+        if(error) {
+            console.log(error);
+            let error = "Information is missing. Please make sure that you have entered all the fields correctly.";
+
+            res.redirect('/classSiteAdmin?error=' + error);
+        }
+
+        console.log(result);
+        Lesson.create(req.body);
+
+    });
+
+    res.redirect('/classSiteAdmin')
+
+});
+
 */
 app.post('/login', loginUserController);
 
