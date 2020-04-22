@@ -70,14 +70,7 @@
         fetch("/mylessonboard/"+cookieUsername).then((res) => {
             return  res.json();
         }).then((data) =>{
-            /* document.getElementById("navn").innerHTML = data.Navn;
-             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-             document.getElementById("køn").innerHTML = data.Gender;
-             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-             document.getElementById("email").innerHTML = data.Email;
-             document.getElementById("username").innerHTML = data.Username;
 
-     */
             var parent = document.getElementById("output");
             let listOfLessons = []
 
@@ -137,7 +130,6 @@
                 console.log(listOfLessons[j])
                 button.id = listOfLessons[j]
                 button.addEventListener("click", function() {
-                    alert("wow")
                     let lessonID = this.id
                     let params = [lessonID,cookieUsername]
                     console.log(lessonID)
@@ -159,7 +151,6 @@
                 div5.appendChild(button);
                 parent.appendChild(div5);
 
-
                 var div6 = document.createElement("div");
                 var h2 = document.createElement("h1");
                 h2.appendChild(document.createTextNode(""));
@@ -170,18 +161,8 @@
         }).catch((e) => {
             console.log(e);
         })
-
     }
-
 </script>
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
-
-
-
-
 </body>
-
-<script src="classes/DancingClass.js"></script>
-<script src="classes/User.js"></script>
-
 </html>

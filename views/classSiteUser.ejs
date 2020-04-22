@@ -62,14 +62,7 @@
             fetch("http://localhost:3000/lessonboard").then((res) => {
                 return  res.json();
             }).then((data) =>{
-                /* document.getElementById("navn").innerHTML = data.Navn;
-                 document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-                 document.getElementById("køn").innerHTML = data.Gender;
-                 document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-                 document.getElementById("email").innerHTML = data.Email;
-                 document.getElementById("username").innerHTML = data.Username;
 
-         */
                 var parent = document.getElementById("output");
                 let listOfLessons = []
                 let cookie = document.cookie
@@ -77,8 +70,11 @@
                 console.log(cookie)
                 if(cookie.includes(";")) {
                     var getQuery = cookie.split(';');
+                    for(let i=0;i<getQuery.length;i++){
+                        if(getQuery[i].includes("username"))
+                            var cookieUsername = getQuery[i].split('=')[1];
+                    }
 
-                    var cookieUsername = getQuery[1].split('=')[1];
                 } else{
                     var cookieUsername = cookie.split("=")[1]
                 }
@@ -137,7 +133,6 @@
                     console.log(listOfLessons[j])
                     button.id = listOfLessons[j]
                     button.addEventListener("click", function() {
-                        alert("wow")
                         let lessonID = this.id
                         let params = [lessonID,cookieUsername]
                         console.log(lessonID)

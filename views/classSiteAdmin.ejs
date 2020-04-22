@@ -59,14 +59,6 @@
         fetch("http://localhost:3000/lessonboard").then((res) => {
             return  res.json();
         }).then((data) =>{
-            /* document.getElementById("navn").innerHTML = data.Navn;
-             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-             document.getElementById("køn").innerHTML = data.Gender;
-             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-             document.getElementById("email").innerHTML = data.Email;
-             document.getElementById("username").innerHTML = data.Username;
-
-     */
             var parent = document.getElementById("output");
             let array3 = []
             for(var j = 0; j< data.length; j++) {
@@ -157,7 +149,6 @@ console.log(array4)
                 console.log(array3[j])
                 button2.id = array3[j]
                 button2.addEventListener("click", function() {
-                    alert("wow")
                     let array8 = this.id
                     document.cookie = `lesson=${array8}`
                    window.location.replace("/changelesson")
@@ -183,10 +174,7 @@ console.log(array4)
     }
 
 </script>
-
-
 <div id="output" style="display:grid;grid-template-columns:auto auto;">
-
 </div>
 </body>
 

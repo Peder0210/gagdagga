@@ -144,7 +144,7 @@ joi.validate(req.body,schema,(err,result)=>{
     res.redirect('/login')
 });
 
-
+*/
 app.post('/lesson/store', (req,res) => {
     console.log(req.body);
     const schema = joi.object().keys({
@@ -175,7 +175,7 @@ app.post('/lesson/store', (req,res) => {
 
 });
 
-*/
+
 app.post('/login', loginUserController);
 
 //app.get("/auth/login", logoutController);

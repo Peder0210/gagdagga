@@ -8,11 +8,11 @@ module.exports = (req,res) =>{
     administrator.findOne({Username:Username},(error,administrator) =>{
         if(administrator){
                 if(Password===administrator.Password){
-                    res.redirect('/adminSite?username='+Username)
+                    res.redirect('/adminSite?username='+Username);
                     console.log("Hello Admin. You are now logged in!");
                 }
                 else{
-                    let error = "Passwordiswrong";
+                    let error = "Password is wrong";
                     console.log(error);
                     console.log(Password);
                     console.log(administrator.Password);
