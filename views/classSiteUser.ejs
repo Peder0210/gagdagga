@@ -85,7 +85,7 @@
                     h1.appendChild(document.createTextNode("Lektion!!"));
                     div3.appendChild(h1);
                     parent.appendChild(div3);
-                    console.log(data[j].Duration)
+
 
                     var div4 = document.createElement("div");
                     var h1 = document.createElement("h1");
@@ -98,17 +98,15 @@
 
                     listOfLessons.push(data[j][array[2]])
                     console.log(listOfLessons)
-                    console.log(listOfLessons[0])
+
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
                         if(i==1||i==8){
-                            console.log("hej")
+                            console.log("Ignore i in loop")
                         } else {
 
                             let array2 = array[i];
 
-                            console.log(array2)
-                            console.log(array)
 
                             // Text
                             var div1 = document.createElement("div");
@@ -130,7 +128,7 @@
                     var div5 = document.createElement("div");
                     var button = document.createElement("button");
 
-                    console.log(listOfLessons[j])
+
                     button.id = listOfLessons[j]
                     button.addEventListener("click", function() {
                         let lessonID = this.id
@@ -142,7 +140,7 @@
                             console.log(lessonID)
                             if(response.ok){
                                 console.log("Click was recorded");
-                                return
+                                return window.location.replace("/classSiteUser")
                             }
                             throw new Error('Request failed')
                         }).catch(function(error){

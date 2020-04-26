@@ -37,37 +37,35 @@
         color: white;
     }
 </style>
-<body onload="kasper()">
+<body>
 <br>
 <script>
-    function kasper () {
-        console.log("hej")
+   /* function kasper () {
+
         var url = window.location.pathname + window.location.search;
         var getQuery = url.split('?')[1];
         var params = getQuery.split('=')[1];
         alert(params);
-    }
+    }*/
 </script>
 <br>
 
-<br>Log ind <br>
+<br>Enter your username and password <br>
 <br>
-<form action="/login" method="POST">
+
 <input
         type="text"
-        id="enteredName"
-        value=""
-        placeholder="Brugernavn"
-        name ="Username"
+        id="Username"
+        placeholder="Username"
+
 >
 <br>
 <br>
 <input
         type="Password"
-        id="enteredPass"
-        value=""
-        placeholder="Adgangskode"
-        name="Password"
+        id="Password"
+        placeholder="Password"
+
 >
 <br>
 <br>
@@ -75,44 +73,71 @@
 <input
         id="login_btn"
         type="submit"
-        value="Login Customer"
+        value="Login User"
 
 />
 <br>
 <br>
-</form>
 
-<br>Log in <br>
-<br>
-<form action="/login2" method="POST">
-    <input
-            type="text"
-            id="enteredName"
-            value=""
-            placeholder="Brugernavn"
-            name ="Username"
-    >
-    <br>
-    <br>
-    <input
-            type="Password"
-            id="enteredPass"
-            value=""
-            placeholder="Adgangskode"
-            name="Password"
-    >
-    <br>
-    <br>
-    <br>
-    <input
-            id="login_btn"
-            type="submit"
-            value="Login Admin"
-    />
-    <br>
-</form>
-<script src="classes/Admin.js"></script>
-<script src="classes/User.js"></script>
+<script>
+    document.getElementById("login_btn").addEventListener("click", function() {
+
+if(document.getElementById("Username").value=="" && document.getElementById("Password").value=="" ){
+   return  alert("Please enter your username and password")
+}
+
+        if(document.getElementById("Username").value=="" ){
+           return  alert("Please enter your username")
+        }
+
+        if(document.getElementById("Password").value=="" ){
+           return  alert("Please enter your password")
+        }
+        let array = JSON.stringify([
+            document.getElementById("Username").value,
+            document.getElementById("Password").value
+        ])
+        console.log(array)
+
+        var options = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: array
+        };
+        fetch("/loginuser",options)
+            .then((res)=>{
+
+                return res.text();
+            })
+            .then((data)=>{
+
+                if(data == "Password is wrong"){
+                    return alert(data)
+                }
+
+                if(data == "Username doesn't exist"){
+                    return alert(data)
+                }
+                let array = JSON.parse(data)
+               if(array[1]==="Admin"){
+                   return window.location.href = "/adminSite";
+               }
+                if(array[1]==="Customer"){
+
+                // Create session cookie here, for continous authentication
+                document.cookie = "username="+array[0];
+                window.location.href = "/myPageUser";}
+            })
+            .catch((e)=>{
+                console.log(e.name+"\n"+e.description);
+            });
+
+    })
+
+</script>
+
 
 </body>
 </html>

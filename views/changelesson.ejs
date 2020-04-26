@@ -12,12 +12,11 @@
         console.log(x)
         if(x.includes(";")) {
             var getQuery = x.split(';');
-            console.log(getQuery)
-console.log(getQuery.length)
+
             for(i=0;i<getQuery.length;i++){
                 if(getQuery[i].includes("lesson")){
                     var lessonname = getQuery[i].split("=")[1]
-                    console.log(lessonname)
+
                 }
             }
         } else {
@@ -37,13 +36,14 @@ console.log(lessonname)
 
 
                 if(i==8 ||i==1||i==0){
-                    console.log("hej")
+                    console.log("Ignore i")
                 } else{
                     // Text
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                    console.log(Object.keys(data)[0]);
+
+
                     div1.appendChild(p);
 
                     // Value
@@ -82,7 +82,7 @@ let params = JSON.stringify(array)
 
                     if(response.ok){
                         console.log("Click was recorded");
-                        return  window.location.replace("/adminSite")
+                        return  window.location.replace("/classSiteAdmin")
                     }
                     throw new Error('Request failed')
                 }).catch(function(error){

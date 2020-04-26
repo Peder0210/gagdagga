@@ -1,7 +1,16 @@
-module.exports =  (req,res) => {
-    console.log(req.body);
-    console.log("Hej");
-     UserData.create(req.body,(error,userdata) =>{
-        res.redirect('/login')
+module.exports=(req,res) =>{
+    var username = "";
+    var password = "";
+    const data = req.flash('data')[0];
+
+    if(typeof data != "undefined"){
+        username = data.username;
+        password = data.password;
+    }
+    res.render('register',{
+        errors: req.flash('validationErrors'),
+        //render register.js
+        username: username,
+        password:password
     })
 };

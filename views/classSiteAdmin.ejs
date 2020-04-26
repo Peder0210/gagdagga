@@ -69,7 +69,7 @@
                 h1.appendChild(document.createTextNode(`Lektion Nr. ${lessonnumber} `));
                 div3.appendChild(h1);
                 parent.appendChild(div3);
-                console.log(data[j].Duration)
+
 
                 var div4 = document.createElement("div");
                 var h1 = document.createElement("h1");
@@ -82,17 +82,16 @@
 
                 array3.push(data[j][array[2]])
                 console.log(array3)
-                console.log(array3[0])
+
 
             for(let i = 0;i<Object.keys(data[j]).length;i++){
                 if(i==1||i==8){
-                    console.log("hej")
+                    console.log("Ignore i in loop")
                 } else {
 
                 let array2 = array[i];
 
-                console.log(array2)
-console.log(array)
+
 
                 // Text
                 var div1 = document.createElement("div");
@@ -114,16 +113,16 @@ let id = j
                 var div5 = document.createElement("div");
                 var button = document.createElement("button");
 
-console.log(array3[j])
+
                 button.id = array3[j]
                 button.addEventListener("click", function() {
-alert("wow")
+
                  let array4 = this.id
 fetch('/deletelesson/'+array4,{method: 'DELETE'}).then(function(response) {
 console.log(array4)
     if(response.ok){
         console.log("Click was recorded");
-        return
+        return window.location.replace("/classsiteAdmin")
     }
     throw new Error('Request failed')
 }).catch(function(error){
@@ -146,7 +145,7 @@ console.log(array4)
                 var div7 = document.createElement("div");
                 var button2 = document.createElement("button");
 
-                console.log(array3[j])
+
                 button2.id = array3[j]
                 button2.addEventListener("click", function() {
                     let array8 = this.id
@@ -178,40 +177,6 @@ console.log(array4)
 </div>
 </body>
 
-<!-- <body>
- <body id="body" onload="showAllClasses()">
-<br>
- Main Content
-<div class="container">
-    <div class=""row>
-        <div class="col-lg-8 col-md-10 mx-auto">
-
-            <div class="post-preview">
-                <h2 class="post-title">
-
-                </h2>
-                <h3 class="postsubtitle">
-
-                    <br>
-
-                    <br>
-
-                    <br>
-
-                    <br>
-
-                </h3>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-</body> -->
-<script src="index.js"></script>
-<script src="lesson.js"></script>
-<script src="classes/DancingClass.js"></script>
-<script src="classes/Admin.js"></script>
 
 
 </html>

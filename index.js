@@ -2,6 +2,7 @@
 //const fs = require('fs'); //luka was here....
 const express = require('express');
 const app = new express();
+const bcrypt  = require('bcrypt');
 //const path = require('path');
 //const ejs = require('ejs');
 //const joi = require('joi');
@@ -18,9 +19,10 @@ const Lesson = require("./models/lesson")
 const loginAdministrator = require('./controllers/loginAdministrator');
 //const mongotest = require('./controllers/mongo');
 //const authMiddleware = require("./middleware/autMiddleware");
+const flash = require('connect-flash');
 const redirectIfAuthenticatedMiddleware = require("./middleware/redirectIfAuthenticatedMiddleware");
-
-
+const newUsercontroller = require("./controllers/newUser")
+const cookieParser = require('cookie-parser')
 /*const validateMiddleWare = (req,res,next) => {
     if(req.body.Navn == ''){
         console.log('User not created');
@@ -41,7 +43,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 //app.use('/register/store',validateMiddleWare);
 
-
+app.use(flash());
+app.use(cookieParser('secret'));
 
 app.listen(3000,()=>{
    console.log("App listening on port 3000")
@@ -82,12 +85,12 @@ app.get('/myClasses', /*authMiddleware*/ (req,res) =>{
     res.render('myClasses')
 });
 
-app.get('/register', redirectIfAuthenticatedMiddleware, (req,res) =>{ //Redirect if autheticated middleware gør at man må ikke komme ind på login eller register hvis man allerede er logget ind. Man bliver redirected til mypageuser i stedet.
+app.get('/register', (req,res) =>{ //Redirect if autheticated middleware gør at man må ikke komme ind på login eller register hvis man allerede er logget ind. Man bliver redirected til mypageuser i stedet.
     res.render('register')
 });
 
-app.get('/login',redirectIfAuthenticatedMiddleware, (req,res) =>{
-    res.render('login')
+app.get('/login', (req,res) =>{
+    res.render('Login')
 });
 
 app.get("/logout", logoutController)
@@ -101,14 +104,16 @@ app.post('/registerUser/:userInfo', (req,res) => {
 
     let userInfo = JSON.parse(req.params.userInfo);
  console.log(userInfo);
-    User.create(userInfo);
-    res.redirect('/login');
-
-
-
-
-
+    User.create(userInfo, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result));
+        } else {
+            console.log("User doesn't have an unique username");
+            res.send("error")
+        }
+    }) //find alle duration hvor man laver et null
 });
+
 
 
 /*app.post('/register/store', (req,res) => {
@@ -176,9 +181,36 @@ app.post('/lesson/store', (req,res) => {
 });
 
 
-app.post('/login', loginUserController);
 
-//app.get("/auth/login", logoutController);
+app.post("/loginuser", (req,res) => {
+    //let userdata = JSON.parse(req.body);
+    console.log(req.body);
+
+    User.findOne({Username: req.body[0]}, (error, result) => {
+        if (result) {
+
+            bcrypt.compare(req.body[1], result.Password, (error, same) => {
+                if (same) {
+                    console.log(result._id);
+                    req.session.userId = result._id;
+                    console.log(req.session)
+                    console.log("User info confirmed");
+                    let array = [req.body[0],result.Usertype];
+                    console.log(req.body[0]);
+                    res.send(JSON.stringify(array))
+                }
+                else{
+                  console.log("Password is wrong");
+                    res.send("Password is wrong")
+                }
+            })
+        } else {
+            console.log("Username doesn't exist");
+            res.send("Username doesn't exist")
+        }
+    }) //find alle duration hvor man laver et null
+});
+app.get("/auth/login", logoutController);
 
 app.post('/AdminSite', async (req,res) => {
     console.log(req.body);
@@ -190,15 +222,18 @@ app.post('/AdminSite', async (req,res) => {
 
 
 app.get("/userInfo", (req,res) =>{
-
+console.log("hej");
+console.log(req.query.username);
   User.findOne({Username:req.query.username},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
        if(result){
-           if(req.session.userId == result._id)
-
-                res.send(JSON.stringify(result))  // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
-           else
+           console.log("hej3");
+           if(req.session.userId == result._id){
+console.log("hej2");
+               res.send(JSON.stringify(result)); // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+       }  else
+           {
                res.send();
-       }
+           }}
        else{
            res.send("No profiles found")
        }
@@ -356,7 +391,7 @@ app.put('/changeuserinfo/:userinfo', (req,res)=> {
     var myquery = {Username: values[0]};
     console.log(myquery);
     console.log(values[1]);
-    var newvalues = {$set: { Navn: values[1], Gender: values[2], Email: values[3], Username: values[4]}};
+    var newvalues = {$set: { Name: values[1], Birthday: values[2], Gender: values[3], Phonenumber: values[4], Email: values[5], Username: values[6]}};
     User.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
             res.send(JSON.stringify(result));
@@ -367,7 +402,7 @@ app.put('/changeuserinfo/:userinfo', (req,res)=> {
 });
 
 app.post('/login2', loginAdministrator);
-app.use((req,res) =>res.render('notfound'))
+app.use((req,res) =>res.render('notfound'));
 
 
 

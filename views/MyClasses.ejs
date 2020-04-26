@@ -58,16 +58,25 @@
 
 <script type="text/javascript"  >
     function kasper () {
-        let cookie = document.cookie
-        console.log(cookie)
-        if(cookie.includes(";")) {
-            var getQuery = cookie.split(';');
+        var x = document.cookie
+        console.log(x)
+        if(x.includes(";")) {
+            var getQuery = x.split(';');
+            console.log(getQuery)
+            for(i=0;i<getQuery.length;i++){
+                if(getQuery[i].includes("username")){
+                    var params = getQuery[i].split("=")[1]
 
-            var cookieUsername = getQuery[1].split('=')[1];
-        } else{
-           var cookieUsername = cookie.split("=")[1]
+                }
+            }
+
+
+        } else {
+            var params = x.split("=")[1]
+
         }
-        fetch("/mylessonboard/"+cookieUsername).then((res) => {
+
+        fetch("/mylessonboard/"+params).then((res) => {
             return  res.json();
         }).then((data) =>{
 
@@ -75,14 +84,14 @@
             let listOfLessons = []
 
            // var cookieUsername = cookie.split('=')[1];
-            console.log(cookieUsername)
+
             for(var j = 0; j< data.length; j++) {
                 var div3 = document.createElement("div");
                 var h1 = document.createElement("h1");
                 h1.appendChild(document.createTextNode("Lektion!!"));
                 div3.appendChild(h1);
                 parent.appendChild(div3);
-                console.log(data[j].Duration)
+
 
                 var div4 = document.createElement("div");
                 var h1 = document.createElement("h1");
@@ -95,17 +104,17 @@
 
                 listOfLessons.push(data[j][array[2]])
                 console.log(listOfLessons)
-                console.log(listOfLessons[0])
+
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i==1||i==8){
-                        console.log("hej")
+                        console.log("Ignore I if 1 and 8")
                     } else {
 
                         let array2 = array[i];
 
-                        console.log(array2)
-                        console.log(array)
+
+
 
                         // Text
                         var div1 = document.createElement("div");
@@ -127,19 +136,19 @@
                 var div5 = document.createElement("div");
                 var button = document.createElement("button");
 
-                console.log(listOfLessons[j])
+
                 button.id = listOfLessons[j]
                 button.addEventListener("click", function() {
                     let lessonID = this.id
-                    let params = [lessonID,cookieUsername]
-                    console.log(lessonID)
-                    console.log(cookieUsername)
-                    console.log(params)
-                    fetch('/cancellesson/'+params,{method: 'PUT'}).then(function(response) {
-                        console.log(lessonID)
+                    let params2 = [lessonID,params]
+
+
+                    console.log(params2)
+                    fetch('/cancellesson/'+params2,{method: 'PUT'}).then(function(response) {
+
                         if(response.ok){
                             console.log("Click was recorded");
-                            return
+                            return window.location.replace("/myClasses")
                         }
                         throw new Error('Request failed')
                     }).catch(function(error){

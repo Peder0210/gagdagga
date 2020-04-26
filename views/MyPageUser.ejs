@@ -51,17 +51,13 @@
 <br>
 <script>
     function kasper () {
-        console.log("hej")
 
-        var url = window.location.pathname + window.location.search;
-        console.log(url)
-        if(url == "/MyPageUser"  ||url== "/myPageUser"){
+
             var x = document.cookie
             console.log(x)
             if(x.includes(";")) {
                 var getQuery = x.split(';');
                 console.log(getQuery)
-                console.log(getQuery.length)
                 for(i=0;i<getQuery.length;i++){
                     if(getQuery[i].includes("username")){
                         var params = getQuery[i].split("=")[1]
@@ -74,15 +70,12 @@
                 var params = x.split("=")[1]
 
             }
-        } else{
-            var getQuery = url.split('?')[1];
-            var params = getQuery.split('=')[1];
-            document.cookie = `username=${params}`
-
-        console.log(params);}
 
 
-        fetch("http://localhost:3000/userInfo?username=" + params).then((res) => {
+        console.log(params);
+
+
+        fetch("http://localhost:3000/userInfo?username="+params).then((res) => {
             return  res.json();
         }).then((data) =>{
             /* document.getElementById("navn").innerHTML = data.Navn;
@@ -97,14 +90,14 @@
 
 
             for(i=0;i<Object.keys(data).length;i++){
-if(i==0||i==2||i==7||i==8){
-    console.log("hej")
+if(i==0||i==9||i==7){
+    console.log(`Ignore ${i}`)
 } else{
                 // Text
                 var div1 = document.createElement("div");
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                console.log(Object.keys(data)[0]);
+
                 div1.appendChild(p);
 
                 // Value

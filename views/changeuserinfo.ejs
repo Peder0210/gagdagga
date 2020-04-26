@@ -31,14 +31,14 @@
             var parent = document.getElementById("output");
             console.log(data[Object.keys(data)[0]])
             for(i=0;i<Object.keys(data).length;i++){
-                if(i==0 ||i==8||i==2||i==4||i==7){
-                    console.log("hej")
+                if(i==0||i==9||i==7||i==8){
+                    console.log("Ignore I in loop")
                 } else{
                     // Text
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                    console.log(Object.keys(data)[0]);
+
                     div1.appendChild(p);
                     // Value
                     var div2 = document.createElement("div");
@@ -55,17 +55,15 @@
             button.addEventListener("click", function() {
                 let array = [username]
                 //[1,10,9,8,7]
-                for(j=0;j<Object.keys(data).length;j++){
-                    if(j==0 ||j==8||j==2||j==4||j==7){
-                        console.log("hej")
-                    } else {
+                for(j=1;j<7;j++){
+                   console.log(j)
                         let value1 =  document.getElementById(j).value
                         if(value1==""){
                             console.log("Hej")
                         } else{
                             array.push(value1)
                         }
-                    }
+
                 }
                 console.log(array)
                 let stringed = JSON.stringify(array)
@@ -73,7 +71,7 @@
                 fetch('/changeuserinfo/'+stringed,{method: 'PUT'}).then(function(response) {
                     if(response.ok){
                         console.log("Click was recorded");
-                        document.cookie = `username=${array[4]}`
+                        document.cookie = `username=${array[6]}`
                         return  window.location.replace("/MyPageUser")
                     }
                     throw new Error('Request failed')

@@ -49,16 +49,17 @@
         }*/
     </script>
 
+
 <h1>Sign up here!</h1>
 
 <div>
-    <form>
+
 <p>Name:</p>
 
     <input
             id="Name"
             type="text"
-            required="true"
+            value = "Peder"
             placeholder="Name"
     />
     <br>
@@ -66,13 +67,14 @@
         <input
                 id="Day"
                 type="text"
-                required="true"
+                value = "02"
+
                 size="4"
                 placeholder="Day"
         />
 
-        <select  id="Month"  required="true">
-            <option selected disabled>Month</option>
+        <select  id="Month">
+            <option selected disabled value="">Month</option>
             <option value="01" >01</option>
             <option value="02" >02</option>
             <option value="03" >03</option>
@@ -90,7 +92,7 @@
         <input
                 id="Year"
                 type="text"
-                required="true"
+                value = "2000"
                 size="4"
                 placeholder="Year"
         />
@@ -98,7 +100,8 @@
 
         <p>Gender:</p>
 
-        <select  id="Gender"  required="true">
+        <select  id="Gender"  >
+            <option selected disabled value="">Choose gender</option>
             <option value="Man" >Man</option>
             <option value="Woman" >Woman</option>
             <option value="Else" >Else</option>
@@ -109,10 +112,11 @@
 <p>Phonenumber:</p>
       <input
               id="Phonenumber"
-              type="string"
+              type="number"
               placeholder="Phonenumber"
-              required="true"
-              minlength=8,
+              value = "50456111"
+
+
       />
     <br>
 
@@ -121,7 +125,8 @@
               id="Email"
               type="text"
               placeholder="Email"
-              required="true"
+              value = "peder0210@gmail.com"
+
       />
     <br>
 
@@ -130,7 +135,7 @@
             id="Username"
             type="text"
             placeholder="Username"
-            required="true"
+
     />
     <br>
 
@@ -139,14 +144,20 @@
             id="Password"
             type="password"
             placeholder="Adgangskode"
-            required="true"
+            value = "1111"
+
     />
     <br>
+        <p>Usertype:</p>
+
+        <select  id="Usertype"  >
+            <option selected disabled value="">Choose profile</option>
+            <option value="Customer" >Customer</option>
+            <option value="Teacher" >Teacher</option>
+            <option value="Admin" >Admin</option>
+        </select>
     <br>
-    <a
-            href="Login.ejs">
-        <button
-        >Go to Login</button></a>
+        <br>
 
 
         <input
@@ -156,7 +167,12 @@
 
         />
     <br>
-    </form>
+
+    <br>
+    <a
+
+            href="login">
+        <button>Go to Login</button></a>
 </div>
     <script>
         document.getElementById("registration_btn").addEventListener("click", function() {
@@ -166,26 +182,82 @@
                 Phonenumber: document.getElementById("Phonenumber").value,
                 Email: document.getElementById("Email").value ,
                 Username: document.getElementById("Username").value,
-                Password: document.getElementById("Password").value
+                Password: document.getElementById("Password").value,
+                Usertype: document.getElementById("Usertype").value
             }
+            let values = Object.values(obj)
+            let names = Object.getOwnPropertyNames(obj)
+            console.log(document.getElementById("Month").value)
             console.log(obj)
+            console.log(names)
+            let alertmessage = "Please fill out or correct these fields:"
+            let counter = 0
+
+            for(let i=0;i<values.length;i++) {
+                if(i==0||i==2||i==5||i==7)
+                if (values[i] == "") {
+                    counter++
+                    alertmessage += `\n ${counter}: Fill out your ${names[i]} `
+
+
+                }
+
+
+            }
+
+            if(values[1].length<10){
+                counter++
+                alertmessage += `\n ${counter}. Fill out your birthday `
+            }
+            if(values[3].length!==8){
+                counter++
+                alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
+            }
+
+            if(values[4].includes("@")==false){
+                counter++
+                alertmessage += `\n ${counter}. Your email must include an @`
+            }
+
+
+            if(values[6].length<4){
+                counter++
+                alertmessage += `\n ${counter}. Your password must consist 4 characters or more`
+            }
+
+
+
+              if (counter>0){
+                  return alert(alertmessage)
+              }
+
             let params = JSON.stringify(obj)
             console.log(params)
-                fetch('/registerUser/'+params,{method: 'POST'}).then(function(response) {
+                fetch('/registerUser/'+params,{method: 'POST'}).then((res)=>{
 
-                    if(response.ok){
-                        console.log("User was created");
-                        return
-                    }
-                    throw new Error('Request failed')
-                }).catch(function(error){
-                    console.log(error)
+                    return res.text();
                 })
+                    .then((data)=> {
+                        console.log(data);
+                        if (data == "error") {
+                            alert("User doesn't have an unique username")
+                        } else {
 
-        }
-        )
+                        // Create session cookie here, for continous authentication
+                        alert(`User ${document.getElementById("Username").value} has been created`);
+                        return window.location.replace("/login")
+                    } })
+                    .catch((e)=>{
+                        console.log(e.name+"\n"+e.description);
+                    });
+
+        })
+
+
+
+
         </script>
-    <script src="classes/User.js"></script>
+
 </div>
 </body>
 </html>
