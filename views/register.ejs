@@ -194,14 +194,14 @@
             let counter = 0
 
             for(let i=0;i<values.length;i++) {
-                if(i==0||i==2||i==5||i==7)
-                if (values[i] == "") {
-                    counter++
-                    alertmessage += `\n ${counter}: Fill out your ${names[i]} `
+                if(i==0||i==2||i==5||i==7) {
+                    if (values[i] == "") {
+                        counter++
+                        alertmessage += `\n ${counter}: Fill out your ${names[i]} `
 
 
+                    }
                 }
-
 
             }
 

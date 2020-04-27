@@ -150,6 +150,20 @@ joi.validate(req.body,schema,(err,result)=>{
 });
 
 */
+app.post('/registerlesson/:lessonInfo', (req,res) => {
+
+    let lessonInfo = JSON.parse(req.params.lessonInfo);
+    console.log(lessonInfo);
+    Lesson.create(lessonInfo, (error, result) => {
+        if (result) {
+            res.send(JSON.stringify(result));
+        } else {
+            console.log(error);
+            console.log("Your lesson doesn't have an unique name");
+            res.send("error")
+        }
+    }) //find alle duration hvor man laver et null
+});
 app.post('/lesson/store', (req,res) => {
     console.log(req.body);
     const schema = joi.object().keys({
