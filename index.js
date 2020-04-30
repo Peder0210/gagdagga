@@ -405,12 +405,18 @@ app.put('/changeuserinfo/:userinfo', (req,res)=> {
     var myquery = {Username: values[0]};
     console.log(myquery);
     console.log(values[1]);
-    var newvalues = {$set: { Name: values[1], Birthday: values[2], Gender: values[3], Phonenumber: values[4], Email: values[5], Username: values[6]}};
+    var newvalues = {$set: values[1]};
     User.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
-            res.send(JSON.stringify(result));
+            console.log("ggg");
+            if(error){
+                res.send("error")
+            } else {
+                res.send(JSON.stringify(result));
+            }
         } else {
-            res.send("No profiles found")
+
+            res.send("error")
         }
     }) //find alle duration hvor man laver et null
 });
