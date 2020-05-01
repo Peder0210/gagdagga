@@ -194,7 +194,7 @@ Date:
 
 
   <select id="month">
-      <option value="" selected="selected">Month</option>
+      <option selected disabled value="">Month</option>
       <option value="01">1</option>
       <option value="02">2</option>
       <option value="03">3</option>
@@ -212,7 +212,7 @@ Date:
 
 
   <select id="year">
-      <option value="" selected="selected">Year</option>
+      <option selected disabled value="">Year</option>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
       <option value="2021">2021</option>
@@ -233,7 +233,7 @@ Date:
     <br>
 
 <select id="duration hours">
-    <option value="" selected="selected">-Hours-</option>
+    <option selected disabled value="">-Hours-</option>
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
@@ -241,7 +241,7 @@ Date:
 </select>
 
 <select id="duration minutes">
-    <option value=""  selected="selected">-Minites-</option>
+    <option selected disabled value="">-Minutes-</option>
     <option value="0">0</option>
     <option value="15">15</option>
     <option value="20">20</option>
@@ -252,7 +252,7 @@ Date:
     <option value="45">45</option>
     <option value="50">50</option>
     <option value="55">55</option>
-    <option value="60">60</option>
+
 
 </select>
 
@@ -297,7 +297,7 @@ Date:
 
         }
 
-        if(values[4].length<16){
+        if(values[4].length!==23){
             counter++
             alertmessage += `\n ${counter}. Fill out your date `
         }

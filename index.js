@@ -362,19 +362,25 @@ app.get("/changelessoninfo/:lesson", (req,res) =>{
 });
 
 
-app.put('/changeinfolesson/:lesson', (req,res)=> {
-
-
-let lessondata = JSON.parse(req.params.lesson);
-
-    var myquery = {Title: lessondata[0]};
+app.put('/changelessoninfomation/:lesson', (req,res)=> {
+    let value = req.params.lesson;
+    var values = JSON.parse(value);
+console.log("virker det")
+    var myquery = {Title: values[0]};
     console.log(myquery);
-    var newvalues = {$set: { Title: lessondata[1], Locales: lessondata[2], Time: lessondata[3], Duration: lessondata[4], Participants: lessondata[5], Teachers: lessondata[6]}};
+    console.log(values[1]);
+    var newvalues = {$set: values[1]};
     Lesson.updateOne(myquery,newvalues, (error, result) => {
         if (result) {
-            res.send(JSON.stringify(result))
+            console.log("ggg");
+            if(error){
+                res.send("error")
+            } else {
+                res.send(JSON.stringify(result));
+            }
         } else {
-            res.send("No profiles found")
+
+            res.send("error")
         }
     }) //find alle duration hvor man laver et null
 });

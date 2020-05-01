@@ -127,10 +127,14 @@
                     let id = j
                     var div5 = document.createElement("div");
                     var button = document.createElement("button");
-
+console.log(data[j][array[0]])
+                    var arraynames = data[j][array[0]]
 
                     button.id = listOfLessons[j]
                     button.addEventListener("click", function() {
+                        if(arraynames.includes(cookieUsername)){
+                            return alert("You cannot book the same lesson twice")
+                        }
                         let lessonID = this.id
                         let params = [lessonID,cookieUsername]
                         console.log(lessonID)

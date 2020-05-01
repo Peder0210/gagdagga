@@ -37,7 +37,335 @@ console.log(lessonname)
 
                 if(i==8 ||i==1||i==0){
                     console.log("Ignore i")
-                } else{
+                } else if(i==6){
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Time of day:"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode(""));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Hour"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select1"
+                    for(j=0;j<24;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(3,5))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Minute"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select2"
+                    for(j=0;j<60;j+=5) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(6,8))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(6,8)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(6,8)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Date:"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode(""));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Day"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select3"
+                    for(j=1;j<32;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(13,15))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(13,15)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(13,15)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Month"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select4"
+                    for(j=1;j<13;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(16,18))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(16,18)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(16,18)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Year"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select5"
+                    for(j=2019;j<2023;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(19,23))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(19,23)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(19,23)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+                } else if(i==7){
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Duration:"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode(""));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Hour"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select6"
+                    for(j=0;j<3;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            console.log(data[Object.keys(data)[i]].substring(0,1))
+                            if(`${j}`==data[Object.keys(data)[i]].substring(0,1)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(0,1)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Minute"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select7"
+                    for(j=0;j<60;j+=5) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(2,4))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(2,4)) {
+
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(2,4)) {
+
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+
+                    }
+
+
+
+
+
+
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+
+
+
+                }else{
                     // Text
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
@@ -64,30 +392,58 @@ console.log(lessonname)
 
 
             button.addEventListener("click", function() {
-                let array = [lessonname]
-                for(j=0;j<Object.keys(data).length;j++){
-                    if(j==8||j==1||j==0){
-                        console.log("hej")
-                    } else {
-                       let value1 =  document.getElementById(j).value
-                        if(value1==""){
-                            console.log("Hej")
-                        } else{
-                            array.push(value1)
+                let obj = { Title: document.getElementById("2").value,
+                    Locales: document.getElementById("3").value,
+                    Participants: document.getElementById("4").value,
+                    Teachers: document.getElementById("5").value,
+                    Time: `KL ${document.getElementById("select1").value}.${document.getElementById("select2").value} ---  ${document.getElementById("select3").value}-${document.getElementById("select4").value}-${document.getElementById("select5").value}` ,
+                    Duration: `${document.getElementById("select6").value}.${document.getElementById("select7").value}`
+                }
+                let values = Object.values(obj)
+                let names = Object.getOwnPropertyNames(obj)
+                let alertmessage = "Please fill out or correct these fields:"
+                let counter = 0
+
+                for(let i=0;i<values.length;i++) {
+                    if(i==0||i==1||i==3) {
+                        if (values[i] == "") {
+                            counter++
+                            alertmessage += `\n ${counter}: Fill out your ${names[i]} `
+
+
                         }
                     }
-                }
-let params = JSON.stringify(array)
-                fetch('/changeinfolesson/'+params,{method: 'PUT'}).then(function(response) {
 
-                    if(response.ok){
-                        console.log("Click was recorded");
-                        return  window.location.replace("/classSiteAdmin")
-                    }
-                    throw new Error('Request failed')
-                }).catch(function(error){
-                    console.log(error)
+                }
+                if(isNaN(document.getElementById("4").value)||document.getElementById("4").value==""){
+                    console.log(document.getElementById("2").value.length)
+                    counter++
+                    alertmessage += `\n ${counter}. Your Participants must be a number `
+                }
+                if (counter>0){
+                    return alert(alertmessage)
+                }
+                let array = JSON.stringify([lessonname, obj])
+                //[1,10,9,8,7]
+
+                console.log(array)
+                fetch('/changelessoninfomation/'+array,{method: 'PUT'}).then((res)=>{
+
+                    return res.text();
                 })
+                    .then((data)=> {
+                        console.log(data);
+                        if (data == "error") {
+                            alert("Lesson doesn't have an unique title")
+                        } else {
+
+                            // Create session cookie here, for continous authentication
+
+                            return window.location.replace("/classSiteAdmin")
+                        } })
+                    .catch((e)=>{
+                        console.log(e.name+"\n"+e.description);
+                    });
             })
             button.appendChild(document.createTextNode("Ændre information"));
             div5.appendChild(button);
