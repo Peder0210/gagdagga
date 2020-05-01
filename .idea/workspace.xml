@@ -246,16 +246,16 @@
     <option name="LAST_COMMIT_MESSAGE" value="fixet bugs" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1588340743200">
+    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1588341637389">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588340743200" />
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1587558756044">
+    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588341637389" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1588341631436">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1587558756044" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588341631436" />
     <state x="72" y="85" width="1138" height="589" key="DiffContextDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470703026" />
     <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1587572116741">
       <screen x="0" y="0" width="1664" height="1069" />
@@ -292,12 +292,12 @@
     </state>
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588340748771">
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588341648265">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588340748771" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588341648265" />
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
