@@ -213,12 +213,12 @@
                     }
 
                 }
-                if(document.getElementById("2").value.length!==4){
+                if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
                     console.log(document.getElementById("2").value.length)
                     counter++
                     alertmessage += `\n ${counter}. Your Birthday must consist of 4 digits `
                 }
-                if(values[3].length!==8){
+                if(values[3].length!==8||isNaN(document.getElementById("4").value)){
                     console.log(values[3])
                     counter++
                     alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
