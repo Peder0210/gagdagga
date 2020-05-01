@@ -99,7 +99,7 @@
                 div4.appendChild(h1);
                 parent.appendChild(div4);
 
-                let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+                let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "Timestamp","_v"];
 
 
                 listOfLessons.push(data[j][array[2]])
@@ -107,7 +107,7 @@
 
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
-                    if(i==1||i==8){
+                    if(i==1||i==8||i==9){
                         console.log("Ignore I if 1 and 8")
                     } else {
 

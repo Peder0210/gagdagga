@@ -93,7 +93,7 @@
                     div4.appendChild(h1);
                     parent.appendChild(div4);
 
-                    let array = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "_v"];
+                    let array = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp","_v"];
 
 
                     listOfLessons.push(data[j][array[2]])
@@ -101,7 +101,7 @@
 
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
-                        if(i==1||i==8){
+                        if(i==1||i==8||i==9){
                             console.log("Ignore i in loop")
                         } else {
 
@@ -122,17 +122,20 @@
 
                             parent.appendChild(div1);
                             parent.appendChild(div2);
+                            console.log(data[j][array2])
 
                         } }
                     let id = j
                     var div5 = document.createElement("div");
                     var button = document.createElement("button");
+                    let array_all
 console.log(data[j][array[0]])
-                    var arraynames = data[j][array[0]]
-
+                    console.log(cookieUsername)
                     button.id = listOfLessons[j]
+                    button.name = j
                     button.addEventListener("click", function() {
-                        if(arraynames.includes(cookieUsername)){
+                        console.log(this.name)
+                        if(data[this.name][array[0]].includes(cookieUsername)){
                             return alert("You cannot book the same lesson twice")
                         }
                         let lessonID = this.id

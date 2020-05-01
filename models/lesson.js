@@ -11,7 +11,10 @@ const lessonsSchema = new Schema ({
     Duration: String,
     Participants: String,
     Teachers: String,
-    Participantnames: { type: Array, default: [] }
+    Participantnames: { type: Array, default: [] },
+    Timestamp: {
+        type: Date,
+        default: Date.now}
 });
 
 const lesson = mongoose.model('lesson', lessonsSchema);

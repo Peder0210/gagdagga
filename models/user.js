@@ -18,7 +18,9 @@ const userDataSchema = new Schema ({
     Gender: String,
     Birthday: String,
     Email: String,
-    Timestamp: Date,
+    Timestamp: {
+        type: Date,
+    default: Date.now},
     Usertype: String,
 
 });
