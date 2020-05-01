@@ -5,12 +5,11 @@ var uniqueValidator = require('mongoose-unique-validator')
 const userDataSchema = new Schema ({
     Username: {
         type: String,
-        required: [true, 'Please provide username'],
         unique: true
     },
     Password: {
         type: String,
-        required: [true, 'Please provide password'],
+
         unique: true
     },
     Name: String,

@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="Added mulighed for at ændre informationer">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/AdminSite.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/AdminSite.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/user.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/user.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/changeUserInfo.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changeUserInfo.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changelesson.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changelesson.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/classSiteUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/classSiteUser.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +79,7 @@
       <workItem from="1587972277362" duration="5279000" />
       <workItem from="1588071854815" duration="1467000" />
       <workItem from="1588259234011" duration="10526000" />
-      <workItem from="1588318731475" duration="8374000" />
+      <workItem from="1588318731475" duration="13354000" />
     </task>
     <task id="LOCAL-00001" summary="j">
       <created>1585919529268</created>
@@ -211,7 +207,21 @@
       <option name="project" value="LOCAL" />
       <updated>1588325765398</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added improvements">
+      <created>1588333575707</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1588333575707</updated>
+    </task>
+    <task id="LOCAL-00020" summary="fixet bugs">
+      <created>1588340744364</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1588340744364</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,15 +241,17 @@
     <MESSAGE value="Lesson creation optimized" />
     <MESSAGE value="forbedre ændre information mulighed" />
     <MESSAGE value="Added mulighed for at ændre informationer" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added mulighed for at ændre informationer" />
+    <MESSAGE value="added improvements" />
+    <MESSAGE value="fixet bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixet bugs" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1588325764322">
+    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1588340743200">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588325764322" />
+    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588340743200" />
     <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1587558756044">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
@@ -280,12 +292,12 @@
     </state>
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588325772052">
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588340748771">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588325772052" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588340748771" />
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
