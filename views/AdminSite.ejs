@@ -272,8 +272,8 @@ Date:
             Locales: document.getElementById("Locales").value,
             Participants: document.getElementById("Participants").value,
             Teachers: document.getElementById("Teachers").value ,
-            Time: `${document.getElementById("Hour").value}-${document.getElementById("Minute").value}-${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
-            Duration: `${document.getElementById("duration hours").value}-${document.getElementById("duration minutes").value}`,
+            Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
+            Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
 
         }
         let values = Object.values(obj)
@@ -323,7 +323,7 @@ Date:
             .then((data)=> {
                 console.log(data);
                 if (data == "error") {
-                    alert("Lesson doesn't have an unique username")
+                    alert("Lesson doesn't have an unique title")
                 } else {
 
                     // Create session cookie here, for continous authentication

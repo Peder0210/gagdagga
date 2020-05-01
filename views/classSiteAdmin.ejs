@@ -77,38 +77,37 @@
                 div4.appendChild(h1);
                 parent.appendChild(div4);
 
-                let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "_v"];
+                let array = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "_v"];
 
 
                 array3.push(data[j][array[2]])
-                console.log(array3)
-
-
-            for(let i = 0;i<Object.keys(data[j]).length;i++){
-                if(i==1||i==8){
-                    console.log("Ignore i in loop")
-                } else {
-
-                let array2 = array[i];
 
 
 
-                // Text
-                var div1 = document.createElement("div");
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
-                div1.appendChild(p);
+                for(let i = 0;i<Object.keys(data[j]).length;i++){
+                    if(i==1||i==8){
+                        console.log("Ignore i in loop")
+                    } else {
 
-                // Value
-                var div2 = document.createElement("div");
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(data[j][array2]));
-                div2.appendChild(p);
+                        let array2 = array[i];
 
-                parent.appendChild(div1);
-                parent.appendChild(div2);
 
-            } }
+                        // Text
+                        var div1 = document.createElement("div");
+                        var p = document.createElement("p");
+                        p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
+                        div1.appendChild(p);
+
+                        // Value
+                        var div2 = document.createElement("div");
+                        var p = document.createElement("p");
+                        p.appendChild(document.createTextNode(data[j][array2]));
+                        div2.appendChild(p);
+
+                        parent.appendChild(div1);
+                        parent.appendChild(div2);
+
+                    } }
 let id = j
                 var div5 = document.createElement("div");
                 var button = document.createElement("button");
