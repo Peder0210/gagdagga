@@ -39,15 +39,6 @@
     </style>
     <body>
     <br>
-    <script>
-      /*  function kasper () {
-            console.log("hej")
-            var url = window.location.pathname + window.location.search;
-            var getQuery = url.split('?')[1];
-            var params = getQuery.split('=')[1];
-            alert(params);
-        }*/
-    </script>
 
 
 <h1>Sign up here!</h1>
@@ -212,56 +203,47 @@
                 Password: document.getElementById("Password").value,
                 Usertype: document.getElementById("Usertype").value
             }
-            let values = Object.values(obj)
-            let names = Object.getOwnPropertyNames(obj)
-            console.log(document.getElementById("Month").value)
-            console.log(obj)
-            console.log(names)
+            let obj_Values = Object.values(obj)
+            let obj_PropertyNames = Object.getOwnPropertyNames(obj)
+            console.log(obj_Values)
+            console.log(obj_PropertyNames)
             let alertmessage = "Please fill out or correct these fields:"
             let counter = 0
 
-            for(let i=0;i<values.length;i++) {
+            for(let i=0;i<obj_Values.length;i++) {
                 if(i==0||i==2||i==5||i==7) {
-                    if (values[i] == "") {
+                    if (obj_Values[i] == "") {
                         counter++
                         alertmessage += `\n ${counter}: Fill out your ${names[i]} `
-
-
                     }
                 }
-
             }
 
-            if(values[1].length!==10){
+            if(obj_Values[1].length!==10){
                 counter++
                 alertmessage += `\n ${counter}. Fill out your birthday `
             }
-            if(values[3].length!==8){
+            if(obj_Values[3].length!==8){
                 counter++
                 alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
             }
 
-            if(values[4].includes("@")==false){
+            if(obj_Values[4].includes("@")==false){
                 counter++
                 alertmessage += `\n ${counter}. Your email must include an @`
             }
 
 
-            if(values[6].length<4){
+            if(obj_Values[6].length<4){
                 counter++
                 alertmessage += `\n ${counter}. Your password must consist 4 characters or more`
             }
-
-
 
               if (counter>0){
                   return alert(alertmessage)
               }
 
-            let params = JSON.stringify(obj)
-            console.log(params)
-                fetch('/registerUser/'+params,{method: 'POST'}).then((res)=>{
-
+                fetch('/registerUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
                     return res.text();
                 })
                     .then((data)=> {

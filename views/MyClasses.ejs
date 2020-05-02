@@ -53,69 +53,54 @@
 
 <br>
 
-<body onload="kasper()">
+<body onload="getYourLessons()">
 <br>
 
 <script type="text/javascript"  >
-    function kasper () {
-        var x = document.cookie
-        console.log(x)
-        if(x.includes(";")) {
-            var getQuery = x.split(';');
-            console.log(getQuery)
-            for(i=0;i<getQuery.length;i++){
-                if(getQuery[i].includes("username")){
-                    var params = getQuery[i].split("=")[1]
-
+    function getYourLessons () {
+        let cookieInfo = document.cookie
+        console.log(cookieInfo)
+        if(cookieInfo.includes(";")) {
+            for(i=0;i<cookieInfo.split(';').length;i++){
+                if(cookieInfo.split(';')[i].includes("username")){
+                    var usernameValue = cookieInfo.split(';')[i].split("=")[1]
                 }
             }
-
-
         } else {
-            var params = x.split("=")[1]
-
+            var usernameValue = cookieInfo.split("=")[1]
         }
+        console.log(usernameValue);
 
-        fetch("/mylessonboard/"+params).then((res) => {
+        fetch("/mylessonboard/"+usernameValue).then((res) => {
             return  res.json();
         }).then((data) =>{
 
             var parent = document.getElementById("output");
-            let listOfLessons = []
-
-           // var cookieUsername = cookie.split('=')[1];
+            let lessonTitles = []
 
             for(var j = 0; j< data.length; j++) {
-                var div3 = document.createElement("div");
+                var div1 = document.createElement("div");
                 var h1 = document.createElement("h1");
                 h1.appendChild(document.createTextNode("Lektion!!"));
-                div3.appendChild(h1);
-                parent.appendChild(div3);
+                div1.appendChild(h1);
+                parent.appendChild(div1);
 
 
-                var div4 = document.createElement("div");
+                var div2 = document.createElement("div");
                 var h1 = document.createElement("h1");
                 h1.appendChild(document.createTextNode(""));
-                div4.appendChild(h1);
-                parent.appendChild(div4);
+                div2.appendChild(h1);
+                parent.appendChild(div2);
 
-                let array = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "Timestamp","_v"];
+                let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "Timestamp","_v"];
 
-
-                listOfLessons.push(data[j][array[2]])
-                console.log(listOfLessons)
-
+                lessonTitles.push(data[j][lessonPropertyNames[2]])
+                console.log(lessonTitles)
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i==1||i==8||i==9){
-                        console.log("Ignore I if 1 and 8")
+                        console.log(`Ignore ${i} in loop`)
                     } else {
-
-                        let array2 = array[i];
-
-
-
-
                         // Text
                         var div1 = document.createElement("div");
                         var p = document.createElement("p");
@@ -125,26 +110,23 @@
                         // Value
                         var div2 = document.createElement("div");
                         var p = document.createElement("p");
-                        p.appendChild(document.createTextNode(data[j][array2]));
+                        p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
                         div2.appendChild(p);
 
                         parent.appendChild(div1);
                         parent.appendChild(div2);
 
                     } }
-                let id = j
+
                 var div5 = document.createElement("div");
                 var button = document.createElement("button");
 
 
-                button.id = listOfLessons[j]
+                button.id = lessonTitles[j]
                 button.addEventListener("click", function() {
                     let lessonID = this.id
-                    let params2 = [lessonID,params]
 
-
-                    console.log(params2)
-                    fetch('/cancellesson/'+params2,{method: 'PUT'}).then(function(response) {
+                    fetch('/cancellesson/'+JSON.stringify([lessonID,usernameValue]),{method: 'PUT'}).then(function(response) {
 
                         if(response.ok){
                             console.log("Click was recorded");
@@ -155,7 +137,7 @@
                         console.log(error)
                     })
                 })
-                console.log(id)
+
                 button.appendChild(document.createTextNode("Afbestil"));
                 div5.appendChild(button);
                 parent.appendChild(div5);

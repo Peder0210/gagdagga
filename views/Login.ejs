@@ -39,15 +39,6 @@
 </style>
 <body>
 <br>
-<script>
-   /* function kasper () {
-
-        var url = window.location.pathname + window.location.search;
-        var getQuery = url.split('?')[1];
-        var params = getQuery.split('=')[1];
-        alert(params);
-    }*/
-</script>
 <br>
 
 <br>Enter your username and password <br>
@@ -85,7 +76,6 @@
 if(document.getElementById("Username").value=="" && document.getElementById("Password").value=="" ){
    return  alert("Please enter your username and password")
 }
-
         if(document.getElementById("Username").value=="" ){
            return  alert("Please enter your username")
         }
@@ -108,26 +98,21 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
         };
         fetch("/loginuser",options)
             .then((res)=>{
-
                 return res.text();
             })
             .then((data)=>{
-
                 if(data == "Password is wrong"){
                     return alert(data)
                 }
-
                 if(data == "Username doesn't exist"){
                     return alert(data)
                 }
-                let array = JSON.parse(data)
-               if(array[1]==="Admin"){
+
+               if(JSON.parse(data)[1]==="Admin"){
                    return window.location.href = "/adminSite";
                }
-                if(array[1]==="Customer"){
-
-                // Create session cookie here, for continous authentication
-                document.cookie = "username="+array[0];
+                if(JSON.parse(data)[1]==="Customer"){
+                document.cookie = `username=${JSON.parse(data)[0]}`
                 window.location.href = "/myPageUser";}
             })
             .catch((e)=>{
@@ -137,7 +122,5 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
     })
 
 </script>
-
-
 </body>
 </html>

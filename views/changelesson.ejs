@@ -4,60 +4,50 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body onload="kasper()">
+<body onload="changeLesson()">
 <br>
 <script>
-    function kasper () {
-        var x = document.cookie
-        console.log(x)
-        if(x.includes(";")) {
-            var getQuery = x.split(';');
-
-            for(i=0;i<getQuery.length;i++){
-                if(getQuery[i].includes("lesson")){
-                    var lessonname = getQuery[i].split("=")[1]
-
+    function changeLesson () {
+        let cookieInfo = document.cookie
+        console.log(cookieInfo)
+        if(cookieInfo.includes(";")) {
+            for(i=0;i<cookieInfo.split(';').length;i++){
+                if(cookieInfo.split(';')[i].includes("lesson")){
+                    var lessonValue = cookieInfo.split(';')[i].split("=")[1]
                 }
             }
         } else {
-            var lessonname = x.split("=")[1]
+            var lessonValue = cookieInfo.split("=")[1]
         }
-console.log(lessonname)
+        console.log(lessonValue);
 
-        fetch("/changelessoninfo/" + lessonname).then((res) => {
+        fetch("/changelessoninfo/" + lessonValue).then((res) => {
             return  res.json();
         }).then((data) =>{
-
-
             var parent = document.getElementById("output");
 
-
             for(i=0;i<Object.keys(data).length;i++){
-
-
                 if(i==8 ||i==1||i==0||i==9){
-                    console.log("Ignore i")
+                    console.log(`Ignore ${i} in loop`)
                 } else if(i==6){
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Time of day:"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode(""));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Hour"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
+
                     var div3 = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select1"
@@ -69,25 +59,17 @@ console.log(lessonname)
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(3,5))
                             if(`0${j}`==data[Object.keys(data)[i]].substring(3,5)) {
-
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(3,5)) {
-
                                 option.selected = true
                             }
                         }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
 
                     div3.appendChild(select);
                     parent.appendChild(div3)
@@ -110,46 +92,35 @@ console.log(lessonname)
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(6,8))
                             if(`0${j}`==data[Object.keys(data)[i]].substring(6,8)) {
-
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(6,8)) {
-
                                 option.selected = true
                             }
                         }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
 
                     div3.appendChild(select);
                     parent.appendChild(div3)
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Date:"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode(""));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Day"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
                     var div3 = document.createElement("div")
@@ -163,30 +134,19 @@ console.log(lessonname)
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(13,15))
                             if(`0${j}`==data[Object.keys(data)[i]].substring(13,15)) {
-
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(13,15)) {
-
                                 option.selected = true
                             }
                         }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
-
                     div3.appendChild(select);
                     parent.appendChild(div3)
-
-
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Month"));
@@ -216,69 +176,44 @@ console.log(lessonname)
                             }
                         }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
 
                     div3.appendChild(select);
                     parent.appendChild(div3)
 
-
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Year"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
+
                     var div3 = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select5"
                     for(j=2019;j<2023;j++) {
 
                         var option = document.createElement("option");
-                        if(j<10) {
-                            option.value = `0${j}`
-                            option.text = `0${j}`
-                            console.log(data[Object.keys(data)[i]].substring(19,23))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(19,23)) {
-
-                                option.selected = true
-                            }
-                        } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(19,23)) {
 
                                 option.selected = true
                             }
-                        }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
-
                     div3.appendChild(select);
                     parent.appendChild(div3)
+
                 } else if(i==7){
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Duration:"));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode(""));
-
                     div5.appendChild(p3);
                     parent.appendChild(div5);
 
@@ -294,30 +229,15 @@ console.log(lessonname)
                     for(j=0;j<3;j++) {
 
                         var option = document.createElement("option");
-                        if(j<10) {
-                            option.value = `${j}`
-                            option.text = `${j}`
-                            console.log(data[Object.keys(data)[i]].substring(0,1))
-                            if(`${j}`==data[Object.keys(data)[i]].substring(0,1)) {
-
-                                option.selected = true
-                            }
-                        } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(0,1)) {
 
                                 option.selected = true
                             }
-                        }
+
                         select.appendChild(option);
-
                     }
-
-
-
-
-
 
                     div3.appendChild(select);
                     parent.appendChild(div3)
@@ -340,38 +260,26 @@ console.log(lessonname)
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(2,4))
                             if(`0${j}`==data[Object.keys(data)[i]].substring(2,4)) {
-
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
                             if(`${j}`==data[Object.keys(data)[i]].substring(2,4)) {
-
                                 option.selected = true
                             }
                         }
                         select.appendChild(option);
-
                     }
-
-
-
-
-
 
                     div3.appendChild(select);
                     parent.appendChild(div3)
-
-
 
                 }else{
                     // Text
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
-
-
                     div1.appendChild(p);
 
                     // Value
@@ -423,11 +331,8 @@ console.log(lessonname)
                 if (counter>0){
                     return alert(alertmessage)
                 }
-                let array = JSON.stringify([lessonname, obj])
-                //[1,10,9,8,7]
 
-                console.log(array)
-                fetch('/changelessoninfomation/'+array,{method: 'PUT'}).then((res)=>{
+                fetch('/changelessoninfomation/'+JSON.stringify([lessonValue, obj]),{method: 'PUT'}).then((res)=>{
 
                     return res.text();
                 })
@@ -448,32 +353,11 @@ console.log(lessonname)
             button.appendChild(document.createTextNode("Ændre information"));
             div5.appendChild(button);
             parent.appendChild(div5);
-
-
         }).catch((e) => {
             console.log(e);
         })}
 </script>
 
-
-
-
-
-<!--<p>Din konto's navn:</p>
-<p id="navn" value=""></p>
-<p>Din fødselsdag:</p>
-<p id="fødselsÅr" value=""></p>
-<p>Dit køn:</p>
-<p id="køn" value=""></p>
-<p>Dit telefonnummer:</p>
-<p id="telefonNr" value=""></p>
-<p> Din Email:</p>
-<p id="email" value=""></p>
-<p> Dit username</p>
-<p id="username" value=""></p>
-
-
--->
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 <br>
 

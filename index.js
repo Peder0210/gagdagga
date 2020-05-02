@@ -9,27 +9,16 @@ const bcrypt  = require('bcrypt');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User = require('./models/user');
-//const loginController = require('./controllers/logins');
-const loginUserController = require('./controllers/loginUser');
+
+
 const expressSession = require('express-session');
 const logoutController = require("./controllers/logout")
-//const createLesson = require("./controllers/createLesson")
+
 const Lesson = require("./models/lesson")
-//const getInfo = require("./controllers/getInfo");
-const loginAdministrator = require('./controllers/loginAdministrator');
-//const mongotest = require('./controllers/mongo');
-//const authMiddleware = require("./middleware/autMiddleware");
 const flash = require('connect-flash');
-const redirectIfAuthenticatedMiddleware = require("./middleware/redirectIfAuthenticatedMiddleware");
-const newUsercontroller = require("./controllers/newUser")
+
 const cookieParser = require('cookie-parser')
-/*const validateMiddleWare = (req,res,next) => {
-    if(req.body.Navn == ''){
-        console.log('User not created');
-        return res.redirect('/register')
-    }
-    next()
-};*/
+
 
 app.use(expressSession({ //Opretter en session.
     secret: 'Temno Player'
@@ -114,42 +103,6 @@ app.post('/registerUser/:userInfo', (req,res) => {
     }) //find alle duration hvor man laver et null
 });
 
-
-
-/*app.post('/register/store', (req,res) => {
-    console.log(req.body);
-const schema = joi.object().keys({
-    Email : joi.string().trim().email().required(),
-    Password : joi.string().min(3).max(50).required(),
-    Navn : joi.string().required(),
-    Birthday : joi.string().required(),
-    Gender : joi.string().required(),
-    MobilNummer : joi.string().min(8).max(8).required(),
-    Username : joi.string().required()
-
-
-
-
-
-
-
-
-
-});
-joi.validate(req.body,schema,(err,result)=>{
-    if(err) {
-        console.log(err);
-        res.send("Information is wrong or invalid")
-    }
-    console.log(result);
-    UserData.create(req.body);
-
-
-});
-    res.redirect('/login')
-});
-
-*/
 app.post('/registerlesson/:lessonInfo', (req,res) => {
 
     let lessonInfo = JSON.parse(req.params.lessonInfo);
@@ -202,16 +155,14 @@ app.post("/loginuser", (req,res) => {
 
     User.findOne({Username: req.body[0]}, (error, result) => {
         if (result) {
-
             bcrypt.compare(req.body[1], result.Password, (error, same) => {
                 if (same) {
                     console.log(result._id);
                     req.session.userId = result._id;
-                    console.log(req.session)
+                    console.log(req.session);
                     console.log("User info confirmed");
-                    let array = [req.body[0],result.Usertype];
-                    console.log(req.body[0]);
-                    res.send(JSON.stringify(array))
+
+                    res.send(JSON.stringify([req.body[0],result.Usertype]))
                 }
                 else{
                   console.log("Password is wrong");
@@ -222,8 +173,9 @@ app.post("/loginuser", (req,res) => {
             console.log("Username doesn't exist");
             res.send("Username doesn't exist")
         }
-    }) //find alle duration hvor man laver et null
+    })
 });
+
 app.get("/auth/login", logoutController);
 
 app.post('/AdminSite', async (req,res) => {
@@ -236,23 +188,16 @@ app.post('/AdminSite', async (req,res) => {
 
 
 app.get("/userInfo", (req,res) =>{
-console.log("hej");
-console.log(req.query.username);
   User.findOne({Username:req.query.username},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
        if(result){
-           console.log("hej3");
            if(req.session.userId == result._id){
-console.log("hej2");
                res.send(JSON.stringify(result)); // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
-       }  else
-           {
+       }  else {
                res.send();
-           }}
-       else{
+           }} else{
            res.send("No profiles found")
        }
    })
-
 });
 
  app.get("/lessonInfo", (req,res) =>{ //Vi finder lesson vha. dens titel som er dens unikke id.
@@ -311,14 +256,11 @@ console.log(req.params.lesson);
 
 
 app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver string værdi under objektet.
-    var username2 = req.params.lesson.split(',')[1];
-    var lesson2 = req.params.lesson.split(',')[0];
-    console.log(req.params.lesson);
-    console.log(`hej+${username2}+${lesson2}`); //Vi tester at vores variabler virker.
+    console.log(JSON.parse(req.params.lesson));
 
-    var myquery = {Title: lesson2};
-    var newvalues = {$push: {Participantnames: username2}};
-    Lesson.updateOne(myquery,newvalues, (error, result) => {
+    Lesson.updateOne({Title: JSON.parse(req.params.lesson)[0]},
+        {$push: {Participantnames: JSON.parse(req.params.lesson)[1]}},
+        (error, result) => {
         if (result) {
             res.send(JSON.stringify(result))
         } else {
@@ -330,20 +272,17 @@ app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver strin
 
 
 app.put('/cancellesson/:lesson', (req,res)=> {
-    var username2 = req.params.lesson.split(',')[1];
-    var lesson2 = req.params.lesson.split(',')[0];
-    console.log(req.params.lesson);
-    console.log(`hej+${username2}+${lesson2}`);
+    console.log(JSON.parse(req.params.lesson));
 
-    var myquery = {Title: lesson2};
-    var newvalues = {$pull: {Participantnames: username2}};
-    Lesson.updateOne(myquery,newvalues, (error, result) => {
+    Lesson.updateOne({Title: JSON.parse(req.params.lesson)[0]},
+        {$pull: {Participantnames: JSON.parse(req.params.lesson)[1]}},
+        (error, result) => {
         if (result) {
             res.send(JSON.stringify(result))
         } else {
             res.send("No profiles found")
         }
-    }) //find alle duration hvor man laver et null
+    })
 });
 
 app.get("/changelessoninfo/:lesson", (req,res) =>{
@@ -427,7 +366,7 @@ app.put('/changeuserinfo/:userinfo', (req,res)=> {
     }) //find alle duration hvor man laver et null
 });
 
-app.post('/login2', loginAdministrator);
+
 app.use((req,res) =>res.render('notfound'));
 
 

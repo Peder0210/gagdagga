@@ -54,11 +54,11 @@
 <br>
 
 
-<body onload="kasper()">
+<body onload="getLessonInfo()">
 <br>
 
     <script type="text/javascript"  >
-        function kasper () {
+        function getLessonInfo () {
             fetch("http://localhost:3000/lessonboard").then((res) => {
                 return  res.json();
             }).then((data) =>{
@@ -93,21 +93,17 @@
                     div4.appendChild(h1);
                     parent.appendChild(div4);
 
-                    let array = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp","_v"];
+                    let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp","_v"];
 
 
-                    listOfLessons.push(data[j][array[2]])
+                    listOfLessons.push(data[j][lessonPropertyNames[2]])
                     console.log(listOfLessons)
 
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
                         if(i==1||i==8||i==9){
-                            console.log("Ignore i in loop")
+                            console.log(`Ignore ${i} in loop`)
                         } else {
-
-                            let array2 = array[i];
-
-
                             // Text
                             var div1 = document.createElement("div");
                             var p = document.createElement("p");
@@ -117,34 +113,28 @@
                             // Value
                             var div2 = document.createElement("div");
                             var p = document.createElement("p");
-                            p.appendChild(document.createTextNode(data[j][array2]));
+                            p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
                             div2.appendChild(p);
 
                             parent.appendChild(div1);
                             parent.appendChild(div2);
-                            console.log(data[j][array2])
-
-                        } }
-                    let id = j
+                            console.log(data[j][lessonPropertyNames[i]])
+                        }
+                    }
                     var div5 = document.createElement("div");
                     var button = document.createElement("button");
-                    let array_all
-console.log(data[j][array[0]])
+
                     console.log(cookieUsername)
                     button.id = listOfLessons[j]
                     button.name = j
                     button.addEventListener("click", function() {
                         console.log(this.name)
-                        if(data[this.name][array[0]].includes(cookieUsername)){
+                        if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
                             return alert("You cannot book the same lesson twice")
                         }
-                        let lessonID = this.id
-                        let params = [lessonID,cookieUsername]
-                        console.log(lessonID)
-                        console.log(cookieUsername)
-                        console.log(params)
-                        fetch('/booklesson/'+params,{method: 'PUT'}).then(function(response) {
-                            console.log(lessonID)
+
+                        fetch('/booklesson/'+JSON.stringify([this.id,cookieUsername]),{method: 'PUT'}).then(function(response) {
+
                             if(response.ok){
                                 console.log("Click was recorded");
                                 return window.location.replace("/classSiteUser")
@@ -154,7 +144,7 @@ console.log(data[j][array[0]])
                             console.log(error)
                         })
                     })
-                    console.log(id)
+
                     button.appendChild(document.createTextNode("Book lektion"));
                     div5.appendChild(button);
                     parent.appendChild(div5);

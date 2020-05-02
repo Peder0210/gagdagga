@@ -47,45 +47,28 @@
         color: white;
     }
 </style>
-<body onload="kasper()">
+<body onload="getUserInfo()">
 <br>
 <script>
-    function kasper () {
+    function getUserInfo () {
 
 
-            var x = document.cookie
-            console.log(x)
-            if(x.includes(";")) {
-                var getQuery = x.split(';');
-                console.log(getQuery)
-                for(i=0;i<getQuery.length;i++){
-                    if(getQuery[i].includes("username")){
-                        var params = getQuery[i].split("=")[1]
-
+            let cookieInfo = document.cookie
+            console.log(cookieInfo)
+            if(cookieInfo.includes(";")) {
+                for(i=0;i<cookieInfo.split(';').length;i++){
+                    if(cookieInfo.split(';')[i].includes("username")){
+                        var usernameValue = cookieInfo.split(';')[i].split("=")[1]
                     }
                 }
-
-
             } else {
-                var params = x.split("=")[1]
-
+                var usernameValue = cookieInfo.split("=")[1]
             }
+        console.log(usernameValue);
 
-
-        console.log(params);
-
-
-        fetch("http://localhost:3000/userInfo?username="+params).then((res) => {
+        fetch("http://localhost:3000/userInfo?username="+usernameValue).then((res) => {
             return  res.json();
         }).then((data) =>{
-            /* document.getElementById("navn").innerHTML = data.Navn;
-             document.getElementById("fødselsÅr").innerHTML = data.Birthday;
-             document.getElementById("køn").innerHTML = data.Gender;
-             document.getElementById("telefonNr").innerHTML = data.MobilNummer;
-             document.getElementById("email").innerHTML = data.Email;
-             document.getElementById("username").innerHTML = data.Username;
-
-     */
             var parent = document.getElementById("output");
 
 
@@ -97,7 +80,6 @@ if(i==0||i==10||i==7||i==9){
                 var div1 = document.createElement("div");
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(Object.keys(data)[i]));
-
                 div1.appendChild(p);
 
                 // Value
@@ -108,18 +90,12 @@ if(i==0||i==10||i==7||i==9){
 
                 parent.appendChild(div1);
                 parent.appendChild(div2);
-
-
-
             }}
 
             var div3= document.createElement("div");
             var button = document.createElement("button");
 
-
-
             button.addEventListener("click", function() {
-
                 window.location.replace("/changeuserinfo")
             })
 
@@ -133,29 +109,7 @@ if(i==0||i==10||i==7||i==9){
 
 </script>
 
-
-
-
-
-<!--<p>Din konto's navn:</p>
-<p id="navn" value=""></p>
-<p>Din fødselsdag:</p>
-<p id="fødselsÅr" value=""></p>
-<p>Dit køn:</p>
-<p id="køn" value=""></p>
-<p>Dit telefonnummer:</p>
-<p id="telefonNr" value=""></p>
-<p> Din Email:</p>
-<p id="email" value=""></p>
-<p> Dit username</p>
-<p id="username" value=""></p>
-
-
--->
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
-<br>
-
-
 </body>
 
 </html>
