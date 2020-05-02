@@ -262,6 +262,7 @@ app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver strin
         {$push: {Participantnames: JSON.parse(req.params.lesson)[1]}},
         (error, result) => {
         if (result) {
+            UserLesson.create({userid:"hej",lessonid:"hej"});
             res.send(JSON.stringify(result))
         } else {
             res.send("No profiles found")
