@@ -9,7 +9,7 @@ const bcrypt  = require('bcrypt');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User = require('./models/user');
-
+const UserLesson = require(`./models/userlesson`)
 
 const expressSession = require('express-session');
 const logoutController = require("./controllers/logout")
