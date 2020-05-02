@@ -229,14 +229,29 @@ app.get('/lessonboard', (req,res)=> {
 });
 
 app.get('/mylessonboard/:lesson', (req,res)=> {
+    UserLesson.find({userid: req.session.userId}, (error,result) => {
+        if(result){
+            var temp = [];
+            for(var i=0;i<result.length;i++){
+                if(result[i].lessonid){
 
-    Lesson.find({Participantnames: req.params.lesson}, (error, result) => {
-        if (result) {
-            res.send(JSON.stringify(result))
-        } else {
-            res.send("No profiles found")
+                    temp.push(result[i].lessonid)
+                }
+            }
+
+            Lesson.find({_id:    {$in:temp}}, (error1, result1) => {
+                if (result1) {
+
+                    res.send(JSON.stringify(result1))
+                } else {
+                    res.send("No profiles found")
+                }
+            })
+        } else{
+            res.send("Say Psych")
         }
-    }) //find alle participant names hvor man laver et null
+    });
+    //find alle participant names hvor man laver et null
 });
 
 
@@ -262,7 +277,9 @@ app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver strin
         {$push: {Participantnames: JSON.parse(req.params.lesson)[1]}},
         (error, result) => {
         if (result) {
-            UserLesson.create({userid:"hej",lessonid:"hej"});
+            console.log(req.session);
+            UserLesson.create({userid:req.session.userId,
+                lessonid:JSON.parse(req.params.lesson)[2]});
             res.send(JSON.stringify(result))
         } else {
             res.send("No profiles found")
@@ -271,11 +288,25 @@ app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver strin
 });
 
 
-
+//Userlesson.find(userid: req.session.userid){
+//
+//}
 app.put('/cancellesson/:lesson', (req,res)=> {
-    console.log(JSON.parse(req.params.lesson));
 
-    Lesson.updateOne({Title: JSON.parse(req.params.lesson)[0]},
+console.log(req.session);
+    let query = {$and:[{userid: req.session.userId},{lessonid: JSON.parse(req.params.lesson)[0]}]};
+    console.log(query);
+   console.log( JSON.stringify(query,null,2));
+    UserLesson.deleteOne(query, (error,result)=>{
+        if(result){
+            console.log("hej");
+            console.log(result)
+        } else{
+            console.log("hej2");
+            console.log(error)
+        }
+    });
+    Lesson.updateOne({_id: JSON.parse(req.params.lesson)[0]},
         {$pull: {Participantnames: JSON.parse(req.params.lesson)[1]}},
         (error, result) => {
         if (result) {
