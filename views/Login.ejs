@@ -127,7 +127,6 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
                }
                 // relocated til mypageuser hvis man er customer 
                 if(JSON.parse(data)[1]==="Customer"){
-                document.cookie = `username=${JSON.parse(data)[0]}`
                 window.location.href = "/myPageUser";}
             })
             .catch((e)=>{

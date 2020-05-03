@@ -77,15 +77,15 @@
                 div4.appendChild(h1);
                 parent.appendChild(div4);
 
-                let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp", "_v"];
+                let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp", "_v"];
 
 
-                lessonTitles.push(data[j][lessonPropertyNames[2]])
+                lessonTitles.push(data[j][lessonPropertyNames[1]])
 
 
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
-                    if(i==1||i==8||i==9){
+                    if(i==0||i==7||i==8){
                         console.log(`Ignore ${i} in loop`)
                     } else {
 

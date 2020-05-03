@@ -56,7 +56,7 @@
             console.log(cookieInfo) */
         // document cookie vil seperere ved hjælp af et ";" i tilfælde af flere cookies
         // der kan være en mulig bug hvis et brugernavn indeholder ";"
-            if(document.cookie.includes(";")) {
+          /*  if(document.cookie.includes(";")) {
                 for(i=0;i<document.cookie.split(';').length;i++){
                     if(document.cookie.split(';')[i].includes("username")){
                         var usernameValue = document.cookie.split(';')[i].split("=")[1]
@@ -66,10 +66,10 @@
             else {
                 var usernameValue = document.cookie.split("=")[1]
             }
-        console.log(usernameValue);
+        console.log(usernameValue);*/
         // sender info om usernamevalue. Prøver at finde en bruger med det username.
         // laver derefter et output, som er et div.
-        fetch("http://localhost:3000/userInfo?username="+usernameValue).then((res) => {
+        fetch("http://localhost:3000/userInfo").then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");

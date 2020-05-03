@@ -6,12 +6,11 @@ const lessonsSchema = new Schema ({
         type: String,
         unique: true
     },
-    Locales: String,
+    Room: String,
     Time: String,
     Duration: String,
     Participants: String,
-    Teachers: String,
-    Participantnames: { type: Array, default: [] },
+    Teacher: String,
     Timestamp: {
         type: Date,
         default: Date.now}

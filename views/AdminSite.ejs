@@ -7,7 +7,7 @@
         <a class="active" href="/adminSite">Opret undervisningstime</a>
         <a href="/classSiteAdmin">Alle undervisningstimer</a>
         <li class="nav-item">
-            <a class="nav-link" href="Login">Log af</a>
+            <a class="nav-link" href="/logout">Log ud</a>
         </li>    </div>
 
         <h1> Opret undervisningstime</h1>
@@ -62,15 +62,15 @@
 
     <br>
     <br>
-     Locales:
+     Room:
     <br>
 
     <input
             type="text"
-            id="Locales"
+            id="Room"
             value="Room 500"
-            placeholder="Locales"
-            name="Locales"
+            placeholder="Room"
+            name="Room"
             required="true">
     <br>
     <br>
@@ -86,7 +86,7 @@
             required="true">
     <br>
     <br>
-    Teachers:
+    Teacher:
     <br>
 
     <input
@@ -165,7 +165,7 @@ Date:
     <option value="11" >11</option>
     <option value="12" >12</option>
     <option value="13" >13</option>
-    <option value="44" >14</option>
+    <option value="14" >14</option>
     <option value="15" >15</option>
     <option value="16" >16</option>
     <option value="17" >17</option>
@@ -246,9 +246,9 @@ Date:
     // Samme kode som i register
     document.getElementById("createLesson_btn").addEventListener("click", function() {
         let obj = { Title: document.getElementById("Title").value,
-            Locales: document.getElementById("Locales").value,
+            Room: document.getElementById("Room").value,
             Participants: document.getElementById("Participants").value,
-            Teachers: document.getElementById("Teachers").value ,
+            Teacher: document.getElementById("Teachers").value ,
             Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
             Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
 
@@ -280,6 +280,8 @@ Date:
                 console.log(data);
                 if (data == "error") {
                     alert("Lesson doesn't have an unique title")
+                } else if(data=="error2") {
+                    alert("Please login as an admin")
                 } else {
                     // Create session cookie here, for continous authentication
                     alert(`Lesson ${document.getElementById("Title").value} has been created`);

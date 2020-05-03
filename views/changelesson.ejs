@@ -27,9 +27,9 @@
             var parent = document.getElementById("output");
 
             for(i=0;i<Object.keys(data).length;i++){
-                if(i==8 ||i==1||i==0||i==9){
+                if(i==7||i==8||i==0){
                     console.log(`Ignore ${i} in loop`)
-                } else if(i==6){
+                } else if(i==5){
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Time of day:"));
@@ -204,7 +204,7 @@
                     div3.appendChild(select);
                     parent.appendChild(div3)
 
-                } else if(i==7){
+                } else if(i==6){
                     var div5 = document.createElement("div");
                     var p3 = document.createElement("p");
                     p3.appendChild(document.createTextNode("Duration:"));
@@ -300,10 +300,10 @@
 
 
             button.addEventListener("click", function() {
-                let obj = { Title: document.getElementById("2").value,
-                    Locales: document.getElementById("3").value,
-                    Participants: document.getElementById("4").value,
-                    Teachers: document.getElementById("5").value,
+                let obj = { Title: document.getElementById("1").value,
+                    Room: document.getElementById("2").value,
+                    Participants: document.getElementById("3").value,
+                    Teacher: document.getElementById("4").value,
                     Time: `KL ${document.getElementById("select1").value}.${document.getElementById("select2").value} ---  ${document.getElementById("select3").value}-${document.getElementById("select4").value}-${document.getElementById("select5").value}` ,
                     Duration: `${document.getElementById("select6").value}.${document.getElementById("select7").value}`
                 }
@@ -323,7 +323,7 @@
                     }
 
                 }
-                if(isNaN(document.getElementById("4").value)||document.getElementById("4").value==""){
+                if(isNaN(document.getElementById("3").value)||document.getElementById("3").value==""){
                     console.log(document.getElementById("2").value.length)
                     counter++
                     alertmessage += `\n ${counter}. Your Participants must be a number `

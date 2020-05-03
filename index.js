@@ -1,22 +1,14 @@
-//const http = require('http'); // leila has been here :)
-//const fs = require('fs'); //luka was here....
 const express = require('express');
 const app = new express();
 const bcrypt  = require('bcrypt');
-//const path = require('path');
-//const ejs = require('ejs');
-//const joi = require('joi');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const User = require('./models/user');
 const UserLesson = require(`./models/userlesson`)
-
 const expressSession = require('express-session');
 const logoutController = require("./controllers/logout")
-
 const Lesson = require("./models/lesson")
 const flash = require('connect-flash');
-
 const cookieParser = require('cookie-parser')
 
 
@@ -30,8 +22,6 @@ app.set('view engine','ejs');
 app.use(express.static('puplic'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
-//app.use('/register/store',validateMiddleWare);
-
 app.use(flash());
 app.use(cookieParser('secret'));
 
@@ -43,38 +33,31 @@ app.get('/adminsite', (req,res) =>{
    res.render('adminsite')
 });
 
-app.get('/classSiteUser', /*authMiddleware,*/ (req,res)=>{
+app.get('/classSiteUser', (req,res)=>{
     res.render('classSiteUser')
 });
 
 
-app.get('/changelesson', /*authMiddleware,*/ (req,res)=>{
+app.get('/changelesson', (req,res)=>{
     res.render('changelesson')
 });
-app.get('/classSiteAdmin', /*authMiddleware,*/ ( req,res) => {
+app.get('/classSiteAdmin', ( req,res) => {
     res.render('classSiteAdmin')
 });
 
-/*app.get('/loggedIn', (req,res) =>{
-    res.render('loggedIn')
-});*/
 
 app.get('/changeuserinfo', (req,res) =>{
     res.render('changeuserinfo')
 });
-/*app.get('/logoutAdmin', (req,res) =>{
-    res.render('logoutAdmin')
-}); */
 
-/*app.get('/logoutUser', (req,res) =>{
-    res.render('logoutUser')
-}); */
 
-app.get('/myClasses', /*authMiddleware*/ (req,res) =>{
+
+
+app.get('/myClasses',  (req,res) =>{
     res.render('myClasses')
 });
 
-app.get('/register', (req,res) =>{ //Redirect if autheticated middleware gør at man må ikke komme ind på login eller register hvis man allerede er logget ind. Man bliver redirected til mypageuser i stedet.
+app.get('/register', (req,res) =>{
     res.render('register')
 });
 
@@ -82,12 +65,10 @@ app.get('/login', (req,res) =>{
     res.render('Login')
 });
 
-app.get("/logout", logoutController)
+app.get("/logout", logoutController);
 
 app.get('/myPageUser', (req,res) =>{
-    var id = req.params.id;
-    res.render('myPageUser', {user: id});
-
+    res.render('myPageUser')
 });
 app.post('/registerUser/:userInfo', (req,res) => {
 
@@ -104,50 +85,28 @@ app.post('/registerUser/:userInfo', (req,res) => {
 });
 
 app.post('/registerlesson/:lessonInfo', (req,res) => {
+    User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+        if(result){
+            console.log(result);
+            let lessonInfo = JSON.parse(req.params.lessonInfo);
+            console.log(lessonInfo);
+            Lesson.create(lessonInfo, (error2, result2) => {
+                if (result2) {
 
-    let lessonInfo = JSON.parse(req.params.lessonInfo);
-    console.log(lessonInfo);
-    Lesson.create(lessonInfo, (error, result) => {
-        if (result) {
-            res.send(JSON.stringify(result));
-        } else {
-            console.log(error);
-            console.log("Your lesson doesn't have an unique name");
-            res.send("error")
+                    console.log("worked");
+                    res.send(JSON.stringify(result2));
+                } else {
+                    console.log(error2);
+                    console.log("Your lesson doesn't have an unique name");
+                    res.send("error")
+                }
+            }) //find alle duration hvor man laver et null// Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+        } else{
+            res.send("error2")
         }
-    }) //find alle duration hvor man laver et null
-});
-app.post('/lesson/store', (req,res) => {
-    console.log(req.body);
-    const schema = joi.object().keys({
-        Title: joi.string().required(),
-        Locales : joi.string().required(),
-        Tid: joi.string().required(),
-        Duration: joi.number().required(),
-        Participants: joi.string().required(),
-        Teachers: joi.string().required(),
-
-
-
-    });
-    joi.validate(req.body,schema,(error,result)=>{
-        if(error) {
-            console.log(error);
-            let error = "Information is missing. Please make sure that you have entered all the fields correctly.";
-
-            res.redirect('/classSiteAdmin?error=' + error);
-        }
-
-        console.log(result);
-        Lesson.create(req.body);
-
-    });
-
-    res.redirect('/classSiteAdmin')
+    })
 
 });
-
-
 
 app.post("/loginuser", (req,res) => {
     //let userdata = JSON.parse(req.body);
@@ -176,7 +135,6 @@ app.post("/loginuser", (req,res) => {
     })
 });
 
-app.get("/auth/login", logoutController);
 
 app.post('/AdminSite', async (req,res) => {
     console.log(req.body);
@@ -188,44 +146,35 @@ app.post('/AdminSite', async (req,res) => {
 
 
 app.get("/userInfo", (req,res) =>{
-  User.findOne({Username:req.query.username},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+    console.log(req.session);
+  User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
        if(result){
-           if(req.session.userId == result._id){
+           console.log(result);
                res.send(JSON.stringify(result)); // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
-       }  else {
-               res.send();
-           }} else{
+         } else{
            res.send("No profiles found")
        }
    })
 });
 
- app.get("/lessonInfo", (req,res) =>{ //Vi finder lesson vha. dens titel som er dens unikke id.
-    Lesson.findOne({Title:"g"},(error,result)=>{
-        if(result){
-            res.send(JSON.stringify(result))
-        }
-        else{
-            res.send("No profiles found")
-        }
-    });
-     })
 
- app.get('/classSiteAdmin', async (req,res)=>{   // Sætter variablen lessons ligmed hvad vi opretter på adminsite.
-    const lessonposts = await Lesson.findOne({ })
-    res.render('index', {
-        lessonposts
-    });
-})
 
 app.get('/lessonboard', (req,res)=> {
-    Lesson.find({Duration: {$gt: 0}}, (error, result) => {
-        if (result) {
-            res.send(JSON.stringify(result))
-        } else {
-            res.send("No profiles found")
+    User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+        if(result){
+            Lesson.find({Duration: {$gt: 0}}, (error, result) => {
+                if (result) {
+                    res.send(JSON.stringify(result))
+                } else {
+                    res.send("No profiles found")
+                }
+            }) //find alle duration hvor man laver et null// Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+        } else{
+            res.send("error2")
         }
-    }) //find alle duration hvor man laver et null (det gør vi med alle).
+    })
+
+    //find alle duration hvor man laver et null (det gør vi med alle).
 });
 
 app.get('/mylessonboard/:lesson', (req,res)=> {
@@ -271,21 +220,48 @@ console.log(req.params.lesson);
 
 
 app.put('/booklesson/:lesson', (req,res)=> { // :lesson accepterer en hver string værdi under objektet.
-    console.log(JSON.parse(req.params.lesson));
+ Lesson.find({_id:JSON.parse(req.params.lesson)}, (error, result)=> {
+     if(result){
+         UserLesson.find({lessonid:JSON.parse(req.params.lesson)}, (error1, result2)=> {
+             if(result2){
+                 if(result2.length==result[0].Participants){
+                     console.log("The Lesson is fully booked");
+                     res.send("error2")
+                 } else{
 
-    Lesson.updateOne({Title: JSON.parse(req.params.lesson)[0]},
-        {$push: {Participantnames: JSON.parse(req.params.lesson)[1]}},
-        (error, result) => {
-        if (result) {
-            console.log(req.session);
-            UserLesson.create({userid:req.session.userId,
-                lessonid:JSON.parse(req.params.lesson)[2]});
-            res.send(JSON.stringify(result))
-        } else {
-            res.send("No profiles found")
-        }
-    }) //find alle duration hvor man laver et null
-});
+                     UserLesson.findOne({userid:req.session.userId, lessonid:JSON.parse(req.params.lesson)},(error3,result3)=> {
+                         if (result3) {
+                             console.log("You cannot book the same Lesson twice");
+                             res.send("error")
+                         } else {
+                             UserLesson.create({userid:req.session.userId, lessonid:JSON.parse(req.params.lesson)},(error4,result4)=> {
+                                 if (result4) {
+                                     res.send(JSON.stringify(result4))
+                                 } else {
+                                     res.send("UserLesson couldnt be created")
+                                 }
+                             })
+                         }
+                     })
+                 }
+             } else{
+                 console.log("Error")
+             }
+         });
+     } else{
+         console.log("Error")
+     }
+ });
+
+
+
+
+
+
+
+
+    //find alle duration hvor man laver et null
+})
 
 
 //Userlesson.find(userid: req.session.userid){
@@ -299,22 +275,14 @@ console.log(req.session);
    console.log( JSON.stringify(query,null,2));
     UserLesson.deleteOne(query, (error,result)=>{
         if(result){
-            console.log("hej");
-            console.log(result)
+            console.log(result);
+            res.send(result);
         } else{
-            console.log("hej2");
-            console.log(error)
+
+            console.log(error);
+            res.send(result);
         }
     });
-    Lesson.updateOne({_id: JSON.parse(req.params.lesson)[0]},
-        {$pull: {Participantnames: JSON.parse(req.params.lesson)[1]}},
-        (error, result) => {
-        if (result) {
-            res.send(JSON.stringify(result))
-        } else {
-            res.send("No profiles found")
-        }
-    })
 });
 
 app.get("/changelessoninfo/:lesson", (req,res) =>{
@@ -357,12 +325,10 @@ console.log("virker det")
 });
 
 
-app.get("/getuserinfo/:lesson", (req,res) =>{
+app.get("/getuserinfo", (req,res) =>{
 
-    User.findOne({Username:req.params.lesson},(error,result)=>{
+    User.findOne({_id:req.session.userId},(error,result)=>{
         if(result) {
-
-
             res.send(JSON.stringify(result))  // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
         }
         else{
@@ -374,16 +340,7 @@ app.get("/getuserinfo/:lesson", (req,res) =>{
 
 
 app.put('/changeuserinfo/:userinfo', (req,res)=> {
-
-
-   let value = req.params.userinfo;
-   var values = JSON.parse(value);
-
-    var myquery = {Username: values[0]};
-    console.log(myquery);
-    console.log(values[1]);
-    var newvalues = {$set: values[1]};
-    User.updateOne(myquery,newvalues, (error, result) => {
+    User.updateOne({_id: req.session.userId},{$set: JSON.parse(req.params.userinfo)}, (error, result) => {
         if (result) {
             console.log("ggg");
             if(error){

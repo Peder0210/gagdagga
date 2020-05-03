@@ -89,16 +89,16 @@
                     h1.appendChild(document.createTextNode(""));
                     parent.appendChild(h1);
 
-                    let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp","_v"];
+                    let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp","_v"];
 
                     listOfLessons.push(data[j][lessonPropertyNames[2]])
                     console.log(listOfLessons)
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
-                        if(i==1){
+                        if(i==0){
                             console.log(data[j][lessonPropertyNames[i]])
                             listOfID.push(data[j][lessonPropertyNames[i]])
-                        } else if(i==9||i==8||i==0) {
+                        } else if(i==8||i==7) {
                         console.log(`Ignore ${i} in loop`)}    else
                          {
                             // Text
@@ -122,17 +122,26 @@
                     button.name = j
                     button.addEventListener("click", function() {
                         console.log(this.name)
-                        if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
+                     /*   if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
                             return alert("You cannot book the same lesson twice")
-                        }
+                        }*/
 
-                        fetch('/booklesson/'+JSON.stringify([this.id,cookieUsername, listOfID[this.name]]),{method: 'PUT'}).then(function(response) {
+                        fetch('/booklesson/'+JSON.stringify(listOfID[this.name]),{method: 'PUT'}).then((res)=>{
 
-                            if(response.ok){
+                            return res.text();
+                        })
+                            .then((data)=> {
+                            console.log(data)
+if(data=="error"){
+    alert("You cannot book the same lesson twice")
+}
+                if(data=="error2"){
+                    alert("The lesson is fully booked")
+                }
+                           else{
                                 console.log("Click was recorded");
                                 return window.location.replace("/classSiteUser")
                             }
-                            throw new Error('Request failed')
                         }).catch(function(error){
                             console.log(error)
                         })

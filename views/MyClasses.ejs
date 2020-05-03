@@ -92,13 +92,13 @@
                 div2.appendChild(h1);
                 parent.appendChild(div2);
 
-                let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Time", "Duration", "Participants", "Teachers", "Timestamp","_v"];
+                let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp","_v"];
 
-                lessonTitles.push(data[j][lessonPropertyNames[1]])
+                lessonTitles.push(data[j][lessonPropertyNames[0]])
                 console.log(lessonTitles)
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
-                    if(i==1||i==8||i==9){
+                    if(i==0||i==7||i==8){
                         console.log(`Ignore ${i} in loop`)
                     } else {
                         // Text
