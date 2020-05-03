@@ -46,7 +46,7 @@
 <div>
 
 <p>Name:</p>
-
+    <!-- normale inputs. ID svarer tl property-name-->
     <input
             id="Name"
             type="text"
@@ -55,6 +55,7 @@
     />
     <br>
         <p>Birthday:</p>
+    <!-- man har til id, der er en del af birthday property. Hver select er en option. selected disabled gør at man ikke kan vælge 'day' teksten uden indhold-->
     <select  id="Day">
         <option selected disabled value="">Day</option>
         <option value="01" >01</option>
@@ -193,7 +194,9 @@
         <button>Go to Login</button></a>
 </div>
     <script>
+        // Tilføjer en eventlistener der observere om en bestemt handling bliver udført, og når det bliver udført, aktiverer det denne funktion.
         document.getElementById("registration_btn").addEventListener("click", function() {
+            // laver et objekt, som svar til vores klasse, Bruger Schema
             let obj = { Name: document.getElementById("Name").value,
                 Birthday: `${document.getElementById("Day").value}-${document.getElementById("Month").value}-${document.getElementById("Year").value}`,
                 Gender: document.getElementById("Gender").value,
@@ -203,46 +206,53 @@
                 Password: document.getElementById("Password").value,
                 Usertype: document.getElementById("Usertype").value
             }
+
+
+            /* OPTIMERET KODE: vi vil gerne slette de her variabler, for at gøre koden bedre.
             let obj_Values = Object.values(obj)
             let obj_PropertyNames = Object.getOwnPropertyNames(obj)
+            // vil consolelog alle værdierne indskrevet under properties, (mand/kvinde), (01.01.1999)
             console.log(obj_Values)
-            console.log(obj_PropertyNames)
-            let alertmessage = "Please fill out or correct these fields:"
-            let counter = 0
+            //vil console logge Gender, Birthday, Email osv.
+            console.log(obj_PropertyNames)  */
 
-            for(let i=0;i<obj_Values.length;i++) {
+            let alertmessage = "Please fill out or correct these fields:"
+
+
+            // Hvis nogen af de her værdier er lig med 'tomt' så vil counteren gå op med én og der vil komme en alert-message
+            for(let i=0;i<Object.values(obj).length;i++) {
                 if(i==0||i==2||i==5||i==7) {
-                    if (obj_Values[i] == "") {
-                        counter++
-                        alertmessage += `\n ${counter}: Fill out your ${names[i]} `
+                    if (Object.values(obj)[i] == "") {
+
+                        // sørget for at alert vil fuldende dens string ud efter hvilken value den mangler
+                        alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]}`
                     }
                 }
             }
-
-            if(obj_Values[1].length!==10){
-                counter++
-                alertmessage += `\n ${counter}. Fill out your birthday `
+            // Birthday. Når birthday længden er alt andet end 10. '\n' betyder der kommer en ny linje
+            if(Object.values(obj)[1].length!==10){
+                alertmessage += `\n * Fill out your birthday `
             }
-            if(obj_Values[3].length!==8){
-                counter++
-                alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
+            // Telefon
+            if(Object.values(obj)[3].length!==8){
+                alertmessage += `\n * Your phonenumber must consist of 8 digits `
             }
-
-            if(obj_Values[4].includes("@")==false){
-                counter++
-                alertmessage += `\n ${counter}. Your email must include an @`
+            // Email. .includes gør, at den vil være sand, så længe der skrives et @
+            if(Object.values(obj)[4].includes("@")==false){
+                alertmessage += `\n * Your email must include an @`
             }
-
-
-            if(obj_Values[6].length<4){
-                counter++
-                alertmessage += `\n ${counter}. Your password must consist 4 characters or more`
+            // Password betingelsen vil være sand, if sætningen vil være sand, når den 3 eller under
+            if(Object.values(obj)[6].length<4){
+                alertmessage += `\n * Your password must consist 4 characters or more`
             }
-
-              if (counter>0){
+            // Hvis counter er over 0 vil der være alert. Hvis counter er under 0 vil der ikke være nogen alert,
+            // fordi vi siger counter++ ved if-sætningerne
+              if (alertmessage!=="Please fill out or correct these fields:"){
+                  // vi siger return fordi vi gerne vil have den stopper efter den giver én alert
                   return alert(alertmessage)
               }
-
+                // beloved fetch: Register user ud fra objectet. Den sender kan sende objectet når et er stringified,
+                // herefter vil vi få data tilbage og lave en alert hvis der er sket en fejl.
                 fetch('/registerUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
                     return res.text();
                 })
@@ -251,22 +261,16 @@
                         if (data == "error") {
                             alert("User doesn't have an unique username")
                         } else {
-
                         // Create session cookie here, for continous authentication
                         alert(`User ${document.getElementById("Username").value} has been created`);
                         return window.location.replace("/login")
                     } })
+                    // catcher hvis der er noget helt uforventet
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);
                     });
-
         })
-
-
-
-
         </script>
-
 </div>
 </body>
 </html>
