@@ -4,43 +4,154 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body onload="kasper()">
+<body onload="changeUserInfo()">
 <br>
 <script>
-    function kasper () {
-        var x = document.cookie
-        console.log(x)
-        if(x.includes(";")) {
-            var getQuery = x.split(';');
-            console.log(getQuery)
-            console.log(getQuery.length)
-            for(i=0;i<getQuery.length;i++){
-                if(getQuery[i].includes("username")){
-                    var username = getQuery[i].split("=")[1]
-                    console.log(username)
+    function changeUserInfo () {
+        let cookieInfo = document.cookie
+        console.log(cookieInfo)
+        if(cookieInfo.includes(";")) {
+            for(i=0;i<cookieInfo.split(';').length;i++){
+                if(cookieInfo.split(';')[i].includes("username")){
+                    var usernameValue = cookieInfo.split(';')[i].split("=")[1]
                 }
             }
         } else {
-            var username = x.split("=")[1]
+            var usernameValue = cookieInfo.split("=")[1]
         }
-        console.log(username)
+        console.log(usernameValue);
 
-        fetch("/getuserinfo/" + username).then((res) => {
+        fetch("/getuserinfo/" + usernameValue).then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
-            console.log(data[Object.keys(data)[0]])
+
             for(i=0;i<Object.keys(data).length;i++){
-                if(i==0 ||i==8||i==2||i==4||i==7){
-                    console.log("hej")
-                } else{
-                    // Text
+                if(i==0||i==9||i==7||i==8||i==10){
+                    console.log(`Ignore ${i} in loop`)
+                }else if(i==2) {
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Birthday:"));
+                    div1.appendChild(p);
+                    parent.appendChild(div1);
+
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(""));
+                    div1.appendChild(p);
+                    parent.appendChild(div1);
+
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Day"));
+                    div1.appendChild(p);
+                    parent.appendChild(div1);
+
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select1"
+                    for(j=1;j<32;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            console.log(data[Object.keys(data)[i]].substring(0,2))
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(0,2)) {
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(0,2)) {
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+                    }
+                        div3.appendChild(select);
+                        parent.appendChild(div3)
+
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Month"));
+                    div1.appendChild(p);
+                    parent.appendChild(div1);
+
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select2"
+                    console.log(data[Object.keys(data)[i]].substring(3,5))
+                    for(j=1;j<13;j++) {
+
+                        var option = document.createElement("option");
+                        if(j<10) {
+                            option.value = `0${j}`
+                            option.text = `0${j}`
+                            if(`0${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                                option.selected = true
+                            }
+                        } else{
+                            option.value = `${j}`
+                            option.text = `${j}`
+                            if(`${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                                option.selected = true
+                            }
+                        }
+                        select.appendChild(option);
+                    }
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
+
+                    var div1 = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Year"));
+                    div1.appendChild(p);
+
+                    var div2 = document.createElement("div");
+                    var input = document.createElement("input");
+                    input.id = i
+
+                    input.value = data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)
+                    input.appendChild(document.createTextNode(data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)));
+                    div2.appendChild(input);
+                    parent.appendChild(div1);
+                    parent.appendChild(div2);
+                } else if(i==3){
+                    var div5 = document.createElement("div");
+                    var p3 = document.createElement("p");
+                    p3.appendChild(document.createTextNode("Gender"));
+
+                    div5.appendChild(p3);
+                    parent.appendChild(div5);
+                    var div3 = document.createElement("div")
+                    var select = document.createElement("select")
+                    select.id = "select3"
+                    let array = ["Man","Woman","Else"]
+                    for(j=0;j<array.length;j++) {
+
+                        var option = document.createElement("option");
+
+                            option.value = array[j]
+                            option.text = array[j]
+                            console.log(data[Object.keys(data)[i]])
+                            if(array[j]==data[Object.keys(data)[i]]) {
+
+                                option.selected = true
+                            }
+                        select.appendChild(option);
+                        }
+                div3.appendChild(select);
+                parent.appendChild(div3)
+                } else {
+
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                    console.log(Object.keys(data)[0]);
+
                     div1.appendChild(p);
-                    // Value
+
                     var div2 = document.createElement("div");
                     var input = document.createElement("input");
                     input.id = i
@@ -53,62 +164,70 @@
             var div5 = document.createElement("div");
             var button = document.createElement("button");
             button.addEventListener("click", function() {
-                let array = [username]
-                //[1,10,9,8,7]
-                for(j=0;j<Object.keys(data).length;j++){
-                    if(j==0 ||j==8||j==2||j==4||j==7){
-                        console.log("hej")
-                    } else {
-                        let value1 =  document.getElementById(j).value
-                        if(value1==""){
-                            console.log("Hej")
-                        } else{
-                            array.push(value1)
+                let obj = { Name: document.getElementById("1").value,
+                    Birthday: `${document.getElementById("select1").value}-${document.getElementById("select2").value}-${document.getElementById("2").value}`,
+                    Gender: document.getElementById("select3").value,
+                    Phonenumber: document.getElementById("4").value,
+                    Email: document.getElementById("5").value ,
+                    Username: document.getElementById("6").value
+                }
+                let values = Object.values(obj)
+                let names = Object.getOwnPropertyNames(obj)
+                let alertmessage = "Please fill out or correct these fields:"
+                let counter = 0
+
+                for(let i=0;i<values.length;i++) {
+                    if(i==0||i==5) {
+                        if (values[i] == "") {
+                            counter++
+                            alertmessage += `\n ${counter}: Fill out your ${names[i]} `
                         }
                     }
                 }
-                console.log(array)
-                let stringed = JSON.stringify(array)
-                console.log(stringed)
-                fetch('/changeuserinfo/'+stringed,{method: 'PUT'}).then(function(response) {
-                    if(response.ok){
-                        console.log("Click was recorded");
-                        document.cookie = `username=${array[4]}`
-                        return  window.location.replace("/MyPageUser")
-                    }
-                    throw new Error('Request failed')
-                }).catch(function(error){
-                    console.log(error)
+                if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
+                    console.log(document.getElementById("2").value.length)
+                    counter++
+                    alertmessage += `\n ${counter}. Your Birthday must consist of 4 digits `
+                }
+                if(values[3].length!==8||isNaN(document.getElementById("4").value)){
+                    console.log(values[3])
+                    counter++
+                    alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
+                }
+
+                if(values[4].includes("@")==false){
+                    counter++
+                    alertmessage += `\n ${counter}. Your email must include an @`
+                }
+                if (counter>0){
+                    return alert(alertmessage)
+                }
+                fetch('/changeuserinfo/'+JSON.stringify([usernameValue, obj]),{method: 'PUT'}).then((res)=>{
+
+                    return res.text();
                 })
+                    .then((data)=> {
+                        console.log(data);
+                        if (data == "error") {
+                            alert("User doesn't have an unique username")
+                        } else {
+
+                            // Create session cookie here, for continous authentication
+                            document.cookie = `username=${obj.Username}`
+                            return window.location.replace("/myPageUser")
+                        } })
+                    .catch((e)=>{
+                        console.log(e.name+"\n"+e.description);
+                    });
             })
             button.appendChild(document.createTextNode("Ændre information"));
             div5.appendChild(button);
             parent.appendChild(div5);
         }).catch((e) => {
             console.log(e);
-        })}
+        })
+    }
 </script>
-
-
-
-
-
-<!--<p>Din konto's navn:</p>
-<p id="navn" value=""></p>
-<p>Din fødselsdag:</p>
-<p id="fødselsÅr" value=""></p>
-<p>Dit køn:</p>
-<p id="køn" value=""></p>
-<p>Dit telefonnummer:</p>
-<p id="telefonNr" value=""></p>
-<p> Din Email:</p>
-<p id="email" value=""></p>
-<p> Dit username</p>
-<p id="username" value=""></p>
--->
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
-<br>
-
-
 </body>
 </html>
