@@ -50,7 +50,7 @@
 <br>
 
 <text>Title:</text>
-<br>
+    <br>
 
     <input
             type="text"
@@ -60,10 +60,10 @@
             name="Title"
             required="true">
 
-<br>
-<br>
+    <br>
+    <br>
      Locales:
-<br>
+    <br>
 
     <input
             type="text"
@@ -73,11 +73,9 @@
             name="Locales"
             required="true">
     <br>
-
-
     <br>
     Maximum participants:
-<br>
+    <br>
 
     <input
             type="number"
@@ -89,7 +87,7 @@
     <br>
     <br>
     Teachers:
-<br>
+    <br>
 
     <input
             type="text"
@@ -98,8 +96,7 @@
             placeholder="Teachers"
             name="Teachers">
     <br>
-
-<br>
+    <br>
 
 
 Time of the day:
@@ -130,8 +127,6 @@ Time of the day:
     <option value="21" >21</option>
     <option value="22" >22</option>
     <option value="23" >23</option>
-
-
 </select>
 
     <select  id="Minute">
@@ -188,12 +183,9 @@ Date:
     <option value="29" >29</option>
     <option value="30" >30</option>
     <option value="31" >31</option>
-
 </select>
 
-
-
-  <select id="month">
+<select id="month">
       <option selected disabled value="">Month</option>
       <option value="01">1</option>
       <option value="02">2</option>
@@ -207,9 +199,7 @@ Date:
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
-
   </select>
-
 
   <select id="year">
       <option selected disabled value="">Year</option>
@@ -217,18 +207,10 @@ Date:
       <option value="2020">2020</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
-
   </select>
 
-
-
-
-
-
-
-
     <br>
-<br>
+    <br>
     Duration:
     <br>
 
@@ -237,7 +219,6 @@ Date:
     <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
-
 </select>
 
 <select id="duration minutes">
@@ -252,21 +233,17 @@ Date:
     <option value="45">45</option>
     <option value="50">50</option>
     <option value="55">55</option>
-
-
 </select>
 
-<br>
-
+    <br>
     <br>
     <input
         id="createLesson_btn"
         type="submit"
         value="Opret undervisningstime"/>
-
-
-<br>
+    <br>
 <script>
+    // Samme kode som i register
     document.getElementById("createLesson_btn").addEventListener("click", function() {
         let obj = { Title: document.getElementById("Title").value,
             Locales: document.getElementById("Locales").value,
@@ -276,28 +253,26 @@ Date:
             Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
 
         }
-var counter = 0
+        let alertmessage = "Please fill out and correct these inputs"
         for(let i=0;i<Object.values(obj).length;i++) {
             if(i==0||i==1||i==2||i==3) {
                 if (Object.values(obj)[i] == "") {
-                    counter++
-                    alertmessage += `\n ${counter}: Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
+                    alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
                 }
             }
         }
 
         if(Object.values(obj)[4].length!==23){
-            counter++
-            alertmessage += `\n ${counter}. Fill out your date `
+            alertmessage += `\n * Fill out your date `
         }
         if(Object.values(obj)[5].length<4){
-            counter++
-            alertmessage += `\n ${counter}. Fill out your dutation `
+            alertmessage += `\n * Fill out your dutation `
         }
 
-        if (counter>0){
+        if (alertmessage!=="Please fill out and correct these inputs"){
             return alert(alertmessage)
         }
+        // Samme kode som i register
         fetch('/registerLesson/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
             return res.text();
         })
@@ -313,14 +288,7 @@ var counter = 0
             .catch((e)=>{
                 console.log(e.name+"\n"+e.description);
             });
-
     })
-
-
-
-
 </script>
-
-
 </body>
 </html>
