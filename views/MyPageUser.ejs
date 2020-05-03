@@ -51,50 +51,56 @@
 <br>
 <script>
     function getUserInfo () {
-
-
+        /* OPTIMERING AF KODE:
             let cookieInfo = document.cookie
-            console.log(cookieInfo)
-            if(cookieInfo.includes(";")) {
-                for(i=0;i<cookieInfo.split(';').length;i++){
-                    if(cookieInfo.split(';')[i].includes("username")){
-                        var usernameValue = cookieInfo.split(';')[i].split("=")[1]
+            console.log(cookieInfo) */
+        // document cookie vil seperere ved hjælp af et ";" i tilfælde af flere cookies
+        // der kan være en mulig bug hvis et brugernavn indeholder ";"
+            if(document.cookie.includes(";")) {
+                for(i=0;i<document.cookie.split(';').length;i++){
+                    if(document.cookie.split(';')[i].includes("username")){
+                        var usernameValue = document.cookie.split(';')[i].split("=")[1]
                     }
                 }
-            } else {
-                var usernameValue = cookieInfo.split("=")[1]
+            } // else hvis der kun er én cookie
+            else {
+                var usernameValue = document.cookie.split("=")[1]
             }
         console.log(usernameValue);
-
+        // sender info om usernamevalue. Prøver at finde en bruger med det username.
+        // laver derefter et output, som er et div.
         fetch("http://localhost:3000/userInfo?username="+usernameValue).then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
 
-
+            // ignorere nogen i'er som man ikke gider at se
             for(i=0;i<Object.keys(data).length;i++){
 if(i==0||i==10||i==7||i==9){
     console.log(`Ignore ${i}`)
 } else{
-                // Text
-                var div1 = document.createElement("div");
+                // Text (OPTIMERET KODE)
+                // var div1 = document.createElement("div");
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                div1.appendChild(p);
+                // div1.appendChild(p);
+                parent.appendChild(p)
 
                 // Value
-                var div2 = document.createElement("div");
+                // var div2 = document.createElement("div");
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                div2.appendChild(p);
+                // div2.appendChild(p);
+                parent.appendChild(p)
 
-                parent.appendChild(div1);
-                parent.appendChild(div2);
+                //parent.appendChild(div1);
+                //parent.appendChild(div2);
             }}
 
             var div3= document.createElement("div");
             var button = document.createElement("button");
-
+            // eventlistener venter på at der bliver trykket på knappen
+            // for at ændre på info ved hjælp af window.location.replace
             button.addEventListener("click", function() {
                 window.location.replace("/changeuserinfo")
             })
