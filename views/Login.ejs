@@ -79,24 +79,38 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
         if(document.getElementById("Username").value=="" ){
            return  alert("Please enter your username")
         }
-
         if(document.getElementById("Password").value=="" ){
            return  alert("Please enter your password")
         }
+        /* OPTIMERET KODE
         let array = JSON.stringify([
             document.getElementById("Username").value,
             document.getElementById("Password").value
         ])
-        console.log(array)
+        console.log(array) */
 
-        var options = {
+        // OPTIMERET KODE Options er indholdet man sender med fetchen
+        /* var options = {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
             },
-            body: array
-        };
-        fetch("/loginuser",options)
+            body: JSON.stringify([
+                document.getElementById("Username").value,
+                document.getElementById("Password").value
+            ])
+        }; */
+
+        fetch("/loginuser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify([
+                document.getElementById("Username").value,
+                document.getElementById("Password").value
+            ])
+        })
             .then((res)=>{
                 return res.text();
             })
@@ -107,10 +121,11 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
                 if(data == "Username doesn't exist"){
                     return alert(data)
                 }
-
+                // relocated til adminside hvis man er admin 
                if(JSON.parse(data)[1]==="Admin"){
                    return window.location.href = "/adminSite";
                }
+                // relocated til mypageuser hvis man er customer 
                 if(JSON.parse(data)[1]==="Customer"){
                 document.cookie = `username=${JSON.parse(data)[0]}`
                 window.location.href = "/myPageUser";}
@@ -118,9 +133,7 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
             .catch((e)=>{
                 console.log(e.name+"\n"+e.description);
             });
-
     })
-
 </script>
 </body>
 </html>
