@@ -11,7 +11,7 @@ const Lesson = require("./models/lesson")
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser')
 
-
+const validator = require(`mongoose-unique-validator`);
 app.use(expressSession({ //Opretter en session.
     secret: 'Temno Player'
 }));
@@ -85,6 +85,7 @@ app.post('/registerUser/:userInfo', (req,res) => {
 });
 
 app.post('/registerlesson/:lessonInfo', (req,res) => {
+    console.log(req.session);
     User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
         if(result){
             console.log(result);

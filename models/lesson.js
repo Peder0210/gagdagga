@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-
+const uniqueValidator = require(`mongoose-unique-validator`);
 const lessonsSchema = new Schema ({
     Title:  {
         type: String,
@@ -15,6 +15,6 @@ const lessonsSchema = new Schema ({
         type: Date,
         default: Date.now}
 });
-
+lessonsSchema.plugin(uniqueValidator);
 const lesson = mongoose.model('lesson', lessonsSchema);
 module.exports = lesson;
