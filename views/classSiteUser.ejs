@@ -68,38 +68,31 @@
                 let listOfID = []
                 let cookie = document.cookie
 
-                console.log(cookie)
-                if(cookie.includes(";")) {
-                    var getQuery = cookie.split(';');
-                    for(let i=0;i<getQuery.length;i++){
-                        if(getQuery[i].includes("username"))
-                            var cookieUsername = getQuery[i].split('=')[1];
+                if(document.cookie.includes(";")) {
+                    for(i=0;i<document.cookie.split(';').length;i++){
+                        if(document.cookie.split(';')[i].includes("username")){
+                            var cookieUsername = document.cookie.split(';')[i].split("=")[1]
+                        }
                     }
-
-                } else{
-                    var cookieUsername = cookie.split("=")[1]
+                } // else hvis der kun er én cookie
+                else {
+                    var cookieUsername = document.cookie.split("=")[1]
                 }
                 console.log(cookieUsername)
                 for(var j = 0; j< data.length; j++) {
-                    var div3 = document.createElement("div");
+
                     var h1 = document.createElement("h1");
                     h1.appendChild(document.createTextNode("Lektion!!"));
-                    div3.appendChild(h1);
-                    parent.appendChild(div3);
+                    parent.appendChild(h1);
 
-
-                    var div4 = document.createElement("div");
                     var h1 = document.createElement("h1");
                     h1.appendChild(document.createTextNode(""));
-                    div4.appendChild(h1);
-                    parent.appendChild(div4);
+                    parent.appendChild(h1);
 
                     let lessonPropertyNames = ["Participantnames", "_id", "Title", "Locales", "Participants","Teachers" , "Time", "Duration", "Timestamp","_v"];
 
-
                     listOfLessons.push(data[j][lessonPropertyNames[2]])
                     console.log(listOfLessons)
-
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
                         if(i==1){
@@ -109,23 +102,19 @@
                         console.log(`Ignore ${i} in loop`)}    else
                          {
                             // Text
-                            var div1 = document.createElement("div");
                             var p = document.createElement("p");
                             p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
-                            div1.appendChild(p);
+                            parent.appendChild(p);
 
                             // Value
-                            var div2 = document.createElement("div");
                             var p = document.createElement("p");
                             p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
-                            div2.appendChild(p);
+                            parent.appendChild(p);
 
-                            parent.appendChild(div1);
-                            parent.appendChild(div2);
                             console.log(data[j][lessonPropertyNames[i]])
                         }
                     }
-                    var div5 = document.createElement("div");
+                    var div = document.createElement("div");
                     var button = document.createElement("button");
 
                     console.log(cookieUsername)
@@ -150,27 +139,18 @@
                     })
 
                     button.appendChild(document.createTextNode("Book lektion"));
-                    div5.appendChild(button);
-                    parent.appendChild(div5);
+                    div.appendChild(button);
+                    parent.appendChild(div);
 
-
-                    var div6 = document.createElement("div");
-                    var h2 = document.createElement("h1");
-                    h2.appendChild(document.createTextNode(""));
-                    div6.appendChild(h2);
-                    parent.appendChild(div6);
-
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(""));
+                    parent.appendChild(p);
                 }
             }).catch((e) => {
                 console.log(e);
             })
-
         }
-
 </script>
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 </body>
-
-
-
 </html>
