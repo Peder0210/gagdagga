@@ -86,7 +86,8 @@ app.post('/registerUser/:userInfo', (req,res) => {
 
 app.post('/registerlesson/:lessonInfo', (req,res) => {
     console.log(req.session);
-    User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+
+    User.findOne(    {$and:[{_id:req.session.userId},{Usertype: "Admin"}]},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
         if(result){
             console.log(result);
             let lessonInfo = JSON.parse(req.params.lessonInfo);
@@ -148,7 +149,7 @@ app.post('/AdminSite', async (req,res) => {
 
 app.get("/userInfo", (req,res) =>{
     console.log(req.session);
-  User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+    User.findOne(    {$and:[{_id:req.session.userId},{Usertype: "Customer"}]},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
        if(result){
            console.log(result);
                res.send(JSON.stringify(result)); // Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
@@ -161,7 +162,7 @@ app.get("/userInfo", (req,res) =>{
 
 
 app.get('/lessonboard', (req,res)=> {
-    User.findOne({_id:req.session.userId},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+    User.findOne(    {$and:[{_id:req.session.userId},{Usertype: "Admin"}]},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
         if(result){
             Lesson.find({Duration: {$gt: 0}}, (error, result) => {
                 if (result) {
@@ -175,9 +176,31 @@ app.get('/lessonboard', (req,res)=> {
         }
     })
 
+
+
     //find alle duration hvor man laver et null (det gør vi med alle).
 });
 
+
+app.get('/lessonboard2', (req,res)=> {
+    User.findOne(    {$and:[{_id:req.session.userId},{Usertype: "Customer"}]},(error,result)=>{ //Søger på users i databasen og bliver tildelt et unikt session id.
+        if(result){
+            Lesson.find({Duration: {$gt: 0}}, (error, result) => {
+                if (result) {
+                    res.send(JSON.stringify(result))
+                } else {
+                    res.send("No profiles found")
+                }
+            }) //find alle duration hvor man laver et null// Tjekker userid og den user som er logget ind så man undgår at komme ind på andre brugeres side og se deres oplysninger.
+        } else{
+            res.send("error2")
+        }
+    })
+
+
+
+    //find alle duration hvor man laver et null (det gør vi med alle).
+});
 app.get('/mylessonboard/:lesson', (req,res)=> {
     UserLesson.find({userid: req.session.userId}, (error,result) => {
         if(result){
@@ -341,7 +364,7 @@ app.get("/getuserinfo", (req,res) =>{
 
 
 app.put('/changeuserinfo/:userinfo', (req,res)=> {
-    User.updateOne({_id: req.session.userId},{$set: JSON.parse(req.params.userinfo)}, (error, result) => {
+    User.updateOne(    {$and:[{_id:req.session.userId},{Usertype: "Customer"}]},{$set: JSON.parse(req.params.userinfo)}, (error, result) => {
         if (result) {
             console.log("ggg");
             if(error){
