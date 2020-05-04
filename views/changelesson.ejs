@@ -30,25 +30,19 @@
                 if(i==7||i==8||i==0){
                     console.log(`Ignore ${i} in loop`)
                 } else if(i==5){
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Time of day:"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Time of day:"));
+                    parent.appendChild(p);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode(""));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(""));
+                    parent.appendChild(p);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Hour"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Hour"));
+                    parent.appendChild(p);
 
-                    var div3 = document.createElement("div")
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select1"
                     for(j=0;j<24;j++) {
@@ -71,17 +65,15 @@
                         select.appendChild(option);
                     }
 
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Minute"));
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    var div = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Minute"));
+                    parent.appendChild(div);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select2"
                     for(j=0;j<60;j+=5) {
@@ -104,26 +96,22 @@
                         select.appendChild(option);
                     }
 
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Date:"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode(""));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Date:"));
+                    parent.appendChild(p);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Day"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(""));
+                    parent.appendChild(p);
+
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Day"));
+                    parent.appendChild(p);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select3"
                     for(j=1;j<32;j++) {
@@ -145,15 +133,14 @@
                         }
                         select.appendChild(option);
                     }
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Month"));
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Month"));
+                    parent.appendChild(p);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select4"
                     for(j=1;j<13;j++) {
@@ -177,17 +164,14 @@
                         }
                         select.appendChild(option);
                     }
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Year"));
+                    parent.appendChild(p);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Year"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-
-                    var div3 = document.createElement("div")
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select5"
                     for(j=2019;j<2023;j++) {
@@ -201,29 +185,24 @@
                             }
                         select.appendChild(option);
                     }
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
                 } else if(i==6){
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Duration:"));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode(""));
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Duration:"));
+                    parent.appendChild(p);
 
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Hour"));
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode(""));
+                    parent.appendChild(p);
 
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Hour"));
+                    parent.appendChild(p);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select6"
                     for(j=0;j<3;j++) {
@@ -235,21 +214,19 @@
 
                                 option.selected = true
                             }
-
                         select.appendChild(option);
                     }
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Minute"));
+                    var div = document.createElement("div");
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Minute"));
 
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    div.appendChild(p);
+                    parent.appendChild(div);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select7"
                     for(j=0;j<60;j+=5) {
@@ -271,33 +248,27 @@
                         }
                         select.appendChild(option);
                     }
-
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
                 }else{
                     // Text
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                    div1.appendChild(p);
+                    parent.appendChild(p);
 
                     // Value
-                    var div2 = document.createElement("div");
+                    var div = document.createElement("div");
                     var input = document.createElement("input");
                     input.id = i
                     input.value = data[Object.keys(data)[i]]
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                    div2.appendChild(input);
-
-                    parent.appendChild(div1);
-                    parent.appendChild(div2);
+                    div.appendChild(input);
+                    parent.appendChild(div);
                 }}
 
-
-            var div5 = document.createElement("div");
+            var div = document.createElement("div");
             var button = document.createElement("button");
-
 
             button.addEventListener("click", function() {
                 let obj = { Title: document.getElementById("1").value,
@@ -307,33 +278,26 @@
                     Time: `KL ${document.getElementById("select1").value}.${document.getElementById("select2").value} ---  ${document.getElementById("select3").value}-${document.getElementById("select4").value}-${document.getElementById("select5").value}` ,
                     Duration: `${document.getElementById("select6").value}.${document.getElementById("select7").value}`
                 }
-                let values = Object.values(obj)
-                let names = Object.getOwnPropertyNames(obj)
+
                 let alertmessage = "Please fill out or correct these fields:"
-                let counter = 0
 
-                for(let i=0;i<values.length;i++) {
+                for(let i=0;i<Object.values(obj).length;i++) {
                     if(i==0||i==1||i==3) {
-                        if (values[i] == "") {
-                            counter++
-                            alertmessage += `\n ${counter}: Fill out your ${names[i]} `
-
-
+                        if (Object.values(obj)[i] == "") {
+                            alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
                         }
                     }
-
                 }
+
                 if(isNaN(document.getElementById("3").value)||document.getElementById("3").value==""){
                     console.log(document.getElementById("2").value.length)
-                    counter++
-                    alertmessage += `\n ${counter}. Your Participants must be a number `
+                    alertmessage += `\n * Your Participants must be a number `
                 }
-                if (counter>0){
+                if (alertmessage!=="Please fill out or correct these fields:"){
                     return alert(alertmessage)
                 }
 
                 fetch('/changelessoninfomation/'+JSON.stringify([lessonValue, obj]),{method: 'PUT'}).then((res)=>{
-
                     return res.text();
                 })
                     .then((data)=> {
@@ -341,9 +305,7 @@
                         if (data == "error") {
                             alert("Lesson doesn't have an unique title")
                         } else {
-
                             // Create session cookie here, for continous authentication
-
                             return window.location.replace("/classSiteAdmin")
                         } })
                     .catch((e)=>{
@@ -351,8 +313,8 @@
                     });
             })
             button.appendChild(document.createTextNode("Ændre information"));
-            div5.appendChild(button);
-            parent.appendChild(div5);
+            div.appendChild(button);
+            parent.appendChild(div);
         }).catch((e) => {
             console.log(e);
         })}
@@ -360,7 +322,5 @@
 
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 <br>
-
-
 </body>
 </html>
