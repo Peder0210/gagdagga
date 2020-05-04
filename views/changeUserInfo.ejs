@@ -8,46 +8,41 @@
 <br>
 <script>
     function changeUserInfo () {
-
-
         fetch("/getuserinfo").then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
-
+            // looper gennem keys for data,
             for(i=0;i<Object.keys(data).length;i++){
                 if(i==0||i==9||i==7||i==8||i==10){
                     console.log(`Ignore ${i} in loop`)
                 }else if(i==2) {
-                    var div1 = document.createElement("div");
+                    // vi har en else if for birthday, fordi de ikke kan være i inputsfelt ligesom de andre felter.
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Birthday:"));
-                    div1.appendChild(p);
-                    parent.appendChild(div1);
+                    parent.appendChild(p);
 
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(""));
-                    div1.appendChild(p);
-                    parent.appendChild(div1);
+                    parent.appendChild(p);
 
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Day"));
-                    div1.appendChild(p);
-                    parent.appendChild(div1);
+                    parent.appendChild(p);
 
-                    var div3 = document.createElement("div")
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select1"
+                    // Loopet repræsentere datoerne/dagene i løbet af en måned
                     for(j=1;j<32;j++) {
-
                         var option = document.createElement("option");
                         if(j<10) {
                             option.value = `0${j}`
                             option.text = `0${j}`
+                            // vi tager keys fra birthay og laver en substiring fra 0 til 2
                             console.log(data[Object.keys(data)[i]].substring(0,2))
                             if(`0${j}`==data[Object.keys(data)[i]].substring(0,2)) {
+                                // den j værdi der svare til vores fødselsdag bliver selected som placeholder-værdien
                                 option.selected = true
                             }
                         } else{
@@ -59,21 +54,19 @@
                         }
                         select.appendChild(option);
                     }
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Month"));
-                    div1.appendChild(p);
-                    parent.appendChild(div1);
+                    parent.appendChild(p);
 
-                    var div3 = document.createElement("div")
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select2"
                     console.log(data[Object.keys(data)[i]].substring(3,5))
+                    // fordi det omhandler måneder looper vi til 12
                     for(j=1;j<13;j++) {
-
                         var option = document.createElement("option");
                         if(j<10) {
                             option.value = `0${j}`
@@ -90,31 +83,28 @@
                         }
                         select.appendChild(option);
                     }
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    div.appendChild(select);
+                    parent.appendChild(div)
 
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Year"));
-                    div1.appendChild(p);
+                    parent.appendChild(p);
 
-                    var div2 = document.createElement("div");
+                    var div = document.createElement("div");
                     var input = document.createElement("input");
                     input.id = i
 
                     input.value = data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)));
-                    div2.appendChild(input);
-                    parent.appendChild(div1);
-                    parent.appendChild(div2);
-                } else if(i==3){
-                    var div5 = document.createElement("div");
-                    var p3 = document.createElement("p");
-                    p3.appendChild(document.createTextNode("Gender"));
+                    div.appendChild(input);
 
-                    div5.appendChild(p3);
-                    parent.appendChild(div5);
-                    var div3 = document.createElement("div")
+                    parent.appendChild(div);
+                } else if(i==3){
+                    var p = document.createElement("p");
+                    p.appendChild(document.createTextNode("Gender"));
+                    parent.appendChild(p);
+
+                    var div = document.createElement("div")
                     var select = document.createElement("select")
                     select.id = "select3"
                     let array = ["Man","Woman","Else"]
@@ -131,26 +121,24 @@
                         }
                         select.appendChild(option);
                     }
-                    div3.appendChild(select);
-                    parent.appendChild(div3)
+                    div.appendChild(select);
+                    parent.appendChild(div)
                 } else {
 
-                    var div1 = document.createElement("div");
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode(Object.keys(data)[i]));
+                    parent.appendChild(p);
 
-                    div1.appendChild(p);
-
-                    var div2 = document.createElement("div");
+                    var div = document.createElement("div");
                     var input = document.createElement("input");
                     input.id = i
                     input.value = data[Object.keys(data)[i]]
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                    div2.appendChild(input);
-                    parent.appendChild(div1);
-                    parent.appendChild(div2);
+                    div.appendChild(input);
+                    parent.appendChild(div);
                 }}
-            var div5 = document.createElement("div");
+
+            var div = document.createElement("div");
             var button = document.createElement("button");
             button.addEventListener("click", function() {
                 let obj = { Name: document.getElementById("1").value,
@@ -163,35 +151,28 @@
                 let values = Object.values(obj)
                 let names = Object.getOwnPropertyNames(obj)
                 let alertmessage = "Please fill out or correct these fields:"
-                let counter = 0
 
-                for(let i=0;i<values.length;i++) {
+                for(let i=0;i<Object.values(obj).length;i++) {
                     if(i==0||i==5) {
-                        if (values[i] == "") {
-                            counter++
-                            alertmessage += `\n ${counter}: Fill out your ${names[i]} `
+                        if (Object.values(obj)[i] == "") {
+                            alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
                         }
                     }
                 }
                 if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
                     console.log(document.getElementById("2").value.length)
-                    counter++
-                    alertmessage += `\n ${counter}. Your Birthday must consist of 4 digits `
+                    alertmessage += `\n * Your Birthday must consist of 4 digits `
                 }
-                if(values[3].length!==8||isNaN(document.getElementById("4").value)){
-                    console.log(values[3])
-                    counter++
-                    alertmessage += `\n ${counter}. Your phonenumber must consist of 8 digits `
+                if(Object.values(obj)[3].length!==8||isNaN(document.getElementById("4").value)){
+                    console.log(Object.values(obj)[3])
+                    alertmessage += `\n * Your phonenumber must consist of 8 digits `
                 }
-
-                if(values[4].includes("@")==false){
-                    counter++
-                    alertmessage += `\n ${counter}. Your email must include an @`
+                if(Object.values(obj)[4].includes("@")==false){
+                    alertmessage += `\n * Your email must include an @`
                 }
-                if (counter>0){
+                if (alertmessage!=="Please fill out or correct these fields:"){
                     return alert(alertmessage)
-                }
-                fetch('/changeuserinfo/'+JSON.stringify(obj),{method: 'PUT'}).then((res)=>{
+                } fetch('/changeuserinfo/'+JSON.stringify(obj),{method: 'PUT'}).then((res)=>{
 
                     return res.text();
                 })
@@ -208,8 +189,8 @@
                     });
             })
             button.appendChild(document.createTextNode("Ændre information"));
-            div5.appendChild(button);
-            parent.appendChild(div5);
+            div.appendChild(button);
+            parent.appendChild(div);
         }).catch((e) => {
             console.log(e);
         })
