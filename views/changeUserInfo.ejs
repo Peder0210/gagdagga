@@ -8,20 +8,9 @@
 <br>
 <script>
     function changeUserInfo () {
-        let cookieInfo = document.cookie
-        console.log(cookieInfo)
-        if(cookieInfo.includes(";")) {
-            for(i=0;i<cookieInfo.split(';').length;i++){
-                if(cookieInfo.split(';')[i].includes("username")){
-                    var usernameValue = cookieInfo.split(';')[i].split("=")[1]
-                }
-            }
-        } else {
-            var usernameValue = cookieInfo.split("=")[1]
-        }
-        console.log(usernameValue);
 
-        fetch("/getuserinfo/" + usernameValue).then((res) => {
+
+        fetch("/getuserinfo").then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -70,8 +59,8 @@
                         }
                         select.appendChild(option);
                     }
-                        div3.appendChild(select);
-                        parent.appendChild(div3)
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
 
                     var div1 = document.createElement("div");
                     var p = document.createElement("p");
@@ -133,17 +122,17 @@
 
                         var option = document.createElement("option");
 
-                            option.value = array[j]
-                            option.text = array[j]
-                            console.log(data[Object.keys(data)[i]])
-                            if(array[j]==data[Object.keys(data)[i]]) {
+                        option.value = array[j]
+                        option.text = array[j]
+                        console.log(data[Object.keys(data)[i]])
+                        if(array[j]==data[Object.keys(data)[i]]) {
 
-                                option.selected = true
-                            }
-                        select.appendChild(option);
+                            option.selected = true
                         }
-                div3.appendChild(select);
-                parent.appendChild(div3)
+                        select.appendChild(option);
+                    }
+                    div3.appendChild(select);
+                    parent.appendChild(div3)
                 } else {
 
                     var div1 = document.createElement("div");
@@ -202,7 +191,7 @@
                 if (counter>0){
                     return alert(alertmessage)
                 }
-                fetch('/changeuserinfo/'+JSON.stringify([usernameValue, obj]),{method: 'PUT'}).then((res)=>{
+                fetch('/changeuserinfo/'+JSON.stringify(obj),{method: 'PUT'}).then((res)=>{
 
                     return res.text();
                 })
@@ -211,9 +200,7 @@
                         if (data == "error") {
                             alert("User doesn't have an unique username")
                         } else {
-
                             // Create session cookie here, for continous authentication
-                            document.cookie = `username=${obj.Username}`
                             return window.location.replace("/myPageUser")
                         } })
                     .catch((e)=>{
