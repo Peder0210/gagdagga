@@ -50,68 +50,49 @@
 
 <br>
 
-<body onload="kasper()" >
+<body onload="classSiteAdmin()" >
 <br>
-<script src="models/lesson.js"></script>
-<script src="controllers/ggggg.js"></script>
-<script type="text/javascript"  >
-    function kasper () {
+
+<script type="text/javascript">
+    function classSiteAdmin () {
         fetch("http://localhost:3000/lessonboard").then((res) => {
-            return  res.json();
+            return res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
             let lessonTitles = []
             for(var j = 0; j< data.length; j++) {
-                var div3 = document.createElement("div");
                 var h1 = document.createElement("h1");
-                var lessonnumber = j+1
+                h1.appendChild(document.createTextNode(`Lektion Nr. ${j+1}`));
+                parent.appendChild(h1);
 
-                h1.appendChild(document.createTextNode(`Lektion Nr. ${lessonnumber} `));
-                div3.appendChild(h1);
-                parent.appendChild(div3);
-
-
-                var div4 = document.createElement("div");
                 var h1 = document.createElement("h1");
                 h1.appendChild(document.createTextNode(""));
-                div4.appendChild(h1);
-                parent.appendChild(div4);
+                parent.appendChild(h1);
 
                 let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp", "_v"];
 
-
+                // vi pusher titlen til de forskellige lektioner til et array
                 lessonTitles.push(data[j][lessonPropertyNames[1]])
-
-
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i==0||i==7||i==8){
                         console.log(`Ignore ${i} in loop`)
                     } else {
 
-
-
                         // Text
-                        var div1 = document.createElement("div");
                         var p = document.createElement("p");
                         p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
-                        div1.appendChild(p);
+                        parent.appendChild(p);
 
                         // Value
-                        var div2 = document.createElement("div");
                         var p = document.createElement("p");
                         p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
-                        div2.appendChild(p);
-
-                        parent.appendChild(div1);
-                        parent.appendChild(div2);
-
+                        parent.appendChild(p);
                     } }
 
-                var div5 = document.createElement("div");
+                var div = document.createElement("div");
                 var button = document.createElement("button");
-
-
+                
                 button.id = lessonTitles[j]
                 button.addEventListener("click", function() {
 
@@ -128,52 +109,40 @@ fetch('/deletelesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                 })
 
                 button.appendChild(document.createTextNode("Slet lektionen"));
-                div5.appendChild(button);
-                parent.appendChild(div5);
+                div.appendChild(button);
+                parent.appendChild(div);
 
+                var div = document.createElement("div");
+                var h1 = document.createElement("h1");
+                h1.appendChild(document.createTextNode(""));
+                div.appendChild(h1);
+                parent.appendChild(div);
 
-                var div6 = document.createElement("div");
-                var h2 = document.createElement("h1");
-                h2.appendChild(document.createTextNode(""));
-                div6.appendChild(h2);
-                parent.appendChild(div6);
-
-
-                var div7 = document.createElement("div");
+                var div = document.createElement("div");
                 var button2 = document.createElement("button");
-
 
                 button2.id = lessonTitles[j]
                 button2.addEventListener("click", function() {
-                    let array8 = this.id
-                    document.cookie = `lesson=${array8}`
+                    document.cookie = `lesson=${this.id}`
                    window.location.replace("/changelesson")
                 })
 
                 button2.appendChild(document.createTextNode("Ændre informationer"));
-                div7.appendChild(button2);
-                parent.appendChild(div7);
+                div.appendChild(button2);
+                parent.appendChild(div);
 
-
-                var div8 = document.createElement("div");
-                var h3 = document.createElement("h1");
-                h3.appendChild(document.createTextNode(""));
-                div8.appendChild(h3);
-                parent.appendChild(div8);
-
-
+                var div = document.createElement("div");
+                var h1 = document.createElement("h1");
+                h1.appendChild(document.createTextNode(""));
+                div.appendChild(h1);
+                parent.appendChild(div);
             }
         }).catch((e) => {
             console.log(e);
         })
-
     }
-
 </script>
 <div id="output" style="display:grid;grid-template-columns:auto auto;">
 </div>
 </body>
-
-
-
 </html>
