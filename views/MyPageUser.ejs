@@ -108,6 +108,29 @@ if(i==0||i==10||i==7||i==9){
             button.appendChild(document.createTextNode("Ændre informationer"));
             div3.appendChild(button);
             parent.appendChild(div3);
+
+            var div3= document.createElement("div");
+            var button = document.createElement("button");
+            // eventlistener venter på at der bliver trykket på knappen
+            // for at ændre på info ved hjælp af window.location.replace
+            button.addEventListener("click", function() {
+                fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
+
+                    if(response.ok){
+                        alert("Your account has been deleted")
+                        window.location.replace("/login")
+                    }
+                    throw new Error('Request failed')
+                }).catch(function(error){
+                    console.log(error)
+                })
+            })
+
+
+            button.appendChild(document.createTextNode("Delete account"));
+            div3.appendChild(button);
+            parent.appendChild(div3);
+
         }).catch((e) => {
             console.log(e);
         })

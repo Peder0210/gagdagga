@@ -1,6 +1,8 @@
 const express = require('express');
+const bodyParse = require(`body-parser`);
 const { Client } = require('pg');
 const connectionString = "postgres://postgres:AlM@localhost:5432/postgres";
+
 const client = new Client({
     connectionString: connectionString,
     user: "postgres",
@@ -8,18 +10,19 @@ const client = new Client({
     database: "postgres",
     port: 5432
 });
+
 client.connect();
-var app = express();
+const app = express();
+app.use(bodyParse.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+)
 app.set('port', process.env.PORT || 4000);
-app.get('/', function (req, res, next) {
-    client.query('SELECT * FROM dinners', function (err, result) {
-        if (err) {
-            console.log(err);
-            res.status(400).send(err);
-        }
-        res.status(200).send(result.rows);
-    });
-});
-app.listen(4000, function () {
-    console.log('Server is running.. on Port 4000');
-});
+app.get('/', (request, response) => {
+    response.json({ info: 'Node.js, Express, and Postgres API' })
+})
+app.listen(port, () => {
+    console.log(`App running on port ${port}.`)
+})

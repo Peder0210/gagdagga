@@ -240,8 +240,14 @@ Date:
     <input
         id="createLesson_btn"
         type="submit"
-        value="Opret undervisningstime"
+        value="Opret undervisningstime">
     <br>
+<br>
+<input
+        id="deleteUser"
+        type="submit"
+        value="Delete account"/>
+
 <script>
     // Samme kode som i register
     document.getElementById("createLesson_btn").addEventListener("click", function() {
@@ -291,6 +297,26 @@ Date:
                 console.log(e.name+"\n"+e.description);
             });
     })
+document.getElementById("deleteUser").addEventListener("click", function() {
+    fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
+
+        if(response.ok){
+            alert("Your account has been deleted")
+            window.location.replace("/login")
+        }
+        throw new Error('Request failed')
+    }).catch(function(error){
+        console.log(error)
+    })
+})
+    // eventlistener venter på at der bliver trykket på knappen
+    // for at ændre på info ved hjælp af window.location.replace
+
+
+
+
+
+
 </script>
 </body>
 </html>

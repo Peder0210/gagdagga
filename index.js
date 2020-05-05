@@ -1,13 +1,9 @@
 const express = require('express');
 const app = new express();
-const bcrypt  = require('bcrypt');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const User = require('./models/user');
-const UserLesson = require(`./models/userlesson`);
 const expressSession = require('express-session');
 const logoutController = require("./controllers/logout");
-const Lesson = require("./models/lesson");
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
 const registerLesson = require ("./controllers/registerLesson");
@@ -24,6 +20,7 @@ const changeLessonInfo = require("./controllers/changeLessonInfo");
 const changeLessonInformation = require("./controllers/changeLessonInformation");
 const getUserInfo = require("./controllers/getUserInfo");
 const changeUserInfo = require("./controllers/changeUserInfo");
+const deleteuser = require("./controllers/deleteuser");
 app.use(expressSession({ //Opretter en session.
     secret: 'Temno Player'
 }));
@@ -89,6 +86,8 @@ app.get('/mylessonboard/:lesson', myLessonBoard);
 
 
 app.delete('/deletelesson/:lesson', deleteLesson);
+
+app.delete('/deleteUser', deleteuser);
 
 app.put('/booklesson/:lesson', bookLesson);
 
