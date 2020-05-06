@@ -37,7 +37,6 @@ mongoose.connect('mongodb://localhost:27017/danseskole'), {useNewUrlParser:true}
 
 
 app.set('view engine','ejs');
-app.use(express.static('puplic'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(flash());

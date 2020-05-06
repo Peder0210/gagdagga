@@ -1,50 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <div class="topnav">
-        <a class="active" href="/adminPage">Opret undervisningstime</a>
-        <a href="/lessonsAdmin">Alle undervisningstimer</a>
-        <li class="nav-item">
-            <a class="nav-link" href="/logout">Log ud</a>
-        </li>    </div>
-
-        <h1> Opret undervisningstime</h1>
-
-</head>
-<style>
-    /* Her har vi lavet en navigationslinje/bar ved hjælp af eksemplet i denne kilde: https://www.w3schools.com/howto/howto_js_topnav.asp
-    /* Add a black background color to the top navigation */
-    .topnav {
-        overflow: hidden;
-        background-color: #4C4480;
-    }
-
-    /* Style the links inside the navigation bar */
-    .topnav a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-    }
-    .navLogOut {
-        float: right !important;
-    }
-    /* Change the color of links on hover */
-    .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-    }
-
-    /* Add a color to the active/current link */
-    .topnav a.active {
-        background-color: #C43796;
-        color: white;
-    }
-</style>
+<%- include('layouts/header_Admin') -%>
+<%- include('layouts/style') -%>
 <body>
 
 <br>
