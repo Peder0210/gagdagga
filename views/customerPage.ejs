@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <div style="" class="topnav">
-        <a class="active" href="/myPageUser">Min side</a>
-        <a href="/myClasses">Mine undervisningstimer</a>
-        <a href="/classSiteUser">Alle undervisningstimer</a>
+        <a class="active" href="/customerPage">Min side</a>
+        <a href="/myBookings">Mine undervisningstimer</a>
+        <a href="/lessonsCustomer">Alle undervisningstimer</a>
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log ud</a>
         </li>
@@ -69,7 +69,7 @@
         console.log(usernameValue);*/
         // sender info om usernamevalue. Prøver at finde en bruger med det username.
         // laver derefter et output, som er et div.
-        fetch("http://localhost:3000/userInfo").then((res) => {
+        fetch("http://localhost:3000/findCustomer").then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -102,7 +102,7 @@ if(i==0||i==10||i==7||i==9){
             // eventlistener venter på at der bliver trykket på knappen
             // for at ændre på info ved hjælp af window.location.replace
             button.addEventListener("click", function() {
-                window.location.replace("/changeuserinfo")
+                window.location.replace("/updateUser")
             })
 
             button.appendChild(document.createTextNode("Ændre informationer"));

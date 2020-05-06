@@ -21,7 +21,7 @@
         }
         console.log(lessonValue);
 
-        fetch("/changelessoninfo/" + lessonValue).then((res) => {
+        fetch("/findOneLesson/" + lessonValue).then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -297,7 +297,7 @@
                     return alert(alertmessage)
                 }
 
-                fetch('/changelessoninfomation/'+JSON.stringify([lessonValue, obj]),{method: 'PUT'}).then((res)=>{
+                fetch('/updateLesson/'+JSON.stringify([lessonValue, obj]),{method: 'PUT'}).then((res)=>{
                     return res.text();
                 })
                     .then((data)=> {
@@ -306,7 +306,7 @@
                             alert("Lesson doesn't have an unique title")
                         } else {
                             // Create session cookie here, for continous authentication
-                            return window.location.replace("/classSiteAdmin")
+                            return window.location.replace("/lessonsAdmin")
                         } })
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);

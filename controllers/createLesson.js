@@ -9,9 +9,9 @@ module.exports = (req,res) => {
     User.findOne({$and:[{_id:req.session.userId},{Usertype: "Admin"}]},(error,result)=>{
         if(result){
             console.log(result);
-            console.log(JSON.parse(req.params.lessonInfo));
+
             // Vi opretter en lesson. For at vi kan sende objektet lessonInfo gennem databasen, benytter vi JSON.parse
-            Lesson.create(JSON.parse(req.params.lessonInfo), (error2, result2) => {
+            Lesson.create(JSON.parse(req.params.lesson_obj), (error2, result2) => {
                 if (result2) {
                     // JSON.stringify gør, at vi henter dataen tilbage
                     res.send(JSON.stringify(result2));

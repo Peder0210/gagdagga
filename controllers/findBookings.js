@@ -1,9 +1,9 @@
 module.exports = (req,res)=> {
 
-    const UserLesson = require("../models/userlesson");
+    const Booking = require("../models/booking");
     const Lesson = require("../models/lesson");
 
-    UserLesson.find({userid: req.session.userId}, (error,result) => {
+    Booking.find({userid: req.session.userId}, (error,result) => {
         if(result){ // returnere ale userlessons som brugeren har booket.
             var temp = []; // her oprettes et array, hvor userlesson bliver tilføjet
             for(var i=0;i<result.length;i++){

@@ -8,7 +8,7 @@
 <br>
 <script>
     function changeUserInfo () {
-        fetch("/getuserinfo").then((res) => {
+        fetch("/findCustomer").then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -148,8 +148,7 @@
                     Email: document.getElementById("5").value ,
                     Username: document.getElementById("6").value
                 }
-                let values = Object.values(obj)
-                let names = Object.getOwnPropertyNames(obj)
+
                 let alertmessage = "Please fill out or correct these fields:"
 
                 for(let i=0;i<Object.values(obj).length;i++) {
@@ -172,7 +171,7 @@
                 }
                 if (alertmessage!=="Please fill out or correct these fields:"){
                     return alert(alertmessage)
-                } fetch('/changeuserinfo/'+JSON.stringify(obj),{method: 'PUT'}).then((res)=>{
+                } fetch('/updateUser/'+JSON.stringify(obj),{method: 'PUT'}).then((res)=>{
 
                     return res.text();
                 })
@@ -182,7 +181,7 @@
                             alert("User doesn't have an unique username")
                         } else {
                             // Create session cookie here, for continous authentication
-                            return window.location.replace("/myPageUser")
+                            return window.location.replace("/customerPage")
                         } })
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);

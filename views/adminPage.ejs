@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
 
     <div class="topnav">
-        <a class="active" href="/adminSite">Opret undervisningstime</a>
-        <a href="/classSiteAdmin">Alle undervisningstimer</a>
+        <a class="active" href="/adminPage">Opret undervisningstime</a>
+        <a href="/lessonsAdmin">Alle undervisningstimer</a>
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log ud</a>
         </li>    </div>
@@ -279,7 +279,7 @@ Date:
             return alert(alertmessage)
         }
         // Samme kode som i register
-        fetch('/registerLesson/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
+        fetch('/createLesson/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
             return res.text();
         })
             .then((data)=> {
@@ -291,7 +291,7 @@ Date:
                 } else {
                     // Create session cookie here, for continous authentication
                     alert(`Lesson ${document.getElementById("Title").value} has been created`);
-                    return window.location.replace("/adminSite")
+                    return window.location.replace("/adminPage")
                 } })
             .catch((e)=>{
                 console.log(e.name+"\n"+e.description);

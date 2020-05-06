@@ -3,30 +3,38 @@ const app = new express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressSession = require('express-session');
-const logoutController = require("./controllers/logout");
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-const registerLesson = require ("./controllers/registerLesson");
-const loginUserController = require("./controllers/loginUser");
-const registerUserController = require("./controllers/registerUser");
-const userInfo = require("./controllers/userInfo");
-const lessonBoard = require("./controllers/lessonBoard");
-const lessonBoard2 = require("./controllers/lessonBoard2");
-const myLessonBoard = require("./controllers/myLessonBoard");
+
+const createUser = require("./controllers/createUser");
+const createLesson = require ("./controllers/createLesson");
+const createBooking = require("./controllers/createBooking");
+
+const findCustomer = require("./controllers/findCustomer");
+const findLessonsCustomer = require("./controllers/findLessonsCustomer");
+const findLessonsAdmin = require("./controllers/findLessonsAdmin");
+const findBookings = require("./controllers/findBookings");
+const findOneLesson = require("./controllers/findOneLesson");
+
+const updateLesson = require("./controllers/updateLesson");
+const updateUser = require("./controllers/updateUser");
+
 const deleteLesson  = require("./controllers/deleteLesson");
-const bookLesson = require("./controllers/bookLesson");
-const cancelLesson = require("./controllers/cancelLesson");
-const changeLessonInfo = require("./controllers/changeLessonInfo");
-const changeLessonInformation = require("./controllers/changeLessonInformation");
-const getUserInfo = require("./controllers/getUserInfo");
-const changeUserInfo = require("./controllers/changeUserInfo");
-const deleteuser = require("./controllers/deleteuser");
+const deleteBooking = require("./controllers/deleteBooking");
+const deleteUser = require("./controllers/deleteUser");
+
+const login = require("./controllers/login");
+const logout = require("./controllers/logout");
+
+
+
+
 app.use(expressSession({ //Opretter en session.
     secret: 'Temno Player'
 }));
 
-mongoose.connect('mongodb://localhost:27017/wow'), {useNewUrlParser:true};
-var db = mongoose.connection;
+mongoose.connect('mongodb://localhost:27017/danseskole'), {useNewUrlParser:true};
+
 
 app.set('view engine','ejs');
 app.use(express.static('puplic'));
@@ -38,67 +46,64 @@ app.use(cookieParser('secret'));
 app.listen(3000,()=>{
    console.log("App listening on port 3000")
     });
-app.get('/adminsite', (req,res) =>{
-   res.render('adminsite')
+app.get('/adminPage', (req,res) =>{
+   res.render('adminPage')
 });
-app.get('/classSiteUser', (req,res)=>{
-    res.render('classSiteUser')
+app.get('/lessonsCustomer', (req,res)=>{
+    res.render('lessonsCustomer')
 });
-app.get('/changelesson', (req,res)=>{
-    res.render('changelesson')
+app.get('/updateLesson', (req,res)=>{
+    res.render('updateLesson')
 });
-app.get('/classSiteAdmin', ( req,res) => {
-    res.render('classSiteAdmin')
+app.get('/lessonsAdmin', ( req,res) => {
+    res.render('lessonsAdmin')
 });
-app.get('/changeuserinfo', (req,res) =>{
-    res.render('changeuserinfo')
+app.get('/updateUser', (req,res) =>{
+    res.render('updateUser')
 });
-app.get('/myClasses',  (req,res) =>{
-    res.render('myClasses')
+app.get('/myBookings',  (req,res) =>{
+    res.render('myBookings')
 });
-app.get('/register', (req,res) =>{
-    res.render('register')
+app.get('/createUser', (req,res) =>{
+    res.render('createUser')
 });
 
-app.post("/registerUser/:userInfo", registerUserController);
+app.get('/customerPage', (req,res) =>{
+    res.render('customerPage')
+});
 
 app.get("/login", (req,res) =>{
     res.render("login")
 });
 
-app.post('/loginuser', loginUserController);
+app.post("/createUser/:user_obj", createUser);
 
-app.get("/logout", logoutController);
+app.post("/createLesson/:lesson_obj", createLesson);
 
-app.get('/myPageUser', (req,res) =>{
-    res.render('myPageUser')
-});
+app.put('/createBooking/:lesson_id', createBooking);
 
-app.post("/registerlesson/:lessonInfo", registerLesson);
+app.post('/loginuser', login);
 
-app.get("/userInfo", userInfo);
+app.get("/logout", logout);
 
-app.get('/lessonboard', lessonBoard);
+app.get("/findCustomer", findCustomer);
 
-app.get('/lessonboard2', lessonBoard2);
+app.get('/findLessonsAdmin', findLessonsAdmin);
 
-app.get('/mylessonboard/:lesson', myLessonBoard);
+app.get('/findLessonsCustomer', findLessonsCustomer);
 
+app.get('/findBookings', findBookings);
 
-app.delete('/deletelesson/:lesson', deleteLesson);
+app.delete('/deleteLesson/:lesson_title', deleteLesson);
 
-app.delete('/deleteUser', deleteuser);
+app.delete('/deleteUser', deleteUser);
 
-app.put('/booklesson/:lesson', bookLesson);
+app.delete('/deleteBooking/:booking_lessonid', deleteBooking);
 
-app.put('/cancellesson/:lesson', cancelLesson);
+app.get("/findOneLesson/:lesson_title", findOneLesson);
 
-app.get("/changelessoninfo/:lesson", changeLessonInfo);
+app.put('/updateLesson/:lesson_updatedInfo', updateLesson);
 
-app.put('/changelessoninfomation/:lesson', changeLessonInformation);
-
-app.get("/getuserinfo", getUserInfo);
-
-app.put('/changeuserinfo/:userinfo', changeUserInfo);
+app.put('/updateUser/:user_obj', updateUser);
 
 app.use((req,res) =>res.render('notfound'));

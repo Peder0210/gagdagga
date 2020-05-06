@@ -5,7 +5,7 @@
         <title>Title</title>
         <div style="" class="topnav">
             <a href="/login">Login</a>
-            <a class="active" href="/register">Register</a>
+            <a class="active" href="/createUser">Register</a>
         </div>
     </head>
     <style>
@@ -253,7 +253,7 @@
               }
                 // beloved fetch: Register user ud fra objectet. Den sender kan sende objectet når et er stringified,
                 // herefter vil vi få data tilbage og lave en alert hvis der er sket en fejl.
-                fetch('/registerUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
+                fetch('/createUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
                     return res.text();
                 })
                     .then((data)=> {

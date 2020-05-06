@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <div style="" class="topnav">
-        <a href="/myPageUser">Min side</a>
-        <a href="/myClasses">Mine undervisningstimer</a>
-        <a class="active" href="/classSiteUser">Alle undervisningstimer</a>
+        <a href="/customerPage">Min side</a>
+        <a href="/myBookings">Mine undervisningstimer</a>
+        <a class="active" href="/lessonsCustomer">Alle undervisningstimer</a>
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log ud</a>
         </li>
@@ -59,26 +59,14 @@
 
     <script type="text/javascript"  >
         function getLessonInfo () {
-            fetch("http://localhost:3000/lessonboard2").then((res) => {
+            fetch("http://localhost:3000/findLessonsCustomer").then((res) => {
                 return  res.json();
             }).then((data) =>{
 
                 var parent = document.getElementById("output");
                 let listOfLessons = []
                 let listOfID = []
-                let cookie = document.cookie
 
-                if(document.cookie.includes(";")) {
-                    for(i=0;i<document.cookie.split(';').length;i++){
-                        if(document.cookie.split(';')[i].includes("username")){
-                            var cookieUsername = document.cookie.split(';')[i].split("=")[1]
-                        }
-                    }
-                } // else hvis der kun er én cookie
-                else {
-                    var cookieUsername = document.cookie.split("=")[1]
-                }
-                console.log(cookieUsername)
                 for(var j = 0; j< data.length; j++) {
 
                     var h1 = document.createElement("h1");
@@ -117,7 +105,7 @@
                     var div = document.createElement("div");
                     var button = document.createElement("button");
 
-                    console.log(cookieUsername)
+
                     button.id = listOfLessons[j]
                     button.name = j
                     button.addEventListener("click", function() {
@@ -126,7 +114,7 @@
                             return alert("You cannot book the same lesson twice")
                         }*/
 
-                        fetch('/booklesson/'+JSON.stringify(listOfID[this.name]),{method: 'PUT'}).then((res)=>{
+                        fetch('/createBooking/'+JSON.stringify(listOfID[this.name]),{method: 'PUT'}).then((res)=>{
 
                             return res.text();
                         })
@@ -140,7 +128,7 @@ if(data=="error"){
                 }
                            else{
                                 console.log("Click was recorded");
-                                return window.location.replace("/classSiteUser")
+                                return window.location.replace("/lessonsCustomer")
                             }
                         }).catch(function(error){
                             console.log(error)

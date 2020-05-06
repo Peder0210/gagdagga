@@ -5,7 +5,7 @@
     <title>Title</title>
     <div style="" class="topnav">
         <a class="active" href="/login">Login</a>
-        <a href="/register">Register</a>
+        <a href="/createUser">Register</a>
     </div>
 </head>
 <style>
@@ -124,11 +124,11 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
                 }
                 // relocated til adminside hvis man er admin 
                if(JSON.parse(data)[1]==="Admin"){
-                   return window.location.href = "/adminSite";
+                   return window.location.href = "/adminPage";
                }
                 // relocated til mypageuser hvis man er customer 
                 if(JSON.parse(data)[1]==="Customer"){
-                window.location.href = "/myPageUser";}
+                window.location.href = "/customerPage";}
             })
             .catch((e)=>{
                 console.log(e.name+"\n"+e.description);

@@ -3,9 +3,8 @@ module.exports = (req,res) => {
 
     const User = require("../models/user");
 
-    let userInfo = JSON.parse(req.params.userInfo);
-    console.log(userInfo);
-    User.create(userInfo, (error, result) => {
+
+    User.create(JSON.parse(req.params.user_obj), (error, result) => {
         if (result) {
             res.send(JSON.stringify(result));
         } else {

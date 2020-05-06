@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <div style="" class="topnav">
-        <a href="/adminSite">Opret undervisningstime</a>
-        <a class="active" href="/classSiteAdmin">Alle undervisningstimer</a>
+        <a href="/adminPage">Opret undervisningstime</a>
+        <a class="active" href="/lessonsAdmin">Alle undervisningstimer</a>
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log ud</a>
         </li>
@@ -55,7 +55,7 @@
 
 <script type="text/javascript">
     function classSiteAdmin () {
-        fetch("http://localhost:3000/lessonboard").then((res) => {
+        fetch("http://localhost:3000/findLessonsAdmin").then((res) => {
             return res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -96,11 +96,11 @@
                 button.id = lessonTitles[j]
                 button.addEventListener("click", function() {
 
-fetch('/deletelesson/'+this.id,{method: 'DELETE'}).then(function(response) {
+fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
 
     if(response.ok){
         console.log("Click was recorded");
-        return window.location.replace("/classsiteAdmin")
+        return window.location.replace("/lessonsAdmin")
     }
     throw new Error('Request failed')
 }).catch(function(error){
@@ -124,7 +124,7 @@ fetch('/deletelesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                 button2.id = lessonTitles[j]
                 button2.addEventListener("click", function() {
                     document.cookie = `lesson=${this.id}`
-                   window.location.replace("/changelesson")
+                   window.location.replace("/updateLesson")
                 })
 
                 button2.appendChild(document.createTextNode("Ændre informationer"));

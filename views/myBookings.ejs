@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <div style="" class="topnav">
-        <a href="/myPageUser">Min side</a>
-        <a class="active" href="/myClasses">Mine undervisningstimer</a>
-        <a href="/classSiteUser">Alle undervisningstimer</a>
+        <a href="/customerPage">Min side</a>
+        <a class="active" href="/myBookings">Mine undervisningstimer</a>
+        <a href="/lessonsCustomer">Alle undervisningstimer</a>
         <li class="nav-item">
             <a class="nav-link" href="/logout">Log ud</a>
         </li>
@@ -58,20 +58,9 @@
 
 <script type="text/javascript"  >
     function getYourLessons () {
-        let cookieInfo = document.cookie
-        console.log(cookieInfo)
-        if(cookieInfo.includes(";")) {
-            for(i=0;i<cookieInfo.split(';').length;i++){
-                if(cookieInfo.split(';')[i].includes("username")){
-                    var usernameValue = cookieInfo.split(';')[i].split("=")[1]
-                }
-            }
-        } else {
-            var usernameValue = cookieInfo.split("=")[1]
-        }
-        console.log(usernameValue);
 
-        fetch("/mylessonboard/"+usernameValue).then((res) => {
+
+        fetch("/findBookings").then((res) => {
             return  res.json();
         }).then((data) =>{
 
@@ -124,13 +113,13 @@
 
                 button.id = lessonTitles[j]
                 button.addEventListener("click", function() {
-                    let lessonID = this.id
+             
 
-                    fetch('/cancellesson/'+JSON.stringify([lessonID,usernameValue]),{method: 'PUT'}).then(function(response) {
+                    fetch('/deleteBooking/'+this.id,{method: 'DELETE'}).then(function(response) {
 
                         if(response.ok){
                             console.log("Click was recorded");
-                            return window.location.replace("/myClasses")
+                            return window.location.replace("/myBookings")
                         }
                         throw new Error('Request failed')
                     }).catch(function(error){
