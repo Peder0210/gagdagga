@@ -6,17 +6,9 @@
 <br>
 <script>
     function changeLesson () {
-        let cookieInfo = document.cookie
-        console.log(cookieInfo)
-        if(cookieInfo.includes(";")) {
-            for(i=0;i<cookieInfo.split(';').length;i++){
-                if(cookieInfo.split(';')[i].includes("lesson")){
-                    var lessonValue = cookieInfo.split(';')[i].split("=")[1]
-                }
-            }
-        } else {
-            var lessonValue = cookieInfo.split("=")[1]
-        }
+
+            var lessonValue =  document.cookie.split("=")[1]
+
         console.log(lessonValue);
 
         fetch("/findOneLesson/" + lessonValue).then((res) => {
@@ -300,12 +292,12 @@
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "error") {
-                            alert("Lesson doesn't have an unique title")
-                        } else {
+                        if (data == "Lesson doesn't have an unique title") {
+                            return alert(data)
+                        }
                             // Create session cookie here, for continous authentication
                             return window.location.replace("/lessonsAdmin")
-                        } })
+                         })
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);
                     });

@@ -1,5 +1,6 @@
+const User = require("../models/user");
 module.exports = (req,res)=> {
-    const User = require("../models/user");
+
 
     User.deleteOne({_id: req.session.userId}, (error, result) => { // du sletter en lektion ud fra den informerede titel
         if (result) {

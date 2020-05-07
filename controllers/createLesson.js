@@ -1,7 +1,6 @@
+const User = require('../models/user');
+const Lesson = require("../models/lesson");
 module.exports = (req,res) => {
-
-    const User = require('../models/user');
-    const Lesson = require("../models/lesson");
 
     console.log(req.session);
     // Vi tjekker om req.session userid er en Admin, fordi en customer ikke må have adgang til
@@ -9,7 +8,6 @@ module.exports = (req,res) => {
     User.findOne({$and:[{_id:req.session.userId},{Usertype: "Admin"}]},(error,result)=>{
         if(result){
             console.log(result);
-
             // Vi opretter en lesson. For at vi kan sende objektet lessonInfo gennem databasen, benytter vi JSON.parse
             Lesson.create(JSON.parse(req.params.lesson_obj), (error2, result2) => {
                 if (result2) {
@@ -17,12 +15,13 @@ module.exports = (req,res) => {
                     res.send(JSON.stringify(result2));
                 } else {
                     // Alle lektioner skal have et unikt lektionsnavn
-                    console.log("Your lesson doesn't have an unique name");
-                    res.send("error")
+                    console.log("Your lesson doesn't have an unique Title");
+                    res.send("Your lesson doesn't have an unique Title")
                 }
             })
         } else {
-            res.send("error2") // vi smider forskellige strings ind, for at detektere fejl hurtigere
+            console.log("Please log in as an Admin");
+            res.send("Please log in as an Admin") // vi smider forskellige strings ind, for at detektere fejl hurtigere
         }
     })
 };

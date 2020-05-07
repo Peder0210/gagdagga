@@ -80,7 +80,7 @@ app.post("/createUser/:user_obj", createUser);
 
 app.post("/createLesson/:lesson_obj", createLesson);
 
-app.put('/createBooking/:lesson_id', createBooking);
+app.post('/createBooking/:lesson_id', createBooking);
 
 app.post('/loginuser', login);
 

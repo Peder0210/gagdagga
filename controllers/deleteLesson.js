@@ -1,5 +1,6 @@
+const Lesson = require("../models/lesson");
 module.exports = (req,res)=> {
-    const Lesson = require("../models/lesson");
+
 
     console.log(req.params.lesson);
     Lesson.deleteOne({Title: req.params.lesson_title}, (error, result) => { // du sletter en lektion ud fra den informerede titel

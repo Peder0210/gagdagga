@@ -1,6 +1,7 @@
+const User = require("../models/user");
 module.exports = (req,res) => {
 
-    const User = require("../models/user");
+
 
     console.log(req.session);
     //Tjekker at det er den rigtige user, der får adgang til MyPageUser

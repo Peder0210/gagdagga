@@ -175,12 +175,12 @@
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "error") {
-                            alert("User doesn't have an unique username")
-                        } else {
+                        if (data == "User doesn't have an unique username") {
+                            return alert(data)
+                        }
                             // Create session cookie here, for continous authentication
                             return window.location.replace("/customerPage")
-                        } })
+                         })
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);
                     });

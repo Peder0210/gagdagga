@@ -1,8 +1,8 @@
+const User = require("../models/user");
+const bcrypt  = require('bcrypt');
+
+
 module.exports = (req,res) =>{
-
-    const User = require("../models/user");
-    const bcrypt  = require('bcrypt');
-
     console.log(req.body); //
     User.findOne({Username: req.body[0]}, (error, result) => { //req.body er et array af 2 ting (username og password)
         if (result){

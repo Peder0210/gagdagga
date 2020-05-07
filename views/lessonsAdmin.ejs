@@ -25,10 +25,10 @@
                 h1.appendChild(document.createTextNode(""));
                 parent.appendChild(h1);
 
-                let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp", "_v"];
+
 
                 // vi pusher titlen til de forskellige lektioner til et array
-                lessonTitles.push(data[j][lessonPropertyNames[1]])
+                lessonTitles.push(data[j][Object.keys(data[j])[1]])
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i==0||i==7||i==8){
@@ -42,7 +42,7 @@
 
                         // Value
                         var p = document.createElement("p");
-                        p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
+                        p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[i]]));
                         parent.appendChild(p);
                     } }
 

@@ -93,7 +93,7 @@
 
     <br>
 
-<p>Phonenumber:</p>
+    <p>Phonenumber:</p>
       <input
               id="Phonenumber"
               type="number"
@@ -114,7 +114,7 @@
       />
     <br>
 
-<p>Username:</p>
+    <p>Username:</p>
     <input
             id="Username"
             type="text"
@@ -223,13 +223,13 @@
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "error") {
-                            alert("User doesn't have an unique username")
-                        } else {
+                        if (data == "User doesn't have an unique username") {
+                            return alert(data)
+                        }
                         // Create session cookie here, for continous authentication
                         alert(`User ${document.getElementById("Username").value} has been created`);
-                        return window.location.replace("/login")
-                    } })
+                        window.location.replace("/login")
+                     })
                     // catcher hvis der er noget helt uforventet
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);

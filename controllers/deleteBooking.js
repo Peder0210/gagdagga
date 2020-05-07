@@ -1,6 +1,7 @@
- module.exports = (req,res)=> {
+const Booking = require("../models/booking");
+module.exports = (req,res)=> {
 
-     const Booking = require("../models/booking");
+
 console.log(req.params.booking_lessonid);
      console.log(req.session);
     Booking.deleteOne({$and:[{userid: req.session.userId},{lessonid: req.params.booking_lessonid}]}, (error,result)=>{

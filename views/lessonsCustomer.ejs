@@ -8,12 +8,11 @@
 
     <script type="text/javascript"  >
         function getLessonInfo () {
-            fetch("http://localhost:3000/findLessonsCustomer").then((res) => {
+                fetch("http://localhost:3000/findLessonsCustomer").then((res) => {
                 return  res.json();
-            }).then((data) =>{
+                }).then((data) =>{
 
                 var parent = document.getElementById("output");
-                let listOfLessons = []
                 let listOfID = []
 
                 for(var j = 0; j< data.length; j++) {
@@ -26,18 +25,19 @@
                     h1.appendChild(document.createTextNode(""));
                     parent.appendChild(h1);
 
-                    let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp","_v"];
 
-                    listOfLessons.push(data[j][lessonPropertyNames[2]])
-                    console.log(listOfLessons)
+                    console.log(Object.keys(data[j]));
+
+
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
-                        if(i==0){
-                            console.log(data[j][lessonPropertyNames[i]])
-                            listOfID.push(data[j][lessonPropertyNames[i]])
-                        } else if(i==8||i==7) {
-                        console.log(`Ignore ${i} in loop`)}    else
-                         {
+                            if(i==0){
+                            console.log(data[j][Object.keys(data[j])[i]])
+                            listOfID.push(data[j][Object.keys(data[j])[i]])
+                            } else if(i==8||i==7) {
+                            console.log(`Ignore ${i} in loop`)
+                            } else {
+
                             // Text
                             var p = document.createElement("p");
                             p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
@@ -45,40 +45,40 @@
 
                             // Value
                             var p = document.createElement("p");
-                            p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
+                            p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[i]]));
                             parent.appendChild(p);
 
-                            console.log(data[j][lessonPropertyNames[i]])
+                            console.log(data[j][Object.keys(data[j])[i]])
                         }
                     }
                     var div = document.createElement("div");
                     var button = document.createElement("button");
 
 
-                    button.id = listOfLessons[j]
-                    button.name = j
+
+                    button.id = j
                     button.addEventListener("click", function() {
                         console.log(this.name)
                      /*   if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
                             return alert("You cannot book the same lesson twice")
                         }*/
 
-                        fetch('/createBooking/'+JSON.stringify(listOfID[this.name]),{method: 'PUT'}).then((res)=>{
-
+                        fetch('/createBooking/'+JSON.stringify(listOfID[this.id]),{method: 'POST'}).then((res)=>{
                             return res.text();
-                        })
-                            .then((data)=> {
+                            }).then((data)=> {
                             console.log(data)
-if(data=="error"){
-    alert("You cannot book the same lesson twice")
-}
-                if(data=="error2"){
-                    alert("The lesson is fully booked")
-                }
-                           else{
-                                console.log("Click was recorded");
-                                return window.location.replace("/lessonsCustomer")
+
+                            if(data=="The Lesson is fully booked"){
+                            return alert(data);
                             }
+
+                            if(data=="You cannot book the same Lesson twice"){
+                            return alert(data)
+                            }
+
+                            alert(`You have booked the lesson called ${data}`)
+                            window.location.replace("/myBookings")
+
                         }).catch(function(error){
                             console.log(error)
                         })

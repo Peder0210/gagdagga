@@ -33,9 +33,9 @@
                 div2.appendChild(h1);
                 parent.appendChild(div2);
 
-                let lessonPropertyNames = [ "_id", "Title", "Room", "Participants","Teacher" , "Time", "Duration", "Timestamp","_v"];
 
-                lessonTitles.push(data[j][lessonPropertyNames[0]])
+
+                lessonTitles.push(data[j][Object.keys(data[j])[0]])
                 console.log(lessonTitles)
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
@@ -51,7 +51,7 @@
                         // Value
                         var div2 = document.createElement("div");
                         var p = document.createElement("p");
-                        p.appendChild(document.createTextNode(data[j][lessonPropertyNames[i]]));
+                        p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[i]]));
                         div2.appendChild(p);
 
                         parent.appendChild(div1);

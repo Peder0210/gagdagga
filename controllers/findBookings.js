@@ -1,7 +1,9 @@
+
+const Booking = require("../models/booking");
+const Lesson = require("../models/lesson");
+
 module.exports = (req,res)=> {
 
-    const Booking = require("../models/booking");
-    const Lesson = require("../models/lesson");
 
     Booking.find({userid: req.session.userId}, (error,result) => {
         if(result){ // returnere ale userlessons som brugeren har booket.
