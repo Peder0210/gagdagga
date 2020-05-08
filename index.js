@@ -22,7 +22,7 @@ const updateUser = require("./controllers/updateUser");
 const deleteLesson  = require("./controllers/deleteLesson");
 const deleteBooking = require("./controllers/deleteBooking");
 const deleteUser = require("./controllers/deleteUser");
-
+const team  = require("./controllers/team");
 const login = require("./controllers/login");
 const logout = require("./controllers/logout");
 
@@ -48,6 +48,10 @@ app.listen(3000,()=>{
     });
 app.get('/adminPage', (req,res) =>{
    res.render('adminPage')
+});
+
+app.get('/findPart', (req,res) =>{
+    res.render('findPart')
 });
 app.get('/lessonsCustomer', (req,res)=>{
     res.render('lessonsCustomer')
@@ -105,5 +109,7 @@ app.get("/findOneLesson/:lesson_title", findOneLesson);
 app.put('/updateLesson/:lesson_updatedInfo', updateLesson);
 
 app.put('/updateUser/:user_obj', updateUser);
+
+app.get('/findteam/:lesson_title', team);
 
 app.use((req,res) =>res.render('notfound'));

@@ -1,10 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
+    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="Deleted old files">
+      <change afterPath="$PROJECT_DIR$/controllers/team.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware/logged.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/findPart.ejs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/changeUserInfo.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/changeUserInfo.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/register.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/register.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/createBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/createBooking.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/deleteUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/deleteUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/controllers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/createUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/createUser.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/customerPage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/customerPage.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/header_Admin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header_Admin.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/layouts/header_Customer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header_Customer.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/lessonsAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/lessonsAdmin.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/lessonsCustomer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/lessonsCustomer.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +25,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="HTML File" />
         <option value="JavaScript File" />
       </list>
     </option>
@@ -30,23 +42,26 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../lim" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\peder\WebstormProjects\testy\trash" />
-      <recent name="$PROJECT_DIR$/controllers" />
-      <recent name="$PROJECT_DIR$/models" />
       <recent name="C:\Users\peder\WebstormProjects\testy" />
+      <recent name="C:\Users\peder\WebstormProjects\testy\sql" />
+      <recent name="C:\Users\peder\WebstormProjects\testy\models" />
+      <recent name="C:\Users\peder\WebstormProjects\testy\node_modules" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\peder\WebstormProjects\testy\models" />
@@ -79,7 +94,31 @@
       <workItem from="1587972277362" duration="5279000" />
       <workItem from="1588071854815" duration="1467000" />
       <workItem from="1588259234011" duration="10526000" />
-      <workItem from="1588318731475" duration="15292000" />
+      <workItem from="1588318731475" duration="16149000" />
+      <workItem from="1588428980801" duration="19818000" />
+      <workItem from="1588493375656" duration="4989000" />
+      <workItem from="1588519091019" duration="13664000" />
+      <workItem from="1588540000229" duration="274000" />
+      <workItem from="1588540421415" duration="1810000" />
+      <workItem from="1588542283586" duration="10000" />
+      <workItem from="1588575602362" duration="266000" />
+      <workItem from="1588575891636" duration="1928000" />
+      <workItem from="1588577845829" duration="188000" />
+      <workItem from="1588578050866" duration="92000" />
+      <workItem from="1588578162025" duration="409000" />
+      <workItem from="1588578593427" duration="124000" />
+      <workItem from="1588578745085" duration="125000" />
+      <workItem from="1588578896413" duration="106000" />
+      <workItem from="1588579024621" duration="6193000" />
+      <workItem from="1588628276792" duration="4406000" />
+      <workItem from="1588665664700" duration="3567000" />
+      <workItem from="1588673511985" duration="12611000" />
+      <workItem from="1588750803501" duration="10658000" />
+      <workItem from="1588769513463" duration="256000" />
+      <workItem from="1588769789074" duration="6614000" />
+      <workItem from="1588847138932" duration="11055000" />
+      <workItem from="1588925642291" duration="12938000" />
+      <workItem from="1588945887461" duration="332000" />
     </task>
     <task id="LOCAL-00001" summary="j">
       <created>1585919529268</created>
@@ -235,7 +274,119 @@
       <option name="project" value="LOCAL" />
       <updated>1588341666652</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Fixed bug where birthday should be letter">
+      <created>1588346866199</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1588346866199</updated>
+    </task>
+    <task id="LOCAL-00024" summary="Deleted old files">
+      <created>1588439013268</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1588439013268</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Deleted old files">
+      <created>1588442409507</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1588442409507</updated>
+    </task>
+    <task id="LOCAL-00026" summary="Deleted old files">
+      <created>1588442680915</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1588442680915</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Added lessonUser class">
+      <created>1588450970630</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1588450970630</updated>
+    </task>
+    <task id="LOCAL-00028" summary="bug fixes">
+      <created>1588532690270</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1588532690270</updated>
+    </task>
+    <task id="LOCAL-00029" summary="Deleted old files">
+      <created>1588541190667</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1588541190667</updated>
+    </task>
+    <task id="LOCAL-00030" summary="Deleted bug where customer could get into admin page">
+      <created>1588541863967</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1588541863967</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Deleted old files">
+      <created>1588583219704</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1588583219705</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Deleted old files">
+      <created>1588583340138</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1588583340138</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Added delete button">
+      <created>1588675904656</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1588675904656</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Renamed files">
+      <created>1588765660444</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1588765660444</updated>
+    </task>
+    <task id="LOCAL-00035" summary="test">
+      <created>1588769923219</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1588769923219</updated>
+    </task>
+    <task id="LOCAL-00036" summary="tilføjet en layout folder hvor headers bliver placeret">
+      <created>1588779983674</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1588779983674</updated>
+    </task>
+    <task id="LOCAL-00037" summary="improvements to overall code">
+      <created>1588856447692</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1588856447692</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Deleted old files">
+      <created>1588926064176</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1588926064176</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -257,24 +408,38 @@
     <MESSAGE value="Added mulighed for at ændre informationer" />
     <MESSAGE value="added improvements" />
     <MESSAGE value="fixet bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixet bugs" />
+    <MESSAGE value="Fixed bug where birthday should be letter" />
+    <MESSAGE value="Added lessonUser class" />
+    <MESSAGE value="bug fixes" />
+    <MESSAGE value="Deleted bug where customer could get into admin page" />
+    <MESSAGE value="Added delete button" />
+    <MESSAGE value="Renamed files" />
+    <MESSAGE value="test" />
+    <MESSAGE value="tilføjet en layout folder hvor headers bliver placeret" />
+    <MESSAGE value="improvements to overall code" />
+    <MESSAGE value="Deleted old files" />
+    <option name="LAST_COMMIT_MESSAGE" value="Deleted old files" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="469" y="73" key="CommitChangelistDialog2" timestamp="1588341664658">
+    <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588940106318">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1588940106318" />
+    <state x="450" y="73" key="CommitChangelistDialog2" timestamp="1588946251580">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="469" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588341664658" />
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1588341659672">
+    <state x="450" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588946251580" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1588671934942">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588341659672" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588671934942" />
     <state x="72" y="85" width="1138" height="589" key="DiffContextDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470703026" />
-    <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1587572116741">
+    <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1588848079606">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="613" y="291" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1587572116741" />
+    <state x="613" y="291" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1588848079606" />
     <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1585921103120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -295,33 +460,41 @@
     </state>
     <state width="1419" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1585921103119" />
     <state width="809" height="291" key="GridCell.Tab.0.right/0.0.1664.1069@0.0.1664.1069" timestamp="1585919134631" />
-    <state x="937" y="415" key="MultipleFileMergeDialog" timestamp="1587543082920">
+    <state x="0" y="191" key="MergeDialog" timestamp="1588500221578">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="0" y="191" key="MergeDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588500221578" />
+    <state x="1045" y="414" key="MultipleFileMergeDialog" timestamp="1588671775628">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="436" y="173" key="MultipleFileMergeDialog/0.0.1440.900@0.0.1440.900" timestamp="1585921676846" />
-    <state x="937" y="415" key="MultipleFileMergeDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1587543082920" />
+    <state x="1045" y="414" key="MultipleFileMergeDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588671775628" />
     <state x="388" y="160" key="MultipleFileMergeDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470746827" />
+    <state x="470" y="172" key="SettingsEditor" timestamp="1588575869050">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="470" y="172" key="SettingsEditor/0.0.1664.1069@0.0.1664.1069" timestamp="1588575869050" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog" timestamp="1587541508230">
       <screen x="0" y="23" width="1280" height="715" />
     </state>
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588341680225">
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588946282865">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588341680225" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588946282865" />
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1587154426926" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588333555969">
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588857074649">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586257655319" />
     <state x="476" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586425521033" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588333555969" />
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588857074649" />
     <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1587536062919" />
     <state x="423" y="312" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.715@0.23.1280.715" timestamp="1587541541575" />
     <state x="493" y="295" key="git4idea.merge.GitPullDialog" timestamp="1586943816288">
@@ -335,6 +508,10 @@
     <state x="325" y="262" key="git4idea.ui.GitUnstashDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1587558749424" />
     <state x="250" y="197" key="git4idea.ui.GitUnstashDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470741296" />
     <state x="250" y="198" key="git4idea.ui.GitUnstashDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541540081" />
+    <state x="854" y="382" width="705" height="304" key="org.intellij.images.editor.actions.BackgroundImageDialog" timestamp="1588575772611">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="854" y="382" width="705" height="304" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588575772611" />
     <state x="911" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1586792536190">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>

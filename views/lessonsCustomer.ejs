@@ -33,7 +33,7 @@
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
                             if(i==0){
                             console.log(data[j][Object.keys(data[j])[i]])
-                            listOfID.push(data[j][Object.keys(data[j])[i]])
+
                             } else if(i==8||i==7) {
                             console.log(`Ignore ${i} in loop`)
                             } else {
@@ -55,15 +55,15 @@
                     var button = document.createElement("button");
 
 
-
-                    button.id = j
+console.log(listOfID)
+                    button.id = data[j][Object.keys(data[j])[0]];
                     button.addEventListener("click", function() {
-                        console.log(this.name)
+                        console.log(typeof(this.id))
                      /*   if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
                             return alert("You cannot book the same lesson twice")
                         }*/
 
-                        fetch('/createBooking/'+JSON.stringify(listOfID[this.id]),{method: 'POST'}).then((res)=>{
+                        fetch('/createBooking/'+this.id,{method: 'POST'}).then((res)=>{
                             return res.text();
                             }).then((data)=> {
                             console.log(data)

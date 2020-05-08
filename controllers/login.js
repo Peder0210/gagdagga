@@ -11,6 +11,7 @@ module.exports = (req,res) =>{
                 if (same) {
                     console.log(result._id);
                     req.session.userId = result._id;
+                    req.session.userType = result.Usertype;
                     console.log(req.session);
                     console.log("User info confirmed");
                     // henter usertype info tilbage fra databasen

@@ -80,10 +80,29 @@ fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                 button2.id = lessonTitles[j]
                 button2.addEventListener("click", function() {
                     document.cookie = `lesson=${this.id}`
-                   window.location.replace("/updateLesson")
+                    window.location.replace("/updateLesson")
                 })
 
-                button2.appendChild(document.createTextNode("Ændre informationer"));
+                button2.appendChild(document.createTextNode("Ændre tilmeldte"));
+                div.appendChild(button2);
+                parent.appendChild(div);
+
+                var div = document.createElement("div");
+                var h1 = document.createElement("h1");
+                h1.appendChild(document.createTextNode(""));
+                div.appendChild(h1);
+                parent.appendChild(div);
+
+                var div = document.createElement("div");
+                var button2 = document.createElement("button");
+
+                button2.id = lessonTitles[j]
+                button2.addEventListener("click", function() {
+                    document.cookie = `lesson=${this.id}`
+                    window.location.replace("/findPart")
+                })
+
+                button2.appendChild(document.createTextNode("Se tilmeldte"));
                 div.appendChild(button2);
                 parent.appendChild(div);
 

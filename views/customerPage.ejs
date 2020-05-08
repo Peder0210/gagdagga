@@ -26,6 +26,7 @@
         // laver derefter et output, som er et div.
         fetch("http://localhost:3000/findCustomer").then((res) => {
             return  res.json();
+            //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
         }).then((data) =>{
             var parent = document.getElementById("output");
 
@@ -69,8 +70,10 @@ if(i==0||i==10||i==7||i==9){
             // eventlistener venter på at der bliver trykket på knappen
             // for at ændre på info ved hjælp af window.location.replace
             button.addEventListener("click", function() {
-                fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
-
+                fetch('/deleteUser',{method: 'DELETE'})
+                .then(function(response) {
+//handler bare of at se om resposne egentlig eksisterer
+                    //et promise er noget som din computer lover at køre
                     if(response.ok){
                         alert("Your account has been deleted")
                         window.location.replace("/login")
