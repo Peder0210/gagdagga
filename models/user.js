@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const bcrypt = require ('bcrypt');
-var uniqueValidator = require('mongoose-unique-validator');
+var uniqueValidator = require('mongoose-unique-validator')
 const userDataSchema = new Schema ({
     Username: {
         type: String,
@@ -33,6 +33,6 @@ userDataSchema.pre('save', function(next){
     })
 });
 
-userDataSchema.plugin(uniqueValidator);
-const user = mongoose.model('user', userDataSchema);
+userDataSchema.plugin(uniqueValidator); // uniqueValidator sørger for, at man ikke kan have det samme brugernavn.
+const user = mongoose.model('user', userDataSchema); // hedder automatisk 'users' i stedet for user i databasen, fordi der altid vil være flere
 module.exports = user;
