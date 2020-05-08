@@ -10,7 +10,7 @@ module.exports = (req,res)=> {
                 if (result) {
                     res.send(JSON.stringify(result))
                 } else {
-                    res.send("No profiles found")
+                    res.send("No documents found")
                 }
             }) //find alle duration hvor man laver et null  (det gør vi med alle).
         } else{

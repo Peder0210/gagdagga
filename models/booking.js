@@ -2,8 +2,16 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const bookingSchema = new Schema ({
-    userid: String,
-    lessonid: String,
+    userid: {
+        type: mongoose.Schema.Types.ObjectID,
+        ref: "User",
+        required: true
+    },
+    lessonid: {
+        type: mongoose.Schema.Types.ObjectID,
+        ref: "Lesson",
+        required: true
+    },
     Timestamp: {
         type: Date,
         default: Date.now}
