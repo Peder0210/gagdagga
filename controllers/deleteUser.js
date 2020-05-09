@@ -8,6 +8,8 @@ module.exports = (req,res)=> {
             Booking.deleteMany({userid:req.session.userId}, (error, result) =>{
                 if(result){
                     console.log("User deleted");
+                    req.session.destroy();
+                    console.log(req.session)
                 } else {
                     console.log("hej")
                 }

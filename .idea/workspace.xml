@@ -1,21 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="Deleted old files">
-      <change afterPath="$PROJECT_DIR$/controllers/team.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/middleware/logged.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/views/findPart.ejs" afterDir="false" />
+    <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/createBooking.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/createBooking.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/deleteUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/deleteUser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/createUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/createUser.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/customerPage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/customerPage.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/header_Admin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header_Admin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/header_Customer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/header_Customer.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/lessonsAdmin.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/lessonsAdmin.ejs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/lessonsCustomer.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/lessonsCustomer.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,8 +45,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\peder\WebstormProjects\testy\trash" />
       <recent name="C:\Users\peder\WebstormProjects\testy" />
+      <recent name="C:\Users\peder\WebstormProjects\testy\trash" />
       <recent name="C:\Users\peder\WebstormProjects\testy\sql" />
       <recent name="C:\Users\peder\WebstormProjects\testy\models" />
       <recent name="C:\Users\peder\WebstormProjects\testy\node_modules" />
@@ -118,7 +106,9 @@
       <workItem from="1588769789074" duration="6614000" />
       <workItem from="1588847138932" duration="11055000" />
       <workItem from="1588925642291" duration="12938000" />
-      <workItem from="1588945887461" duration="332000" />
+      <workItem from="1588945887461" duration="2292000" />
+      <workItem from="1589011871229" duration="411000" />
+      <workItem from="1589012625241" duration="3632000" />
     </task>
     <task id="LOCAL-00001" summary="j">
       <created>1585919529268</created>
@@ -386,14 +376,34 @@
       <option name="project" value="LOCAL" />
       <updated>1588926064176</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Deleted old files">
+      <created>1588946295915</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1588946295915</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Deleted old files">
+      <created>1588946529579</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1588946529579</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Added more importance on lessonid than lessonTitle and made sure bookings is deleted after an admin deletes a lesson.">
+      <created>1589014832761</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1589014832761</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="j" />
     <MESSAGE value="Login2" />
     <MESSAGE value="Login ændring" />
     <MESSAGE value="Administrator login ændring" />
@@ -418,19 +428,20 @@
     <MESSAGE value="tilføjet en layout folder hvor headers bliver placeret" />
     <MESSAGE value="improvements to overall code" />
     <MESSAGE value="Deleted old files" />
-    <option name="LAST_COMMIT_MESSAGE" value="Deleted old files" />
+    <MESSAGE value="Added more importance on lessonid than lessonTitle and made sure bookings is deleted after an admin deletes a lesson." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more importance on lessonid than lessonTitle and made sure bookings is deleted after an admin deletes a lesson." />
   </component>
   <component name="WindowStateProjectService">
     <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588940106318">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1588940106318" />
-    <state x="450" y="73" key="CommitChangelistDialog2" timestamp="1588946251580">
+    <state x="450" y="73" key="CommitChangelistDialog2" timestamp="1589014830993">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="450" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1588946251580" />
+    <state x="450" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1589014830993" />
     <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1588671934942">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
@@ -479,22 +490,22 @@
     </state>
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1588946282865">
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1589014836376">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588946282865" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589014836376" />
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1587154426926" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1588857074649">
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589016363660">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586257655319" />
     <state x="476" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586425521033" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1588857074649" />
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589016363660" />
     <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1587536062919" />
     <state x="423" y="312" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.715@0.23.1280.715" timestamp="1587541541575" />
     <state x="493" y="295" key="git4idea.merge.GitPullDialog" timestamp="1586943816288">
@@ -516,5 +527,17 @@
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="911" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1664.1069@0.0.1664.1069" timestamp="1586792536190" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/controllers/deleteUser.js</url>
+          <line>15</line>
+          <properties lambdaOrdinal="-1" />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
