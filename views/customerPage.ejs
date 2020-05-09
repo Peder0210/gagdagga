@@ -26,7 +26,7 @@
         console.log(usernameValue);*/
         // sender info om usernamevalue. Prøver at finde en bruger med det username.
         // laver derefter et output, som er et div.
-        fetch("http://localhost:3000/findCustomer").then((res) => {
+        fetch("/findCustomer").then((res) => {
             return  res.json();
             //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
         }).then((data) =>{

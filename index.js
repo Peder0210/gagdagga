@@ -5,11 +5,11 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 const cookieParser = require('cookie-parser');
-
+const fs = require('fs');
 const createUser = require("./controllers/createUser");
 const createLesson = require ("./controllers/createLesson");
 const createBooking = require("./controllers/createBooking");
-
+const path = require("path");
 const findCustomer = require("./controllers/findCustomer");
 const findLessonsCustomer = require("./controllers/findLessonsCustomer");
 const findLessonsAdmin = require("./controllers/findLessonsAdmin");
@@ -69,7 +69,9 @@ app.get('/myBookings',  (req,res) =>{
     res.render('myBookings')
 });
 
-
+app.get('/test', (req,res) => {
+ res.sendFile(path.resolve(__dirname,'test.html'))
+});
 
 app.get('/createUser', logged, (req,res) =>{
     res.render('createUser')

@@ -9,7 +9,7 @@
 
     <script type="text/javascript"  >
         function getLessonInfo () {
-                fetch("http://localhost:3000/findLessonsCustomer").then((res) => {
+                fetch("/findLessonsCustomer").then((res) => {
                 return  res.json();
                 }).then((data) =>{
 

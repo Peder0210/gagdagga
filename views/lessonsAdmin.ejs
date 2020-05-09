@@ -11,7 +11,7 @@
 
 <script type="text/javascript">
     function classSiteAdmin () {
-        fetch("http://localhost:3000/findLessonsAdmin").then((res) => {
+        fetch("/findLessonsAdmin").then((res) => {
             return res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
@@ -50,17 +50,15 @@
                 
                 button.id = lessonIds[j]
                 button.addEventListener("click", function() {
-
-fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
-
-    if(response.ok){
-        console.log("Lesson was deleted");
-        return window.location.replace("/lessonsAdmin")
-    }
-    throw new Error('Request failed')
-}).catch(function(error){
-    console.log(error)
-})
+                    fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
+                        if(response.ok){
+                            console.log("Lesson was deleted");
+                            return window.location.replace("/lessonsAdmin")
+                        }
+                        throw new Error('Request failed')
+                    }).catch(function(error){
+                        console.log(error)
+                    })
                 })
 
                 button.appendChild(document.createTextNode("Delete the lesson"));
