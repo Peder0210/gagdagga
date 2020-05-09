@@ -15,7 +15,7 @@ const findLessonsCustomer = require("./controllers/findLessonsCustomer");
 const findLessonsAdmin = require("./controllers/findLessonsAdmin");
 const findBookings = require("./controllers/findBookings");
 const findOneLesson = require("./controllers/findOneLesson");
-
+const logged = require('./middleware2/logged');
 const updateLesson = require("./controllers/updateLesson");
 const updateUser = require("./controllers/updateUser");
 
@@ -68,7 +68,7 @@ app.get('/updateUser', (req,res) =>{
 app.get('/myBookings',  (req,res) =>{
     res.render('myBookings')
 });
-app.get('/createUser', (req,res) =>{
+app.get('/createUser', logged, (req,res) =>{
     res.render('createUser')
 });
 
@@ -76,7 +76,7 @@ app.get('/customerPage', (req,res) =>{
     res.render('customerPage')
 });
 
-app.get("/login", (req,res) =>{
+app.get("/login",logged, (req,res) =>{
     res.render("login")
 });
 
