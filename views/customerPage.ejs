@@ -34,7 +34,7 @@
 
             // ignorere nogen i'er som man ikke gider at se
             for(i=0;i<Object.keys(data).length;i++){
-if(i==0||i==10||i==7||i==9){
+if(i===0||i===10||i===7||i===9){
     console.log(`Ignore ${i}`)
 } else{
                 // Text (OPTIMERET KODE)
@@ -63,7 +63,7 @@ if(i==0||i==10||i==7||i==9){
                 window.location.replace("/updateUser")
             })
 
-            button.appendChild(document.createTextNode("Ændre informationer"));
+            button.appendChild(document.createTextNode("Change your information"));
             div3.appendChild(button);
             parent.appendChild(div3);
 
@@ -92,7 +92,7 @@ if(i==0||i==10||i==7||i==9){
             parent.appendChild(div3);
 
         }).catch((e) => {
-            console.log(e);
+            console.log(e.name+"\n"+e.description);
         })
     }
 

@@ -2,10 +2,10 @@
 <html lang="en">
 <%- include('layouts/header_Admin') -%>
 <%- include('layouts/style') -%>
-<body onload="getUserInfo()">
-<h1>Usernames på tilmeldte</h1>
+<body onload="getParticipantslist()">
+<h1>Usernames of the participants</h1>
 <script>
-    function getUserInfo () {
+    function getParticipantslist () {
         /* OPTIMERING AF KODE:
             let cookieInfo = document.cookie
             console.log(cookieInfo) */
@@ -24,10 +24,8 @@
       console.log(usernameValue);*/
         // sender info om usernamevalue. Prøver at finde en bruger med det username.
         // laver derefter et output, som er et div.
-        var lessonValue =  document.cookie.split("=")[1]
 
-        console.log(lessonValue);
-        fetch("/findteam/"+ lessonValue).then((res) => {
+        fetch("/findParticipants/"+ document.cookie.split("=")[1]).then((res) => {
             return  res.json();
             //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
         }).then((data) =>{
@@ -36,23 +34,15 @@
 
 
                 // vi pusher titlen til de forskellige lektioner til et array
-
-
-
-
-
-                    // Text
+                // Text
                     var p = document.createElement("p");
                 p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[6]]));
                     parent.appendChild(p);
-
-
-
             }
 
 
         }).catch((e) => {
-            console.log(e);
+            console.log(e.name+"\n"+e.description);
         })
     }
 

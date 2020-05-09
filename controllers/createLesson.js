@@ -12,6 +12,7 @@ module.exports = (req,res) => {
             Lesson.create(JSON.parse(req.params.lesson_obj), (error2, result2) => {
                 if (result2) {
                     // JSON.stringify gør, at vi henter dataen tilbage
+                    console.log("Lesson have been created");
                     res.send(JSON.stringify(result2));
                 } else {
                     // Alle lektioner skal have et unikt lektionsnavn

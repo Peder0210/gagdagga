@@ -17,12 +17,12 @@
         }).then((data) =>{
 
             var parent = document.getElementById("output");
-            let lessonTitles = []
+            let lessonsIds = []
 
             for(var j = 0; j< data.length; j++) {
                 var div1 = document.createElement("div");
                 var h1 = document.createElement("h1");
-                h1.appendChild(document.createTextNode("Lektion!!"));
+                h1.appendChild(document.createTextNode(`${j+1}. Lesson`));
                 div1.appendChild(h1);
                 parent.appendChild(div1);
 
@@ -35,11 +35,10 @@
 
 
 
-                lessonTitles.push(data[j][Object.keys(data[j])[0]])
-                console.log(lessonTitles)
+                lessonsIds.push(data[j][Object.keys(data[j])[0]])
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
-                    if(i==0||i==7||i==8){
+                    if(i===0||i===7||i===8){
                         console.log(`Ignore ${i} in loop`)
                     } else {
                         // Text
@@ -63,23 +62,23 @@
                 var button = document.createElement("button");
 
 
-                button.id = lessonTitles[j]
+                button.id = lessonsIds[j]
                 button.addEventListener("click", function() {
              
 
                     fetch('/deleteBooking/'+this.id,{method: 'DELETE'}).then(function(response) {
 
                         if(response.ok){
-                            console.log("Click was recorded");
+                            console.log("Booking was deleted");
                             return window.location.replace("/myBookings")
                         }
-                        throw new Error('Request failed')
+                        throw new Error('Booking wasnt deleted')
                     }).catch(function(error){
                         console.log(error)
                     })
                 })
 
-                button.appendChild(document.createTextNode("Afbestil"));
+                button.appendChild(document.createTextNode("Cancel"));
                 div5.appendChild(button);
                 parent.appendChild(div5);
 

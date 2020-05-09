@@ -150,10 +150,8 @@
                 let alertmessage = "Please fill out or correct these fields:"
 
                 for(let i=0;i<Object.values(obj).length;i++) {
-                    if(i==0||i==5) {
-                        if (Object.values(obj)[i] == "") {
+                    if((i===0||i===5)&&Object.values(obj)[i] == "") {
                             alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
-                        }
                     }
                 }
                 if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
@@ -164,7 +162,7 @@
                     console.log(Object.values(obj)[3])
                     alertmessage += `\n * Your phonenumber must consist of 8 digits `
                 }
-                if(Object.values(obj)[4].includes("@")==false){
+                if(Object.values(obj)[4].includes("@")===false){
                     alertmessage += `\n * Your email must include an @`
                 }
                 if (alertmessage!=="Please fill out or correct these fields:"){
@@ -175,7 +173,7 @@
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "User doesn't have an unique username") {
+                        if (data === "User doesn't have an unique username") {
                             return alert(data)
                         }
                             // Create session cookie here, for continous authentication
@@ -185,7 +183,7 @@
                         console.log(e.name+"\n"+e.description);
                     });
             })
-            button.appendChild(document.createTextNode("Ændre information"));
+            button.appendChild(document.createTextNode("Change the information"));
             div.appendChild(button);
             parent.appendChild(div);
         }).catch((e) => {

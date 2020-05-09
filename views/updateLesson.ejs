@@ -7,17 +7,15 @@
 <script>
     function changeLesson () {
 
-            var lessonValue =  document.cookie.split("=")[1]
 
-        console.log(lessonValue);
 
-        fetch("/findOneLesson/" + lessonValue).then((res) => {
+        fetch("/findOneLesson/" +  document.cookie.split("=")[1]).then((res) => {
             return  res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
 
             for(i=0;i<Object.keys(data).length;i++){
-                if(i==7||i==8||i==0){
+                if(i===7||i===8||i===0){
                     console.log(`Ignore ${i} in loop`)
                 } else if(i==5){
                     var p = document.createElement("p");
@@ -42,13 +40,13 @@
                             option.value = `0${j}`
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(3,5))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                            if(`0${j}`===data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
                         }
@@ -58,10 +56,10 @@
                     div.appendChild(select);
                     parent.appendChild(div)
 
-                    var div = document.createElement("div");
+
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Minute"));
-                    parent.appendChild(div);
+                    parent.appendChild(p);
 
                     var div = document.createElement("div")
                     var select = document.createElement("select")
@@ -73,13 +71,13 @@
                             option.value = `0${j}`
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(6,8))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(6,8)) {
+                            if(`0${j}`=== data[Object.keys(data)[i]].substring(6,8)) {
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(6,8)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(6,8)) {
                                 option.selected = true
                             }
                         }
@@ -111,13 +109,13 @@
                             option.value = `0${j}`
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(13,15))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(13,15)) {
+                            if(`0${j}`=== data[Object.keys(data)[i]].substring(13,15)) {
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(13,15)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(13,15)) {
                                 option.selected = true
                             }
                         }
@@ -140,14 +138,14 @@
                             option.value = `0${j}`
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(16,18))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(16,18)) {
+                            if(`0${j}`=== data[Object.keys(data)[i]].substring(16,18)) {
 
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(16,18)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(16,18)) {
 
                                 option.selected = true
                             }
@@ -169,7 +167,7 @@
                         var option = document.createElement("option");
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(19,23)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(19,23)) {
 
                                 option.selected = true
                             }
@@ -178,7 +176,7 @@
                     div.appendChild(select);
                     parent.appendChild(div)
 
-                } else if(i==6){
+                } else if(i===6){
 
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Duration:"));
@@ -200,7 +198,7 @@
                         var option = document.createElement("option");
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(0,1)) {
+                            if(`${j}`=== data[Object.keys(data)[i]].substring(0,1)) {
 
                                 option.selected = true
                             }
@@ -226,13 +224,13 @@
                             option.value = `0${j}`
                             option.text = `0${j}`
                             console.log(data[Object.keys(data)[i]].substring(2,4))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(2,4)) {
+                            if(`0${j}`===data[Object.keys(data)[i]].substring(2,4)) {
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(2,4)) {
+                            if(`${j}`===data[Object.keys(data)[i]].substring(2,4)) {
                                 option.selected = true
                             }
                         }
@@ -272,14 +270,12 @@
                 let alertmessage = "Please fill out or correct these fields:"
 
                 for(let i=0;i<Object.values(obj).length;i++) {
-                    if(i==0||i==1||i==3) {
-                        if (Object.values(obj)[i] == "") {
+                    if((i===0||i===1||i===3)&&Object.values(obj)[i] === "") {
                             alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
-                        }
                     }
                 }
 
-                if(isNaN(document.getElementById("3").value)||document.getElementById("3").value==""){
+                if(isNaN(document.getElementById("3").value)||document.getElementById("3").value===""){
                     console.log(document.getElementById("2").value.length)
                     alertmessage += `\n * Your Participants must be a number `
                 }
@@ -287,12 +283,12 @@
                     return alert(alertmessage)
                 }
 
-                fetch('/updateLesson/'+JSON.stringify([lessonValue, obj]),{method: 'PUT'}).then((res)=>{
+                fetch('/updateLesson/'+JSON.stringify([document.cookie.split("=")[1], obj]),{method: 'PUT'}).then((res)=>{
                     return res.text();
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "Lesson doesn't have an unique title") {
+                        if (data === "Lesson doesn't have an unique title") {
                             return alert(data)
                         }
                             // Create session cookie here, for continous authentication
@@ -302,7 +298,7 @@
                         console.log(e.name+"\n"+e.description);
                     });
             })
-            button.appendChild(document.createTextNode("Ændre information"));
+            button.appendChild(document.createTextNode("Change the information"));
             div.appendChild(button);
             parent.appendChild(div);
         }).catch((e) => {

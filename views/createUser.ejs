@@ -17,7 +17,7 @@
             type="text"
             value = "Peder"
             placeholder="Name"
-    />
+    >
     <br>
         <p>Birthday:</p>
     <!-- man har til id, der er en del af birthday property. Hver select er en option. selected disabled gør at man ikke kan vælge 'day' teksten uden indhold-->
@@ -150,13 +150,7 @@
                 value="Create User"
 
         />
-    <br>
 
-    <br>
-    <a
-
-            href="login">
-        <button>Go to Login</button></a>
 </div>
     <script>
         // Tilføjer en eventlistener der observere om en bestemt handling bliver udført, og når det bliver udført, aktiverer det denne funktion.
@@ -186,24 +180,21 @@
 
             // Hvis nogen af de her værdier er lig med 'tomt' så vil counteren gå op med én og der vil komme en alert-message
             for(let i=0;i<Object.values(obj).length;i++) {
-                if(i==0||i==2||i==5||i==7) {
-                    if (Object.values(obj)[i] == "") {
-
+                if((i===0||i===2||i===5||i===7)&&Object.values(obj)[i] === "") {
                         // sørget for at alert vil fuldende dens string ud efter hvilken value den mangler
                         alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]}`
-                    }
                 }
             }
             // Birthday. Når birthday længden er alt andet end 10. '\n' betyder der kommer en ny linje
             if(Object.values(obj)[1].length!==10){
-                alertmessage += `\n * Fill out your birthday `
+                alertmessage += `\n * Fill out your Birthday `
             }
             // Telefon
             if(Object.values(obj)[3].length!==8){
                 alertmessage += `\n * Your phonenumber must consist of 8 digits `
             }
             // Email. .includes gør, at den vil være sand, så længe der skrives et @
-            if(Object.values(obj)[4].includes("@")==false){
+            if(Object.values(obj)[4].includes("@")===false){
                 alertmessage += `\n * Your email must include an @`
             }
             // Password betingelsen vil være sand, if sætningen vil være sand, når den 3 eller under
@@ -223,7 +214,7 @@
                 })
                     .then((data)=> {
                         console.log(data);
-                        if (data == "User doesn't have an unique username") {
+                        if (data === "User doesn't have an unique username") {
                             return alert(data)
                         }
                         // Create session cookie here, for continous authentication
@@ -237,6 +228,5 @@
                     });
         })
         </script>
-</div>
 </body>
 </html>

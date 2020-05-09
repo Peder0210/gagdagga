@@ -19,7 +19,7 @@
                 for(var j = 0; j< data.length; j++) {
 
                     var h1 = document.createElement("h1");
-                    h1.appendChild(document.createTextNode("Lektion!!"));
+                    h1.appendChild(document.createTextNode(`${j+1}. Lesson`));
                     parent.appendChild(h1);
 
                     var h1 = document.createElement("h1");
@@ -32,10 +32,7 @@
 
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
-                            if(i==0){
-                            console.log(data[j][Object.keys(data[j])[i]])
-
-                            } else if(i==8||i==7) {
+                            if(i===8||i===7||i===0) {
                             console.log(`Ignore ${i} in loop`)
                             } else {
 
@@ -69,11 +66,11 @@ console.log(listOfID)
                             }).then((data)=> {
                             console.log(data)
 
-                            if(data=="The Lesson is fully booked"){
+                            if(data==="The Lesson is fully booked"){
                             return alert(data);
                             }
 
-                            if(data=="You cannot book the same Lesson twice"){
+                            if(data==="You cannot book the same Lesson twice"){
                             return alert(data)
                             }
 
@@ -85,7 +82,7 @@ console.log(listOfID)
                         })
                     })
 
-                    button.appendChild(document.createTextNode("Book lektion"));
+                    button.appendChild(document.createTextNode("Book this lesson"));
                     div.appendChild(button);
                     parent.appendChild(div);
 
@@ -94,7 +91,7 @@ console.log(listOfID)
                     parent.appendChild(p);
                 }
             }).catch((e) => {
-                console.log(e);
+                    console.log(e.name+"\n"+e.description);
             })
         }
 </script>

@@ -11,7 +11,7 @@ console.log(req.params.booking_lessonid);
             res.send(result);
         } else{
             console.log(error);
-            res.send(result);
+            res.send(error);
         }
     });
 };

@@ -39,13 +39,13 @@
 <script>
     document.getElementById("login_btn").addEventListener("click", function() {
 
-if(document.getElementById("Username").value=="" && document.getElementById("Password").value=="" ){
+if(document.getElementById("Username").value==="" && document.getElementById("Password").value==="" ){
    return  alert("Please enter your username and password")
 }
-        if(document.getElementById("Username").value=="" ){
+        if(document.getElementById("Username").value==="" ){
            return  alert("Please enter your username")
         }
-        if(document.getElementById("Password").value=="" ){
+        if(document.getElementById("Password").value==="" ){
            return  alert("Please enter your password")
         }
         /* OPTIMERET KODE
@@ -81,18 +81,18 @@ if(document.getElementById("Username").value=="" && document.getElementById("Pas
                 return res.text();
             })
             .then((data)=>{
-                if(data == "Password is wrong"){
+                if(data === "Password is wrong"){
                     return alert(data)
                 }
-                if(data == "Username doesn't exist"){
+                if(data === "Username doesn't exist"){
                     return alert(data)
                 }
                 // relocated til adminside hvis man er admin 
-               if(JSON.parse(data)[1]==="Admin"){
+               if(data==="Admin"){
                    return window.location.href = "/adminPage";
                }
                 // relocated til mypageuser hvis man er customer 
-                if(JSON.parse(data)[1]==="Customer"){
+                if(data==="Customer"){
                 window.location.href = "/customerPage";}
             })
             .catch((e)=>{

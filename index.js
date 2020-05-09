@@ -22,7 +22,7 @@ const updateUser = require("./controllers/updateUser");
 const deleteLesson  = require("./controllers/deleteLesson");
 const deleteBooking = require("./controllers/deleteBooking");
 const deleteUser = require("./controllers/deleteUser");
-const team  = require("./controllers/team");
+const findParticipants  = require("./controllers/findParticipants");
 const login = require("./controllers/login");
 const logout = require("./controllers/logout");
 
@@ -68,6 +68,9 @@ app.get('/updateUser', (req,res) =>{
 app.get('/myBookings',  (req,res) =>{
     res.render('myBookings')
 });
+
+
+
 app.get('/createUser', logged, (req,res) =>{
     res.render('createUser')
 });
@@ -110,6 +113,6 @@ app.put('/updateLesson/:lesson_updatedInfo', updateLesson);
 
 app.put('/updateUser/:user_obj', updateUser);
 
-app.get('/findteam/:lesson_title', team);
+app.get('/findParticipants/:lesson_title', findParticipants);
 
 app.use((req,res) =>res.render('notfound'));

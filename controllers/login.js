@@ -15,7 +15,7 @@ module.exports = (req,res) =>{
                     console.log(req.session);
                     console.log("User info confirmed");
                     // henter usertype info tilbage fra databasen
-                    res.send(JSON.stringify([req.body[0],result.Usertype]))
+                    res.send(result.Usertype)
                 }
                 else{
                     console.log("Password is wrong");

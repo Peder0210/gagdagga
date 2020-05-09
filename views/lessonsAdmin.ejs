@@ -15,10 +15,10 @@
             return res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
-            let lessonTitles = []
+            let lessonIds = []
             for(var j = 0; j< data.length; j++) {
                 var h1 = document.createElement("h1");
-                h1.appendChild(document.createTextNode(`Lektion Nr. ${j+1}`));
+                h1.appendChild(document.createTextNode(`Lesson Nr. ${j+1}`));
                 parent.appendChild(h1);
 
                 var h1 = document.createElement("h1");
@@ -28,13 +28,12 @@
 
 
                 // vi pusher titlen til de forskellige lektioner til et array
-                lessonTitles.push(data[j][Object.keys(data[j])[0]])
+                lessonIds.push(data[j][Object.keys(data[j])[0]])
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
-                    if(i==0||i==7||i==8){
+                    if(i===0||i===7||i===8){
                         console.log(`Ignore ${i} in loop`)
                     } else {
-
                         // Text
                         var p = document.createElement("p");
                         p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
@@ -49,13 +48,13 @@
                 var div = document.createElement("div");
                 var button = document.createElement("button");
                 
-                button.id = lessonTitles[j]
+                button.id = lessonIds[j]
                 button.addEventListener("click", function() {
 
 fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
 
     if(response.ok){
-        console.log("Click was recorded");
+        console.log("Lesson was deleted");
         return window.location.replace("/lessonsAdmin")
     }
     throw new Error('Request failed')
@@ -64,7 +63,7 @@ fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
 })
                 })
 
-                button.appendChild(document.createTextNode("Slet lektionen"));
+                button.appendChild(document.createTextNode("Delete the lesson"));
                 div.appendChild(button);
                 parent.appendChild(div);
 
@@ -77,13 +76,13 @@ fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                 var div = document.createElement("div");
                 var button2 = document.createElement("button");
 
-                button2.id = lessonTitles[j]
+                button2.id = lessonIds[j]
                 button2.addEventListener("click", function() {
                     document.cookie = `lesson=${this.id}`
                     window.location.replace("/updateLesson")
                 })
 
-                button2.appendChild(document.createTextNode("Ændre infomationer"));
+                button2.appendChild(document.createTextNode("Change the information"));
                 div.appendChild(button2);
                 parent.appendChild(div);
 
@@ -96,13 +95,13 @@ fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                 var div = document.createElement("div");
                 var button2 = document.createElement("button");
 
-                button2.id = lessonTitles[j]
+                button2.id = lessonIds[j]
                 button2.addEventListener("click", function() {
                     document.cookie = `lesson=${this.id}`
                     window.location.replace("/findPart")
                 })
 
-                button2.appendChild(document.createTextNode("Se tilmeldte"));
+                button2.appendChild(document.createTextNode("See Participants"));
                 div.appendChild(button2);
                 parent.appendChild(div);
 

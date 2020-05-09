@@ -3,7 +3,7 @@
 <%- include('layouts/header_Admin') -%>
 <%- include('layouts/style') -%>
 <body>
-<h1>Opret dine lektioner</h1>
+<h1>Create lesson</h1>
 <br>
 
 <text>Title:</text>
@@ -12,10 +12,8 @@
     <input
             type="text"
             id="Title"
-            value=""
             placeholder=Title
-            name="Title"
-            required="true">
+    >
     <br>
     <br>
 
@@ -26,8 +24,7 @@
             id="Room"
             value="Room 500"
             placeholder="Room"
-            name="Room"
-            required="true">
+    >
     <br>
     <br>
 
@@ -38,8 +35,7 @@
             id="Participants"
             value="20"
             placeholder="Participants"
-            name="Participants"
-            required="true">
+           >
     <br>
     <br>
 
@@ -47,10 +43,10 @@
     <br>
     <input
             type="text"
-            id="Teachers"
+            id="Teacher"
             value="Lela"
-            placeholder="Teachers"
-            name="Teachers">
+            placeholder="Teacher"
+    >
     <br>
     <br>
 
@@ -196,7 +192,7 @@
     <input
         id="createLesson_btn"
         type="submit"
-        value="Opret undervisningstime">
+        value="Create lesson">
     <br>
     <br>
     <input
@@ -210,26 +206,24 @@
         let obj = { Title: document.getElementById("Title").value,
             Room: document.getElementById("Room").value,
             Participants: document.getElementById("Participants").value,
-            Teacher: document.getElementById("Teachers").value ,
+            Teacher: document.getElementById("Teacher").value ,
             Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
             Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
 
         }
         let alertmessage = "Please fill out and correct these inputs"
         for(let i=0;i<Object.values(obj).length;i++) {
-            if(i==0||i==1||i==2||i==3) {
-                if (Object.values(obj)[i] == "") {
+            if((i===0||i===1||i===2||i===3)&& Object.values(obj)[i] === "") {
                     alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
-                }
             }
         }
 
         if(Object.values(obj)[4].length!==23){
-            alertmessage += `\n * Fill out your date `
+            alertmessage += `\n * Fill out your Date `
         }
 
         if(Object.values(obj)[5].length<4){
-            alertmessage += `\n * Fill out your dutation `
+            alertmessage += `\n * Fill out your Duration `
         }
 
         if (alertmessage!=="Please fill out and correct these inputs"){
@@ -243,11 +237,11 @@
         .then((data)=> {
             console.log(data);
 
-                if (data == "Your lesson doesn't have an unique Title") {
+                if (data === "Your lesson doesn't have an unique Title") {
                     return alert(data)
                 }
 
-                if(data=="Please log in as an Admin") {
+                if(data==="Please log in as an Admin") {
                     return alert(data)
                 }
 
