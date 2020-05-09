@@ -12,7 +12,7 @@
             var parent = document.getElementById("output");
             // looper gennem keys for data,
             for(i=0;i<Object.keys(data).length;i++){
-                if(i==0||i==9||i==7||i==8||i==10){
+                if(i===0||i===9||i===7||i===8||i===10){
                     console.log(`Ignore ${i} in loop`)
                 }else if(i==2) {
                     // vi har en else if for birthday, fordi de ikke kan være i inputsfelt ligesom de andre felter.
@@ -39,14 +39,14 @@
                             option.text = `0${j}`
                             // vi tager keys fra birthay og laver en substiring fra 0 til 2
                             console.log(data[Object.keys(data)[i]].substring(0,2))
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(0,2)) {
+                            if(`0${j}`===data[Object.keys(data)[i]].substring(0,2)) {
                                 // den j værdi der svare til vores fødselsdag bliver selected som placeholder-værdien
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(0,2)) {
+                            if(`${j}`===data[Object.keys(data)[i]].substring(0,2)) {
                                 option.selected = true
                             }
                         }
@@ -69,13 +69,13 @@
                         if(j<10) {
                             option.value = `0${j}`
                             option.text = `0${j}`
-                            if(`0${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                            if(`0${j}`===data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
                         } else{
                             option.value = `${j}`
                             option.text = `${j}`
-                            if(`${j}`==data[Object.keys(data)[i]].substring(3,5)) {
+                            if(`${j}`===data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
                         }
@@ -97,7 +97,7 @@
                     div.appendChild(input);
 
                     parent.appendChild(div);
-                } else if(i==3){
+                } else if(i===3){
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Gender"));
                     parent.appendChild(p);
@@ -113,7 +113,7 @@
                         option.value = array[j]
                         option.text = array[j]
                         console.log(data[Object.keys(data)[i]])
-                        if(array[j]==data[Object.keys(data)[i]]) {
+                        if(array[j]===data[Object.keys(data)[i]]) {
 
                             option.selected = true
                         }
@@ -150,7 +150,7 @@
                 let alertmessage = "Please fill out or correct these fields:"
 
                 for(let i=0;i<Object.values(obj).length;i++) {
-                    if((i===0||i===5)&&Object.values(obj)[i] == "") {
+                    if((i===0||i===5)&&Object.values(obj)[i] === "") {
                             alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
                     }
                 }

@@ -8,14 +8,15 @@ module.exports = (req,res)=> {
         if (result) {
             Booking.deleteMany({lessonid:req.params.lesson_title}, (error, result) =>{
                 if(result){
-                    console.log("User deleted");
+                    console.log("Bookings deleted");
                 } else {
-                    console.log("hej")
+                    console.log("No bookings found")
                 }
             });
+            console.log("User deleted");
             res.send(JSON.stringify(result))
         } else {
-            res.send("No profiles found")
+            res.send("No User found")
         }
     })
 };

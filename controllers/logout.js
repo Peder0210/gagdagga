@@ -4,7 +4,7 @@ module.exports = ( req,res) => {
 
 
     req.session.destroy(function(err) {
-        console.log("It works")
+        console.log("Session destroyed");
             if(err) {
                 return console.log(err)
                 // return next(err);
@@ -12,4 +12,4 @@ module.exports = ( req,res) => {
                 return res.redirect("login");
             }
         });
-    }
+    };

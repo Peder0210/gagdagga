@@ -78,7 +78,7 @@ if(document.getElementById("Username").value==="" && document.getElementById("Pa
             ])
         })
             .then((res)=>{
-                return res.text();
+                   return res.text();
             })
             .then((data)=>{
                 if(data === "Password is wrong"){

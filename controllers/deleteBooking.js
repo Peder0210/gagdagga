@@ -7,10 +7,10 @@ console.log(req.params.booking_lessonid);
     Booking.deleteOne({$and:[{userid: req.session.userId},{lessonid: req.params.booking_lessonid}]}, (error,result)=>{
         if(result){ // Sletter den user, hvor userlesson_id og user_id passer sammen. Fordi det er many-to-many forhold, må man tjekke begge veje.
             // En user kan være tilmeldt mange lesson, og en lesson kan have mange tilmeldte.
-            console.log(result);
+            console.log("Booking deleted");
             res.send(result);
         } else{
-            console.log(error);
+            console.log("No Booking found");
             res.send(error);
         }
     });
