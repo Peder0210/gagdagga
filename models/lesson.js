@@ -9,7 +9,7 @@ const lessonsSchema = new Schema ({
     Room: String,
     Time: String,
     Duration: String,
-    Participants: String,
+    MaxParticipants: Number,
     Teacher: String,
     Timestamp: {
         type: Date,

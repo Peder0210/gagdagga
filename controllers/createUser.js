@@ -1,5 +1,6 @@
 const User = require("../models/user");
-//Finder en bruger med de oplyste betingelser og returnerer dataen
+
+//Skaber en bruger med req.params og returnerer dataen eller en string baseret på, om en fejl er opstået.
 module.exports = (req,res) => {
     User.create(JSON.parse(req.params.user_obj), (error, result) => {
         if (error) {

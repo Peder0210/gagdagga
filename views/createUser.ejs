@@ -15,7 +15,6 @@
     <input
             id="Name"
             type="text"
-            value = "Peder"
             placeholder="Name"
     >
     <br>
@@ -76,7 +75,6 @@
         <input
                 id="Year"
                 type="number"
-                value = "2000"
                 size="4"
                 placeholder="Year"
         />
@@ -98,9 +96,6 @@
               id="Phonenumber"
               type="number"
               placeholder="Phonenumber"
-              value = "50456111"
-
-
       />
     <br>
 
@@ -109,8 +104,6 @@
               id="Email"
               type="text"
               placeholder="Email"
-              value = "peder0210@gmail.com"
-
       />
     <br>
 
@@ -119,7 +112,6 @@
             id="Username"
             type="text"
             placeholder="Username"
-
     />
     <br>
 
@@ -128,8 +120,6 @@
             id="Password"
             type="password"
             placeholder="Adgangskode"
-            value = "1111"
-
     />
     <br>
         <p>Usertype:</p>
@@ -137,12 +127,11 @@
         <select  id="Usertype"  >
             <option selected disabled value="">Choose profile</option>
             <option value="Customer" >Customer</option>
-            <option value="Teacher" >Teacher</option>
+
             <option value="Admin" >Admin</option>
         </select>
     <br>
         <br>
-
 
         <input
                 id="registration_btn"
@@ -150,12 +139,11 @@
                 value="Create User"
 
         />
-
 </div>
     <script>
         // Tilføjer en eventlistener der observere om en bestemt handling bliver udført, og når det bliver udført, aktiverer det denne funktion.
         document.getElementById("registration_btn").addEventListener("click", function() {
-            // laver et objekt, som svar til vores klasse, Bruger Schema
+            // laver et objekt, som svar til vores klasse, Henter alle oplysningerne med .getElementByID
             let obj = { Name: document.getElementById("Name").value,
                 Birthday: `${document.getElementById("Day").value}-${document.getElementById("Month").value}-${document.getElementById("Year").value}`,
                 Gender: document.getElementById("Gender").value,
@@ -164,25 +152,15 @@
                 Username: document.getElementById("Username").value,
                 Password: document.getElementById("Password").value,
                 Usertype: document.getElementById("Usertype").value
-            }
+            };
+            //En variabel oprettes til brug for en alert()
+            let alertmessage = "Please fill out or correct these fields:";
 
-
-            /* OPTIMERET KODE: vi vil gerne slette de her variabler, for at gøre koden bedre.
-            let obj_Values = Object.values(obj)
-            let obj_PropertyNames = Object.getOwnPropertyNames(obj)
-            // vil consolelog alle værdierne indskrevet under properties, (mand/kvinde), (01.01.1999)
-            console.log(obj_Values)
-            //vil console logge Gender, Birthday, Email osv.
-            console.log(obj_PropertyNames)  */
-
-            let alertmessage = "Please fill out or correct these fields:"
-
-
-            // Hvis nogen af de her værdier er lig med 'tomt' så vil counteren gå op med én og der vil komme en alert-message
+            // Hvis nogen af de her værdier er lig med "" så vil en ny linje blive tilføjet til variablen alertmessage
             for(let i=0;i<Object.values(obj).length;i++) {
                 if((i===0||i===2||i===5||i===7)&&Object.values(obj)[i] === "") {
-                        // sørget for at alert vil fuldende dens string ud efter hvilken value den mangler
-                        alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]}`
+                        // Stringen er unik baseret på, hvilken key er tom i objektet
+                        alertmessage += `\n * Fill out your ${Object.keys(obj)[i]}`
                 }
             }
             // Birthday. Når birthday længden er alt andet end 10. '\n' betyder der kommer en ny linje
@@ -201,13 +179,13 @@
             if(Object.values(obj)[6].length<4){
                 alertmessage += `\n * Your password must consist 4 characters or more`
             }
-            // Hvis counter er over 0 vil der være alert. Hvis counter er under 0 vil der ikke være nogen alert,
-            // fordi vi siger counter++ ved if-sætningerne
+            // Hvis alertmessage er ændret siden oprettelsen, vil funktionen bliver afsluttet med return alert. Hvis der ikke er tilføjet noget på variablen alertmessage, betyder det,
+            //at der ikke har været nogle fejl
               if (alertmessage!=="Please fill out or correct these fields:"){
                   // vi siger return fordi vi gerne vil have den stopper efter den giver én alert
                   return alert(alertmessage)
               }
-                // beloved fetch: Register user ud fra objectet. Den sender kan sende objectet når et er stringified,
+                //  fetch: Routen /createUser samt et parameter ud fra objectet. Den kan sende objectet på grund af JSON.stringify
                 // herefter vil vi få data tilbage og lave en alert hvis der er sket en fejl.
                 fetch('/createUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
                     return res.text();
@@ -217,7 +195,7 @@
                         if (data === "User doesn't have an unique username") {
                             return alert(data)
                         }
-                        // Create session cookie here, for continous authentication
+                        // Create session cookie here, for continous authentication across the site
                         alert(`User ${document.getElementById("Username").value} has been created`);
                         window.location.replace("/login")
                      })

@@ -30,7 +30,6 @@
         id="login_btn"
         type="submit"
         value="Login User"
-        href="/loginuser"
 
 />
 <br>
@@ -38,7 +37,7 @@
 
 <script>
     document.getElementById("login_btn").addEventListener("click", function() {
-
+//Der kontrolleres, at felterne ikke er tomme, så der ikke opstår unødvendige fetches og fejl
 if(document.getElementById("Username").value==="" && document.getElementById("Password").value==="" ){
    return  alert("Please enter your username and password")
 }
@@ -48,15 +47,8 @@ if(document.getElementById("Username").value==="" && document.getElementById("Pa
         if(document.getElementById("Password").value==="" ){
            return  alert("Please enter your password")
         }
-        /* OPTIMERET KODE
-        let array = JSON.stringify([
-            document.getElementById("Username").value,
-            document.getElementById("Password").value
-        ])
-        console.log(array) */
 
-        // OPTIMERET KODE Options er indholdet man sender med fetchen
-        /* var options = {
+        fetch("/loginuser", { //Vi sender login oplysningerne i en fetch med req.body
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -64,23 +56,13 @@ if(document.getElementById("Username").value==="" && document.getElementById("Pa
             body: JSON.stringify([
                 document.getElementById("Username").value,
                 document.getElementById("Password").value
-            ])
-        }; */
-
-        fetch("/loginuser", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify([
-                document.getElementById("Username").value,
-                document.getElementById("Password").value
-            ])
+            ]),
         })
             .then((res)=>{
                    return res.text();
             })
             .then((data)=>{
+                //Hvis data er en bestemt string, retuneres en alert, så brugeren ved, at de har indtastet informationer forkert
                 if(data === "Password is wrong"){
                     return alert(data)
                 }

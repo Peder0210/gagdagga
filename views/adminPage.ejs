@@ -22,7 +22,6 @@
     <input
             type="text"
             id="Room"
-            value="Room 500"
             placeholder="Room"
     >
     <br>
@@ -33,7 +32,6 @@
     <input
             type="number"
             id="Participants"
-            value="20"
             placeholder="Participants"
            >
     <br>
@@ -44,7 +42,6 @@
     <input
             type="text"
             id="Teacher"
-            value="Lela"
             placeholder="Teacher"
     >
     <br>
@@ -201,17 +198,17 @@
         value="Delete account"/>
 
 <script>
-    // Samme kode som i register
+    // Samme metode som createUser.ejs
     document.getElementById("createLesson_btn").addEventListener("click", function() {
         let obj = { Title: document.getElementById("Title").value,
             Room: document.getElementById("Room").value,
-            Participants: document.getElementById("Participants").value,
+            MaxParticipants: document.getElementById("Participants").value,
             Teacher: document.getElementById("Teacher").value ,
             Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
             Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
 
-        }
-        let alertmessage = "Please fill out and correct these inputs"
+        };
+        let alertmessage = "Please fill out and correct these inputs";
         for(let i=0;i<Object.values(obj).length;i++) {
             if((i===0||i===1||i===2||i===3)&& Object.values(obj)[i] === "") {
                     alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
@@ -230,7 +227,7 @@
             return alert(alertmessage)
         }
 
-        // Samme kode som i register
+
         fetch('/createLesson/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
             return res.text();
         })
@@ -244,7 +241,7 @@
                 if(data==="Please log in as an Admin") {
                     return alert(data)
                 }
-            // Create session cookie here, for continous authentication
+
                 alert(`Lesson ${document.getElementById("Title").value} has been created`);
                 window.location.replace("/adminPage")
                 })
@@ -255,7 +252,7 @@
     document.getElementById("deleteUser").addEventListener("click", function() {
     fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
         if(response.ok){
-            alert("Your account has been deleted")
+            alert("Your account has been deleted");
             window.location.replace("/login")
         }
         throw new Error('Request failed')
@@ -264,8 +261,7 @@
             console.log(error)
     })
 })
-    // eventlistener venter på at der bliver trykket på knappen
-    // for at ændre på info ved hjælp af window.location.replace
+
 
 
 

@@ -15,9 +15,9 @@
         fetch("/findBookings").then((res) => {
             return  res.json();
         }).then((data) =>{
-
+//samme metode som lessonsCustomer, men her vises kun lektioner, som brugeren har booket - ikke alle lektioenr
             var parent = document.getElementById("output");
-            let lessonsIds = []
+            let lessonsIds = [];
 
             for(var j = 0; j< data.length; j++) {
                 var div1 = document.createElement("div");
@@ -35,7 +35,7 @@
 
 
 
-                lessonsIds.push(data[j][Object.keys(data[j])[0]])
+                lessonsIds.push(data[j][Object.keys(data[j])[0]]);
 
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i===0||i===7||i===8){
@@ -62,7 +62,7 @@
                 var button = document.createElement("button");
 
 
-                button.id = lessonsIds[j]
+                button.id = lessonsIds[j];
                 button.addEventListener("click", function() {
              
 
@@ -76,7 +76,7 @@
                     }).catch(function(error){
                         console.log(error)
                     })
-                })
+                });
 
                 button.appendChild(document.createTextNode("Cancel"));
                 div5.appendChild(button);

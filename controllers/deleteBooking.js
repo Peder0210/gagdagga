@@ -1,12 +1,12 @@
 const Booking = require("../models/booking");
+
 module.exports = (req,res)=> {
-
-
-console.log(req.params.booking_lessonid);
-     console.log(req.session);
+    console.log(req.params.booking_lessonid);
+    console.log(req.session);
     Booking.deleteOne({$and:[{userid: req.session.userId},{lessonid: req.params.booking_lessonid}]}, (error,result)=>{
-        if(result){ // Sletter den user, hvor userlesson_id og user_id passer sammen. Fordi det er many-to-many forhold, må man tjekke begge veje.
-            // En user kan være tilmeldt mange lesson, og en lesson kan have mange tilmeldte.
+        if(result){
+            // Sletter den bookning, hvor userid og lessonid passer sammen. Dermed kontrolleres der, at kun en enkelt lektion bliver slettet og aldrig flere, selvom brugeren har booket flere lektioner
+
             console.log("Booking deleted");
             res.send(result);
         } else{

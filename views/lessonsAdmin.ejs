@@ -15,7 +15,7 @@
             return res.json();
         }).then((data) =>{
             var parent = document.getElementById("output");
-            let lessonIds = []
+            let lessonIds = [];
             for(var j = 0; j< data.length; j++) {
                 var h1 = document.createElement("h1");
                 h1.appendChild(document.createTextNode(`Lesson Nr. ${j+1}`));
@@ -29,7 +29,7 @@
 
                 // vi pusher titlen til de forskellige lektioner til et array
                 lessonIds.push(data[j][Object.keys(data[j])[0]])
-
+//Samme metode som lessonsCustomer
                 for(let i = 0;i<Object.keys(data[j]).length;i++){
                     if(i===0||i===7||i===8){
                         console.log(`Ignore ${i} in loop`)
@@ -48,7 +48,7 @@
                 var div = document.createElement("div");
                 var button = document.createElement("button");
                 
-                button.id = lessonIds[j]
+                button.id = lessonIds[j];
                 button.addEventListener("click", function() {
                     fetch('/deleteLesson/'+this.id,{method: 'DELETE'}).then(function(response) {
                         if(response.ok){
@@ -59,7 +59,7 @@
                     }).catch(function(error){
                         console.log(error)
                     })
-                })
+                });
 
                 button.appendChild(document.createTextNode("Delete the lesson"));
                 div.appendChild(button);
@@ -74,11 +74,11 @@
                 var div = document.createElement("div");
                 var button2 = document.createElement("button");
 
-                button2.id = lessonIds[j]
+                button2.id = lessonIds[j];
                 button2.addEventListener("click", function() {
-                    document.cookie = `lesson=${this.id}`
+                    document.cookie = `lesson=${this.id}`;
                     window.location.replace("/updateLesson")
-                })
+                });
 
                 button2.appendChild(document.createTextNode("Change the information"));
                 div.appendChild(button2);
@@ -93,11 +93,11 @@
                 var div = document.createElement("div");
                 var button2 = document.createElement("button");
 
-                button2.id = lessonIds[j]
+                button2.id = lessonIds[j];
                 button2.addEventListener("click", function() {
-                    document.cookie = `lesson=${this.id}`
+                    document.cookie = `lesson=${this.id}`;
                     window.location.replace("/findPart")
-                })
+                });
 
                 button2.appendChild(document.createTextNode("See Participants"));
                 div.appendChild(button2);

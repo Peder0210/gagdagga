@@ -14,8 +14,8 @@
                 }).then((data) =>{
 
                 var parent = document.getElementById("output");
-                let listOfID = []
-
+                let listOfID = [];
+//To loop oprettes. En med variablen j, der looper igennem alle lektioner, der skal vises på siden og et loop med variablen i, der looper igennem alle pairs i den enkelte lektion
                 for(var j = 0; j< data.length; j++) {
 
                     var h1 = document.createElement("h1");
@@ -26,10 +26,7 @@
                     h1.appendChild(document.createTextNode(""));
                     parent.appendChild(h1);
 
-
                     console.log(Object.keys(data[j]));
-
-
 
                     for(let i = 0;i<Object.keys(data[j]).length;i++){
                             if(i===8||i===7||i===0) {
@@ -43,7 +40,8 @@
 
                             // Value
                             var p = document.createElement("p");
-                            p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[i]]));
+                            p.appendChild
+                            (document.createTextNode(data[j][Object.keys(data[j])[i]]));
                             parent.appendChild(p);
 
                             console.log(data[j][Object.keys(data[j])[i]])
@@ -53,18 +51,15 @@
                     var button = document.createElement("button");
 
 
-console.log(listOfID)
+console.log(listOfID);
                     button.id = data[j][Object.keys(data[j])[0]];
                     button.addEventListener("click", function() {
-                        console.log(typeof(this.id))
-                     /*   if(data[this.name][lessonPropertyNames[0]].includes(cookieUsername)){
-                            return alert("You cannot book the same lesson twice")
-                        }*/
+                        console.log(typeof(this.id));
 
                         fetch('/createBooking/'+this.id,{method: 'POST'}).then((res)=>{
                             return res.text();
                             }).then((data)=> {
-                            console.log(data)
+                            console.log(data);
 
                             if(data==="The Lesson is fully booked"){
                             return alert(data);
@@ -74,13 +69,13 @@ console.log(listOfID)
                             return alert(data)
                             }
 
-                            alert(`You have booked the lesson called ${data}`)
+                            alert(`You have booked the lesson called ${data}`);
                             window.location.replace("/myBookings")
 
                         }).catch(function(error){
                             console.log(error)
                         })
-                    })
+                    });
 
                     button.appendChild(document.createTextNode("Book this lesson"));
                     div.appendChild(button);
@@ -98,3 +93,5 @@ console.log(listOfID)
 <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
 </body>
 </html>
+
+

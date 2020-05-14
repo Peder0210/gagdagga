@@ -6,33 +6,13 @@
 <h1>Usernames of the participants</h1>
 <script>
     function getParticipantslist () {
-        /* OPTIMERING AF KODE:
-            let cookieInfo = document.cookie
-            console.log(cookieInfo) */
-        // document cookie vil seperere ved hjælp af et ";" i tilfælde af flere cookies
-        // der kan være en mulig bug hvis et brugernavn indeholder ";"
-        /*  if(document.cookie.includes(";")) {
-              for(i=0;i<document.cookie.split(';').length;i++){
-                  if(document.cookie.split(';')[i].includes("username")){
-                      var usernameValue = document.cookie.split(';')[i].split("=")[1]
-                  }
-              }
-          } // else hvis der kun er én cookie
-          else {
-              var usernameValue = document.cookie.split("=")[1]
-          }
-      console.log(usernameValue);*/
-        // sender info om usernamevalue. Prøver at finde en bruger med det username.
-        // laver derefter et output, som er et div.
-
         fetch("/findParticipants/"+ document.cookie.split("=")[1]).then((res) => {
             return  res.json();
             //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
         }).then((data) =>{
             var parent = document.getElementById("output");
             for(var j = 0; j< data.length; j++) {
-                // vi pusher titlen til de forskellige lektioner til et array
-                // Text
+             //En liste oprettes, hvor alle brugeres username, der har booket en lektion, bliver fremvist for admin.
                     var p = document.createElement("p");
                 p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[6]]));
                     parent.appendChild(p);

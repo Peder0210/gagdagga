@@ -8,51 +8,28 @@
 <script>
 
     function getUserInfo () {
-        /* OPTIMERING AF KODE:
-            let cookieInfo = document.cookie
-            console.log(cookieInfo) */
-        // document cookie vil seperere ved hjælp af et ";" i tilfælde af flere cookies
-        // der kan være en mulig bug hvis et brugernavn indeholder ";"
-          /*  if(document.cookie.includes(";")) {
-                for(i=0;i<document.cookie.split(';').length;i++){
-                    if(document.cookie.split(';')[i].includes("username")){
-                        var usernameValue = document.cookie.split(';')[i].split("=")[1]
-                    }
-                }
-            } // else hvis der kun er én cookie
-            else {
-                var usernameValue = document.cookie.split("=")[1]
-            }
-        console.log(usernameValue);*/
-        // sender info om usernamevalue. Prøver at finde en bruger med det username.
-        // laver derefter et output, som er et div.
         fetch("/findCustomer").then((res) => {
             return  res.json();
-            //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
+            //Handler om hvad du får tilbage. Data er det object du får tilbage i json format.
         }).then((data) =>{
             var parent = document.getElementById("output");
 
-            // ignorere nogen i'er som man ikke gider at se
+
             for(i=0;i<Object.keys(data).length;i++){
+                // ignorere nogen i'er som brugeren ikke skal se. Det er id, password, __V og tiemstamp
 if(i===0||i===10||i===7||i===9){
     console.log(`Ignore ${i}`)
 } else{
-                // Text (OPTIMERET KODE)
-                // var div1 = document.createElement("div");
+//Vi skaber alle vores HTML elementer i en div ved at bruge document.createElement. Her oprettes det i to kolloner: En for feltets navn og den anden for feltets værdi:
+    //Text for key
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                // div1.appendChild(p);
-                parent.appendChild(p)
+                parent.appendChild(p);
 
-                // Value
-                // var div2 = document.createElement("div");
+    //Text for value
                 var p = document.createElement("p");
                 p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                // div2.appendChild(p);
-                parent.appendChild(p)
-
-                //parent.appendChild(div1);
-                //parent.appendChild(div2);
+                parent.appendChild(p);
             }}
 
             var div3= document.createElement("div");
@@ -69,22 +46,21 @@ if(i===0||i===10||i===7||i===9){
 
             var div3= document.createElement("div");
             var button = document.createElement("button");
-            // eventlistener venter på at der bliver trykket på knappen
-            // for at ændre på info ved hjælp af window.location.replace
+
             button.addEventListener("click", function() {
                 fetch('/deleteUser',{method: 'DELETE'})
                 .then(function(response) {
 //handler bare of at se om resposne egentlig eksisterer
                     //et promise er noget som din computer lover at køre
                     if(response.ok){
-                        alert("Your account has been deleted")
+                        alert("Your account has been deleted");
                         window.location.replace("/login")
                     }
                     throw new Error('Request failed')
                 }).catch(function(error){
                     console.log(error)
                 })
-            })
+            });
 
 
             button.appendChild(document.createTextNode("Delete account"));

@@ -28,24 +28,24 @@
                     p.appendChild(document.createTextNode("Day"));
                     parent.appendChild(p);
 
-                    var div = document.createElement("div")
-                    var select = document.createElement("select")
-                    select.id = "select1"
+                    var div = document.createElement("div");
+                    var select = document.createElement("select");
+                    select.id = "select1";
                     // Loopet repræsentere datoerne/dagene i løbet af en måned
                     for(j=1;j<32;j++) {
                         var option = document.createElement("option");
                         if(j<10) {
-                            option.value = `0${j}`
-                            option.text = `0${j}`
+                            option.value = `0${j}`;
+                            option.text = `0${j}`;
                             // vi tager keys fra birthay og laver en substiring fra 0 til 2
-                            console.log(data[Object.keys(data)[i]].substring(0,2))
+                            console.log(data[Object.keys(data)[i]].substring(0,2));
                             if(`0${j}`===data[Object.keys(data)[i]].substring(0,2)) {
                                 // den j værdi der svare til vores fødselsdag bliver selected som placeholder-værdien
                                 option.selected = true
                             }
                         } else{
-                            option.value = `${j}`
-                            option.text = `${j}`
+                            option.value = `${j}`;
+                            option.text = `${j}`;
                             if(`${j}`===data[Object.keys(data)[i]].substring(0,2)) {
                                 option.selected = true
                             }
@@ -53,28 +53,29 @@
                         select.appendChild(option);
                     }
                     div.appendChild(select);
-                    parent.appendChild(div)
+                    parent.appendChild(div);
 
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Month"));
                     parent.appendChild(p);
 
-                    var div = document.createElement("div")
-                    var select = document.createElement("select")
-                    select.id = "select2"
-                    console.log(data[Object.keys(data)[i]].substring(3,5))
+                    var div = document.createElement("div");
+                    var select = document.createElement("select");
+                    select.id = "select2";
+                    console.log(data[Object.keys(data)[i]].substring(3,5));
                     // fordi det omhandler måneder looper vi til 12
+                    //Samme metode som updatelesson
                     for(j=1;j<13;j++) {
                         var option = document.createElement("option");
                         if(j<10) {
-                            option.value = `0${j}`
-                            option.text = `0${j}`
+                            option.value = `0${j}`;
+                            option.text = `0${j}`;
                             if(`0${j}`===data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
                         } else{
-                            option.value = `${j}`
-                            option.text = `${j}`
+                            option.value = `${j}`;
+                            option.text = `${j}`;
                             if(`${j}`===data[Object.keys(data)[i]].substring(3,5)) {
                                 option.selected = true
                             }
@@ -82,7 +83,7 @@
                         select.appendChild(option);
                     }
                     div.appendChild(select);
-                    parent.appendChild(div)
+                    parent.appendChild(div);
 
                     var p = document.createElement("p");
                     p.appendChild(document.createTextNode("Year"));
@@ -90,9 +91,9 @@
 
                     var div = document.createElement("div");
                     var input = document.createElement("input");
-                    input.id = i
+                    input.id = i;
 
-                    input.value = data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)
+                    input.value = data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4);
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]].substr(data[Object.keys(data)[i]].length-4)));
                     div.appendChild(input);
 
@@ -102,17 +103,17 @@
                     p.appendChild(document.createTextNode("Gender"));
                     parent.appendChild(p);
 
-                    var div = document.createElement("div")
-                    var select = document.createElement("select")
-                    select.id = "select3"
-                    let array = ["Man","Woman","Else"]
+                    var div = document.createElement("div");
+                    var select = document.createElement("select");
+                    select.id = "select3";
+                    let array = ["Man","Woman","Else"];
                     for(j=0;j<array.length;j++) {
 
                         var option = document.createElement("option");
 
-                        option.value = array[j]
-                        option.text = array[j]
-                        console.log(data[Object.keys(data)[i]])
+                        option.value = array[j];
+                        option.text = array[j];
+                        console.log(data[Object.keys(data)[i]]);
                         if(array[j]===data[Object.keys(data)[i]]) {
 
                             option.selected = true
@@ -129,8 +130,8 @@
 
                     var div = document.createElement("div");
                     var input = document.createElement("input");
-                    input.id = i
-                    input.value = data[Object.keys(data)[i]]
+                    input.id = i;
+                    input.value = data[Object.keys(data)[i]];
                     input.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
                     div.appendChild(input);
                     parent.appendChild(div);
@@ -145,9 +146,9 @@
                     Phonenumber: document.getElementById("4").value,
                     Email: document.getElementById("5").value ,
                     Username: document.getElementById("6").value
-                }
+                };
 
-                let alertmessage = "Please fill out or correct these fields:"
+                let alertmessage = "Please fill out or correct these fields:";
 
                 for(let i=0;i<Object.values(obj).length;i++) {
                     if((i===0||i===5)&&Object.values(obj)[i] === "") {
@@ -155,11 +156,11 @@
                     }
                 }
                 if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
-                    console.log(document.getElementById("2").value.length)
+                    console.log(document.getElementById("2").value.length);
                     alertmessage += `\n * Your Birthday must consist of 4 digits `
                 }
                 if(Object.values(obj)[3].length!==8||isNaN(document.getElementById("4").value)){
-                    console.log(Object.values(obj)[3])
+                    console.log(Object.values(obj)[3]);
                     alertmessage += `\n * Your phonenumber must consist of 8 digits `
                 }
                 if(Object.values(obj)[4].includes("@")===false){
@@ -182,7 +183,7 @@
                     .catch((e)=>{
                         console.log(e.name+"\n"+e.description);
                     });
-            })
+            });
             button.appendChild(document.createTextNode("Change the information"));
             div.appendChild(button);
             parent.appendChild(div);
