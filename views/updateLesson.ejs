@@ -271,7 +271,7 @@
 
                 for(let i=0;i<Object.values(obj).length;i++) {
                     if((i===0||i===1||i===3)&&Object.values(obj)[i] === "") {
-                            alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
+                            alertmessage += `\n * Fill out your ${Object.keys(obj)[i]} `
                     }
                 }
 

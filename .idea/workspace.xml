@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b57e06bd-2fb1-4aee-9612-c1c091b77289" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/deleteUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/deleteUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/adminPage.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/adminPage.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/updateLesson.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/updateLesson.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/updateUser.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/updateUser.ejs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -34,7 +36,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../greglim" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -45,15 +47,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\peder\WebstormProjects\testy\public" />
       <recent name="C:\Users\peder\WebstormProjects\testy" />
       <recent name="C:\Users\peder\WebstormProjects\testy\trash" />
       <recent name="C:\Users\peder\WebstormProjects\testy\sql" />
       <recent name="C:\Users\peder\WebstormProjects\testy\models" />
-      <recent name="C:\Users\peder\WebstormProjects\testy\node_modules" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\peder\WebstormProjects\testy\models" />
       <recent name="C:\Users\peder\WebstormProjects\testy" />
+      <recent name="C:\Users\peder\WebstormProjects\testy\models" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -108,7 +110,14 @@
       <workItem from="1588925642291" duration="12938000" />
       <workItem from="1588945887461" duration="2292000" />
       <workItem from="1589011871229" duration="411000" />
-      <workItem from="1589012625241" duration="3632000" />
+      <workItem from="1589012625241" duration="6876000" />
+      <workItem from="1589043025890" duration="11392000" />
+      <workItem from="1589098049588" duration="6316000" />
+      <workItem from="1589182988707" duration="6345000" />
+      <workItem from="1589269940071" duration="2242000" />
+      <workItem from="1589353865122" duration="1983000" />
+      <workItem from="1589378506235" duration="9502000" />
+      <workItem from="1589447299486" duration="9975000" />
     </task>
     <task id="LOCAL-00001" summary="j">
       <created>1585919529268</created>
@@ -397,18 +406,48 @@
       <option name="project" value="LOCAL" />
       <updated>1589014832761</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="tilføjet req.session destroy til deleteUser">
+      <created>1589016379428</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1589016379428</updated>
+    </task>
+    <task id="LOCAL-00043" summary="Fixed grammar mistakes, improved error handlling and improved if statements">
+      <created>1589049331169</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1589049331169</updated>
+    </task>
+    <task id="LOCAL-00044" summary="Added small improvements in code and console.log">
+      <created>1589057607848</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1589057607848</updated>
+    </task>
+    <task id="LOCAL-00045" summary="tried to render html">
+      <created>1589061634918</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1589061634918</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Added more comments and sat better semi colon placements">
+      <created>1589461330751</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1589461330751</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login2" />
-    <MESSAGE value="Login ændring" />
-    <MESSAGE value="Administrator login ændring" />
-    <MESSAGE value="alert added" />
-    <MESSAGE value="can delete lessons" />
     <MESSAGE value="joi added" />
     <MESSAGE value="Booking compelte" />
     <MESSAGE value="Added cancel booking button" />
@@ -429,28 +468,33 @@
     <MESSAGE value="improvements to overall code" />
     <MESSAGE value="Deleted old files" />
     <MESSAGE value="Added more importance on lessonid than lessonTitle and made sure bookings is deleted after an admin deletes a lesson." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added more importance on lessonid than lessonTitle and made sure bookings is deleted after an admin deletes a lesson." />
+    <MESSAGE value="tilføjet req.session destroy til deleteUser" />
+    <MESSAGE value="Fixed grammar mistakes, improved error handlling and improved if statements" />
+    <MESSAGE value="Added small improvements in code and console.log" />
+    <MESSAGE value="tried to render html" />
+    <MESSAGE value="Added more comments and sat better semi colon placements" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more comments and sat better semi colon placements" />
   </component>
   <component name="WindowStateProjectService">
     <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588940106318">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="553" y="339" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1588940106318" />
-    <state x="450" y="73" key="CommitChangelistDialog2" timestamp="1589014830993">
+    <state x="450" y="73" key="CommitChangelistDialog2" timestamp="1589461328096">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="447" y="5" key="CommitChangelistDialog2/0.0.1280.800@0.0.1280.800" timestamp="1586249719235" />
     <state x="662" y="105" key="CommitChangelistDialog2/0.0.1440.900@0.0.1440.900" timestamp="1586347831485" />
-    <state x="450" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1589014830993" />
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1588671934942">
+    <state x="450" y="73" key="CommitChangelistDialog2/0.0.1664.1069@0.0.1664.1069" timestamp="1589461328096" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog" timestamp="1589061619461">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588671934942" />
+    <state x="93" y="93" width="1479" height="884" key="DiffContextDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1589061619461" />
     <state x="72" y="85" width="1138" height="589" key="DiffContextDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470703026" />
-    <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1588848079606">
+    <state x="613" y="291" key="FileChooserDialogImpl" timestamp="1589447503105">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="613" y="291" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1588848079606" />
+    <state x="613" y="291" key="FileChooserDialogImpl/0.0.1664.1069@0.0.1664.1069" timestamp="1589447503105" />
     <state width="1419" height="245" key="GridCell.Tab.0.bottom" timestamp="1585921103120">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
@@ -490,22 +534,22 @@
     </state>
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.712@0.23.1280.712" timestamp="1587470722516" />
     <state x="394" y="102" key="VCS.ChangeListViewerDialog/0.23.1280.715@0.23.1280.715" timestamp="1587541508230" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1589014836376">
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2" timestamp="1589462390477">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="480" y="204" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1586249728408" />
     <state x="640" y="229" key="Vcs.Push.Dialog.v2/0.0.1440.900@0.0.1440.900" timestamp="1586347841956" />
-    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589014836376" />
+    <state x="366" y="316" key="Vcs.Push.Dialog.v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589462390477" />
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1587154426926">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="492" y="151" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1664.1069@0.0.1664.1069" timestamp="1587154426926" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589016363660">
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1589386246091">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="423" y="324" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.800@0.0.1280.800" timestamp="1586257655319" />
     <state x="476" y="364" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1440.900@0.0.1440.900" timestamp="1586425521033" />
-    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589016363660" />
+    <state x="550" y="433" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1664.1069@0.0.1664.1069" timestamp="1589386246091" />
     <state x="423" y="311" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.712@0.23.1280.712" timestamp="1587536062919" />
     <state x="423" y="312" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.23.1280.715@0.23.1280.715" timestamp="1587541541575" />
     <state x="493" y="295" key="git4idea.merge.GitPullDialog" timestamp="1586943816288">
@@ -523,21 +567,13 @@
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
     <state x="854" y="382" width="705" height="304" key="org.intellij.images.editor.actions.BackgroundImageDialog/0.0.1664.1069@0.0.1664.1069" timestamp="1588575772611" />
-    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1586792536190">
+    <state x="489" y="248" key="run.anything.popup" timestamp="1589059849518">
       <screen x="0" y="0" width="1664" height="1069" />
     </state>
-    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1664.1069@0.0.1664.1069" timestamp="1586792536190" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/controllers/deleteUser.js</url>
-          <line>15</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="489" y="248" key="run.anything.popup/0.0.1664.1069@0.0.1664.1069" timestamp="1589059849518" />
+    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup" timestamp="1589060652895">
+      <screen x="0" y="0" width="1664" height="1069" />
+    </state>
+    <state x="911" y="233" width="672" height="678" key="search.everywhere.popup/0.0.1664.1069@0.0.1664.1069" timestamp="1589060652895" />
   </component>
 </project>

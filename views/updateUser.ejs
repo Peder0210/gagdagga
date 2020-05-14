@@ -152,7 +152,7 @@
 
                 for(let i=0;i<Object.values(obj).length;i++) {
                     if((i===0||i===5)&&Object.values(obj)[i] === "") {
-                            alertmessage += `\n * Fill out your ${Object.getOwnPropertyNames(obj)[i]} `
+                            alertmessage += `\n * Fill out your ${Object.keys(obj)[i]} `
                     }
                 }
                 if(document.getElementById("2").value.length!==4||isNaN(document.getElementById("2").value)){
