@@ -1,32 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_Admin') -%>
-<%- include('layouts/style') -%>
-<body onload="getParticipantslist()">
-<h1>Usernames of the participants</h1>
-<script>
-    function getParticipantslist () {
-        fetch("/findParticipants/"+ document.cookie.split("=")[1]).then((res) => {
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_Admin') -%>
+  <%- include('layouts/style') -%>
+  <body onload="getParticipantslist()">
+    <h1>Usernames of the participants</h1>
+      <script>
+        function getParticipantslist(){
+          fetch("/findParticipants/"+document.cookie.split("=")[1]).then((res) => {
             return  res.json();
-            //Handler om hvad du får tilbage. Data er det object du får tilbage i json format. Handler om the body
-        }).then((data) =>{
+            //Handler om hvad du får tilbage. Data er det objekt du får tilbage i json format. Handler om the http body
+          })
+          .then((data)=>{
             var parent = document.getElementById("output");
-            for(var j = 0; j< data.length; j++) {
-             //En liste oprettes, hvor alle brugeres username, der har booket en lektion, bliver fremvist for admin.
-                    var p = document.createElement("p");
-                p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[6]]));
-                    parent.appendChild(p);
+            for(var j=0;j<data.length;j++){
+              //En liste oprettes, hvor alle brugeres username, der har booket en lektion, bliver fremvist for admin.
+              var p = document.createElement("p");
+              p.appendChild(document.createTextNode(data[j][Object.keys(data[j])[6]]));
+              parent.appendChild(p);
             }
-
-
-        }).catch((e) => {
+          })
+          .catch((e)=>{
             console.log(e.name+"\n"+e.description);
-        })
-    }
-
-</script>
-
-<div id="output" ></div>
-</body>
-
+          })
+        }
+      </script>
+    <div id="output" ></div>
+  </body>
 </html>

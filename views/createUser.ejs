@@ -1,210 +1,178 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_LoginAndRegister') -%>
-<%- include('layouts/style') -%>
-    <body>
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_LoginAndRegister') -%>
+  <%- include('layouts/style') -%>
+  <body>
     <br>
-
-
-<h1>Sign up here!</h1>
-
-<div>
-
-<p>Name:</p>
+    <h1>Sign up here!</h1>
+    <div>
+    <p>Name:</p>
     <!-- normale inputs. ID svarer tl property-name-->
-    <input
-            id="Name"
-            type="text"
-            placeholder="Name"
-    >
+    <input id="Name" type="text" placeholder="Name">
     <br>
-        <p>Birthday:</p>
+    <p>Birthday:</p>
     <!-- man har til id, der er en del af birthday property. Hver select er en option. selected disabled gør at man ikke kan vælge 'day' teksten uden indhold-->
     <select  id="Day">
-        <option selected disabled value="">Day</option>
-        <option value="01" >01</option>
-        <option value="02" >02</option>
-        <option value="03" >03</option>
-        <option value="04" >04</option>
-        <option value="05" >05</option>
-        <option value="06" >06</option>
-        <option value="07" >07</option>
-        <option value="08" >08</option>
-        <option value="09" >09</option>
-        <option value="10" >10</option>
-        <option value="11" >11</option>
-        <option value="12" >12</option>
-        <option value="13" >13</option>
-        <option value="44" >14</option>
-        <option value="15" >15</option>
-        <option value="16" >16</option>
-        <option value="17" >17</option>
-        <option value="18" >18</option>
-        <option value="19" >19</option>
-        <option value="20" >20</option>
-        <option value="21" >21</option>
-        <option value="22" >22</option>
-        <option value="23" >23</option>
-        <option value="24" >24</option>
-        <option value="25" >25</option>
-        <option value="26" >26</option>
-        <option value="27" >27</option>
-        <option value="28" >28</option>
-        <option value="29" >29</option>
-        <option value="30" >30</option>
-        <option value="31" >31</option>
-
+      <option selected disabled value="">Day</option>
+      <option value="01" >01</option>
+      <option value="02" >02</option>
+      <option value="03" >03</option>
+      <option value="04" >04</option>
+      <option value="05" >05</option>
+      <option value="06" >06</option>
+      <option value="07" >07</option>
+      <option value="08" >08</option>
+      <option value="09" >09</option>
+      <option value="10" >10</option>
+      <option value="11" >11</option>
+      <option value="12" >12</option>
+      <option value="13" >13</option>
+      <option value="44" >14</option>
+      <option value="15" >15</option>
+      <option value="16" >16</option>
+      <option value="17" >17</option>
+      <option value="18" >18</option>
+      <option value="19" >19</option>
+      <option value="20" >20</option>
+      <option value="21" >21</option>
+      <option value="22" >22</option>
+      <option value="23" >23</option>
+      <option value="24" >24</option>
+      <option value="25" >25</option>
+      <option value="26" >26</option>
+      <option value="27" >27</option>
+      <option value="28" >28</option>
+      <option value="29" >29</option>
+      <option value="30" >30</option>
+      <option value="31" >31</option>
     </select>
 
-        <select  id="Month">
-            <option selected disabled value="">Month</option>
-            <option value="01" >01</option>
-            <option value="02" >02</option>
-            <option value="03" >03</option>
-            <option value="04" >04</option>
-            <option value="05" >05</option>
-            <option value="06" >06</option>
-            <option value="07" >07</option>
-            <option value="08" >08</option>
-            <option value="09" >09</option>
-            <option value="10" >10</option>
-            <option value="11" >11</option>
-            <option value="12" >12</option>
-        </select>
+    <select  id="Month">
+      <option selected disabled value="">Month</option>
+      <option value="01" >01</option>
+      <option value="02" >02</option>
+      <option value="03" >03</option>
+      <option value="04" >04</option>
+      <option value="05" >05</option>
+      <option value="06" >06</option>
+      <option value="07" >07</option>
+      <option value="08" >08</option>
+      <option value="09" >09</option>
+      <option value="10" >10</option>
+      <option value="11" >11</option>
+      <option value="12" >12</option>
+    </select>
 
-        <input
-                id="Year"
-                type="number"
-                size="4"
-                placeholder="Year"
-        />
-        <br>
+    <input id="Year" type="number" size="4" placeholder="Year">
+    <br>
 
-        <p>Gender:</p>
+    <p>Gender:</p>
 
-        <select  id="Gender"  >
-            <option selected disabled value="">Choose gender</option>
-            <option value="Man" >Man</option>
-            <option value="Woman" >Woman</option>
-            <option value="Else" >Else</option>
-        </select>
-
+    <select  id="Gender"  >
+      <option selected disabled value="">Choose gender</option>
+      <option value="Man" >Man</option>
+      <option value="Woman" >Woman</option>
+      <option value="Else" >Else</option>
+    </select>
     <br>
 
     <p>Phonenumber:</p>
-      <input
-              id="Phonenumber"
-              type="number"
-              placeholder="Phonenumber"
-      />
+    <input id="Phonenumber" type="number" placeholder="Phonenumber"/>
     <br>
 
-        <p>Email:</p>
-      <input
-              id="Email"
-              type="text"
-              placeholder="Email"
-      />
+    <p>Email:</p>
+    <input id="Email" type="text" placeholder="Email">
     <br>
 
     <p>Username:</p>
+    <input id="Username" type="text" placeholder="Username">
+    <br>
+
+    <p>Password:</p>
     <input
-            id="Username"
-            type="text"
-            placeholder="Username"
+    id="Password"
+    type="password"
+    placeholder="Adgangskode"
     />
     <br>
+    <p>Usertype:</p>
 
-        <p>Password:</p>
-    <input
-            id="Password"
-            type="password"
-            placeholder="Adgangskode"
-    />
+    <select id="Usertype">
+      <option selected disabled value="">Choose profile</option>
+      <option value="Customer" >Customer</option>
+      <option value="Admin" >Admin</option>
+    </select>
     <br>
-        <p>Usertype:</p>
-
-        <select  id="Usertype"  >
-            <option selected disabled value="">Choose profile</option>
-            <option value="Customer" >Customer</option>
-
-            <option value="Admin" >Admin</option>
-        </select>
     <br>
-        <br>
 
-        <input
-                id="registration_btn"
-                type="submit"
-                value="Create User"
-
-        />
-</div>
+    <input id="registration_btn" type="submit" value="Create User">
+    </div>
     <script>
-        // Tilføjer en eventlistener der observere om en bestemt handling bliver udført, og når det bliver udført, aktiverer det denne funktion.
-        document.getElementById("registration_btn").addEventListener("click", function() {
-            // laver et objekt, som svar til vores klasse, Henter alle oplysningerne med .getElementByID
-            let obj = { Name: document.getElementById("Name").value,
-                Birthday: `${document.getElementById("Day").value}-${document.getElementById("Month").value}-${document.getElementById("Year").value}`,
-                Gender: document.getElementById("Gender").value,
-                Phonenumber: document.getElementById("Phonenumber").value,
-                Email: document.getElementById("Email").value ,
-                Username: document.getElementById("Username").value,
-                Password: document.getElementById("Password").value,
-                Usertype: document.getElementById("Usertype").value
-            };
-            //En variabel oprettes til brug for en alert()
-            let alertmessage = "Please fill out or correct these fields:";
+      // Tilføjer en eventlistener der observere om en bestemt handling bliver udført, og når det bliver udført, aktiverer det denne funktion.
+      document.getElementById("registration_btn").addEventListener("click", function() {
+        // laver et objekt, som svar til vores klasse, Henter alle oplysningerne med .getElementByID
+        let obj = {
+          Name: document.getElementById("Name").value,
+          Birthday: `${document.getElementById("Day").value}-${document.getElementById("Month").value}-${document.getElementById("Year").value}`,
+          Gender: document.getElementById("Gender").value,
+          Phonenumber: document.getElementById("Phonenumber").value,
+          Email: document.getElementById("Email").value ,
+          Username: document.getElementById("Username").value,
+          Password: document.getElementById("Password").value,
+          Usertype: document.getElementById("Usertype").value
+        };
+        //En variabel oprettes til brug for en alert()
+        let alertmessage = "Please fill out or correct these fields:";
 
-            // Hvis nogen af de her værdier er lig med "" så vil en ny linje blive tilføjet til variablen alertmessage
-            for(let i=0;i<Object.values(obj).length;i++) {
-                if((i===0||i===2||i===5||i===7)&&Object.values(obj)[i] === "") {
-                        // Stringen er unik baseret på, hvilken key er tom i objektet
-                        alertmessage += `\n * Fill out your ${Object.keys(obj)[i]}`
-                }
-            }
-            // Birthday. Når birthday længden er alt andet end 10. '\n' betyder der kommer en ny linje
-            if(Object.values(obj)[1].length!==10){
-                alertmessage += `\n * Fill out your Birthday `
-            }
-            // Telefon
-            if(Object.values(obj)[3].length!==8){
-                alertmessage += `\n * Your phonenumber must consist of 8 digits `
-            }
-            // Email. .includes gør, at den vil være sand, så længe der skrives et @
-            if(Object.values(obj)[4].includes("@")===false){
-                alertmessage += `\n * Your email must include an @`
-            }
-            // Password betingelsen vil være sand, if sætningen vil være sand, når den 3 eller under
-            if(Object.values(obj)[6].length<4){
-                alertmessage += `\n * Your password must consist 4 characters or more`
-            }
-            // Hvis alertmessage er ændret siden oprettelsen, vil funktionen bliver afsluttet med return alert. Hvis der ikke er tilføjet noget på variablen alertmessage, betyder det,
-            //at der ikke har været nogle fejl
-              if (alertmessage!=="Please fill out or correct these fields:"){
-                  // vi siger return fordi vi gerne vil have den stopper efter den giver én alert
-                  return alert(alertmessage)
-              }
-                //  fetch: Routen /createUser samt et parameter ud fra objectet. Den kan sende objectet på grund af JSON.stringify
-                // herefter vil vi få data tilbage og lave en alert hvis der er sket en fejl.
-                fetch('/createUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
-                    return res.text();
-                })
-                    .then((data)=> {
-                        console.log(data);
-                        if (data === "User doesn't have an unique username") {
-                            return alert(data)
-                        }
-                        // Create session cookie here, for continous authentication across the site
-                        alert(`User ${document.getElementById("Username").value} has been created`);
-                        window.location.replace("/login")
-                     })
-                    // catcher hvis der er noget helt uforventet
-
-                    .catch((e)=>{
-                        console.log(e.name+"\n"+e.description);
-                    });
+        // Hvis nogen af de her værdier er lig med "" så vil en ny linje blive tilføjet til variablen alertmessage
+        for(let i=0;i<Object.values(obj).length;i++){
+          if((i===0||i===2||i===5||i===7)&&Object.values(obj)[i] === ""){
+            // Stringen er unik baseret på, hvilken key er tom i objektet
+            alertmessage += `\n * Fill out your ${Object.keys(obj)[i]}`
+          }
+        }
+        // Birthday. Når birthday længden er alt andet end 10. '\n' betyder der kommer en ny linje
+        if(Object.values(obj)[1].length!==10){
+          alertmessage += `\n * Fill out your Birthday `
+        }
+        // Telefon
+        if(Object.values(obj)[3].length!==8){
+          alertmessage += `\n * Your phonenumber must consist of 8 digits `
+        }
+        // Email. .includes gør, at den vil være sand, så længe der skrives et @
+        if(Object.values(obj)[4].includes("@")===false){
+          alertmessage += `\n * Your email must include an @`
+        }
+        // Password betingelsen vil være sand, if sætningen vil være sand, når den 3 eller under
+        if(Object.values(obj)[6].length<4){
+          alertmessage += `\n * Your password must consist 4 characters or more`
+        }
+        // Hvis alertmessage er ændret siden oprettelsen, vil funktionen bliver afsluttet med return alert. Hvis der ikke er tilføjet noget på variablen alertmessage, betyder det,
+        //at der ikke har været nogle fejl
+        if (alertmessage!=="Please fill out or correct these fields:"){
+          // vi siger return fordi vi gerne vil have den stopper efter den giver én alert
+          return alert(alertmessage)
+        }
+        //  fetch: Routen /createUser samt et parameter ud fra objectet. Den kan sende objectet på grund af JSON.stringify
+        // herefter vil vi få data tilbage og lave en alert hvis der er sket en fejl.
+        fetch('/createUser/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
+          return res.text();
         })
-        </script>
-</body>
+        .then((data)=> {
+          console.log(data);
+          if (data === "User doesn't have an unique username") {
+            return alert(data)
+          }
+          // Create session cookie here, for continous authentication across the site
+          alert(`User ${document.getElementById("Username").value} has been created`);
+          window.location.replace("/login")
+        })
+        // catcher hvis der er noget helt uforventet
+        .catch((e)=>{
+          console.log(e.name+"\n"+e.description);
+        });
+      })
+    </script>
+  </body>
 </html>

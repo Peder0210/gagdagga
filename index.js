@@ -6,7 +6,6 @@ const bodyParser = require('body-parser');
 const expressSession = require('express-session');
 const flash = require('connect-flash');
 
-
 //Variables are created that contain controllers
 const createUser = require("./controllers/createUser");
 const createLesson = require ("./controllers/createLesson");
@@ -30,16 +29,16 @@ const login = require("./controllers/login");
 const logout = require("./controllers/logout");
 
 
-//Middleware
+// Middleware(s)
 const redirectIfLoggedIn = require('./middleware/redirectIfLoggedIn');
-
 
 //Setting up MongoDB, Ejs and Express
 mongoose.connect('mongodb://localhost:27017/danseskole'), {useNewUrlParser:true};
 app.set('view engine','ejs');
 
-app.use(expressSession({ //Opretter en session.
-    secret: 'Temno Player'
+//Opretter en session.
+app.use(expressSession({
+  secret: 'Temno Player'
 }));
 
 app.use(bodyParser.json());
@@ -49,53 +48,53 @@ app.use(flash());
 
 //This application will listen on port 3000
 app.listen(3000,()=>{
-    console.log("App listening on port 3000")
+  console.log("App listening on port 3000")
 });
 
 
 //Routes for ejs pages with  login and registration
 app.get('/createUser', redirectIfLoggedIn, (req,res) =>{
-    res.render('createUser')
+  res.render('createUser')
 });
 
 app.get("/login",redirectIfLoggedIn, (req,res) =>{
-    res.render("login")
+  res.render("login")
 });
 
 
 //Routes for admin sites
 app.get('/adminPage', (req,res) =>{
-    res.render('adminPage')
+  res.render('adminPage')
 });
 
 app.get('/lessonsAdmin', ( req,res) => {
-    res.render('lessonsAdmin')
+  res.render('lessonsAdmin')
 });
 
 app.get('/findPart', (req,res) =>{
-    res.render('findPart')
+  res.render('findPart')
 });
 
 app.get('/updateLesson', (req,res)=>{
-    res.render('updateLesson')
+  res.render('updateLesson')
 });
 
 
 //Routes for customer sites
 app.get('/customerPage', (req,res) =>{
-    res.render('customerPage')
+  res.render('customerPage')
 });
 
 app.get('/lessonsCustomer', (req,res)=>{
-    res.render('lessonsCustomer')
+  res.render('lessonsCustomer')
 });
 
 app.get('/myBookings',  (req,res) =>{
-    res.render('myBookings')
+  res.render('myBookings')
 });
 
 app.get('/updateUser', (req,res) =>{
-    res.render('updateUser')
+  res.render('updateUser')
 });
 
 
@@ -139,6 +138,4 @@ app.put('/updateUser/:user_obj', updateUser);
 
 
 //Used for unknown routes
-app.use((req,res) =>res.render('notfound'));
-
-
+app.use((req,res)=>res.render('notfound'));

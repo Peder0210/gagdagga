@@ -1,140 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_Admin') -%>
-<%- include('layouts/style') -%>
-<body>
-<h1>Create lesson</h1>
-<br>
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_Admin') -%>
+  <%- include('layouts/style') -%>
+  <body>
+    <h1>Create lesson</h1>
+    <br>
+    <text>Title:</text>
+    <br>
+    <input type="text" id="Title" placeholder="Title">
+    <br><br>
 
-<text>Title:</text>
+    Room:
     <br>
-
-    <input
-            type="text"
-            id="Title"
-            placeholder=Title
-    >
-    <br>
-    <br>
-
-     Room:
-    <br>
-    <input
-            type="text"
-            id="Room"
-            placeholder="Room"
-    >
-    <br>
-    <br>
+    <input type="text" id="Room" placeholder="Room">
+    <br><br>
 
     Maximum participants:
     <br>
-    <input
-            type="number"
-            id="Participants"
-            placeholder="Participants"
-           >
-    <br>
-    <br>
+    <input type="number" id="Participants" placeholder="Participants">
+    <br><br>
 
     Teacher:
     <br>
-    <input
-            type="text"
-            id="Teacher"
-            placeholder="Teacher"
-    >
-    <br>
-    <br>
+    <input type="text" id="Teacher" placeholder="Teacher">
+    <br><br>
 
     Time of the day:
     <br>
     <select  id="Hour">
-        <option selected disabled value="">Hour</option>
-        <option value="00" >00</option>
-        <option value="01" >01</option>
-        <option value="02" >02</option>
-        <option value="03" >03</option>
-         <option value="04" >04</option>
-        <option value="05" >05</option>
-        <option value="06" >06</option>
-        <option value="07" >07</option>
-        <option value="08" >08</option>
-        <option value="09" >09</option>
-        <option value="10" >10</option>
-        <option value="11" >11</option>
-        <option value="12" >12</option>
-        <option value="13" >13</option>
-        <option value="44" >14</option>
-        <option value="15" >15</option>
-        <option value="16" >16</option>
-        <option value="17" >17</option>
-        <option value="18" >18</option>
-        <option value="19" >19</option>
-        <option value="20" >20</option>
-        <option value="21" >21</option>
-        <option value="22" >22</option>
-        <option value="23" >23</option>
+      <option selected disabled value="">Hour</option>
+      <option value="00" >00</option>
+      <option value="01" >01</option>
+      <option value="02" >02</option>
+      <option value="03" >03</option>
+       <option value="04" >04</option>
+      <option value="05" >05</option>
+      <option value="06" >06</option>
+      <option value="07" >07</option>
+      <option value="08" >08</option>
+      <option value="09" >09</option>
+      <option value="10" >10</option>
+      <option value="11" >11</option>
+      <option value="12" >12</option>
+      <option value="13" >13</option>
+      <option value="44" >14</option>
+      <option value="15" >15</option>
+      <option value="16" >16</option>
+      <option value="17" >17</option>
+      <option value="18" >18</option>
+      <option value="19" >19</option>
+      <option value="20" >20</option>
+      <option value="21" >21</option>
+      <option value="22" >22</option>
+      <option value="23" >23</option>
     </select>
 
     <select  id="Minute">
-        <option selected disabled value="">Minute</option>
-        <option value="00" >00</option>
-        <option value="05" >05</option>
-        <option value="10" >10</option>
-        <option value="15" >15</option>
-        <option value="20" >20</option>
-        <option value="25" >25</option>
-        <option value="30" >30</option>
-        <option value="35" >35</option>
-        <option value="40" >40</option>
-        <option value="45" >45</option>
-        <option value="50" >50</option>
-        <option value="55" >45</option>
-        <option value="60" >60</option>
+      <option selected disabled value="">Minute</option>
+      <option value="00" >00</option>
+      <option value="05" >05</option>
+      <option value="10" >10</option>
+      <option value="15" >15</option>
+      <option value="20" >20</option>
+      <option value="25" >25</option>
+      <option value="30" >30</option>
+      <option value="35" >35</option>
+      <option value="40" >40</option>
+      <option value="45" >45</option>
+      <option value="50" >50</option>
+      <option value="55" >45</option>
+      <option value="60" >60</option>
     </select>
 
-    <br>
-    <br>
-    Date:
-    <br>
+    <br><br>Date:<br>
 
     <select  id="day">
-        <option selected disabled value="">Day</option>
-        <option value="01" >01</option>
-        <option value="02" >02</option>
-        <option value="03" >03</option>
-        <option value="04" >04</option>
-        <option value="05" >05</option>
-        <option value="06" >06</option>
-        <option value="07" >07</option>
-        <option value="08" >08</option>
-        <option value="09" >09</option>
-        <option value="10" >10</option>
-        <option value="11" >11</option>
-        <option value="12" >12</option>
-        <option value="13" >13</option>
-        <option value="14" >14</option>
-        <option value="15" >15</option>
-        <option value="16" >16</option>
-        <option value="17" >17</option>
-        <option value="18" >18</option>
-        <option value="19" >19</option>
-        <option value="20" >20</option>
-        <option value="21" >21</option>
-        <option value="22" >22</option>
-        <option value="23" >23</option>
-        <option value="24" >24</option>
-        <option value="25" >25</option>
-        <option value="26" >26</option>
-        <option value="27" >27</option>
-        <option value="28" >28</option>
-        <option value="29" >29</option>
-        <option value="30" >30</option>
-        <option value="31" >31</option>
-</select>
+      <option selected disabled value="">Day</option>
+      <option value="01" >01</option>
+      <option value="02" >02</option>
+      <option value="03" >03</option>
+      <option value="04" >04</option>
+      <option value="05" >05</option>
+      <option value="06" >06</option>
+      <option value="07" >07</option>
+      <option value="08" >08</option>
+      <option value="09" >09</option>
+      <option value="10" >10</option>
+      <option value="11" >11</option>
+      <option value="12" >12</option>
+      <option value="13" >13</option>
+      <option value="14" >14</option>
+      <option value="15" >15</option>
+      <option value="16" >16</option>
+      <option value="17" >17</option>
+      <option value="18" >18</option>
+      <option value="19" >19</option>
+      <option value="20" >20</option>
+      <option value="21" >21</option>
+      <option value="22" >22</option>
+      <option value="23" >23</option>
+      <option value="24" >24</option>
+      <option value="25" >25</option>
+      <option value="26" >26</option>
+      <option value="27" >27</option>
+      <option value="28" >28</option>
+      <option value="29" >29</option>
+      <option value="30" >30</option>
+      <option value="31" >31</option>
+    </select>
 
-<select id="month">
+    <select id="month">
       <option selected disabled value="">Month</option>
       <option value="01">1</option>
       <option value="02">2</option>
@@ -148,126 +124,106 @@
       <option value="10">10</option>
       <option value="11">11</option>
       <option value="12">12</option>
-  </select>
+    </select>
 
-  <select id="year">
+    <select id="year">
       <option selected disabled value="">Year</option>
       <option value="2019">2019</option>
       <option value="2020">2020</option>
       <option value="2021">2021</option>
       <option value="2022">2022</option>
-  </select>
+    </select>
+
+    <br><br>Duration:<br>
+
+    <select id="duration hours">
+      <option selected disabled value="">-Hours-</option>
+      <option value="0">0</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+
+    <select id="duration minutes">
+      <option selected disabled value="">-Minutes-</option>
+      <option value="00">00</option>
+      <option value="15">15</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+      <option value="30">30</option>
+      <option value="35">35</option>
+      <option value="40">40</option>
+      <option value="45">45</option>
+      <option value="50">50</option>
+      <option value="55">55</option>
+    </select>
 
     <br>
     <br>
-    Duration:
-    <br>
-
-<select id="duration hours">
-    <option selected disabled value="">-Hours-</option>
-    <option value="0">0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-</select>
-
-<select id="duration minutes">
-    <option selected disabled value="">-Minutes-</option>
-    <option value="00">00</option>
-    <option value="15">15</option>
-    <option value="20">20</option>
-    <option value="25">25</option>
-    <option value="30">30</option>
-    <option value="35">35</option>
-    <option value="40">40</option>
-    <option value="45">45</option>
-    <option value="50">50</option>
-    <option value="55">55</option>
-</select>
-
+    <input id="createLesson_btn" type="submit" value="Create lesson">
     <br>
     <br>
-    <input
-        id="createLesson_btn"
-        type="submit"
-        value="Create lesson">
-    <br>
-    <br>
-    <input
-        id="deleteUser"
-        type="submit"
-        value="Delete account"/>
+    <input id="deleteUser" type="submit" value="Delete account"/>
 
-<script>
-    // Samme metode som createUser.ejs
-    document.getElementById("createLesson_btn").addEventListener("click", function() {
-        let obj = { Title: document.getElementById("Title").value,
-            Room: document.getElementById("Room").value,
-            MaxParticipants: document.getElementById("Participants").value,
-            Teacher: document.getElementById("Teacher").value ,
-            Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
-            Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
-
+    <script>
+      // Samme metode som createUser.ejs
+      document.getElementById("createLesson_btn").addEventListener("click", function(){
+        let obj = {
+          Title: document.getElementById("Title").value,
+          Room: document.getElementById("Room").value,
+          MaxParticipants: document.getElementById("Participants").value,
+          Teacher: document.getElementById("Teacher").value ,
+          Time: `Kl ${document.getElementById("Hour").value}.${document.getElementById("Minute").value} --- ${document.getElementById("day").value}-${document.getElementById("month").value}-${document.getElementById("year").value}`,
+          Duration: `${document.getElementById("duration hours").value}.${document.getElementById("duration minutes").value}`,
         };
         let alertmessage = "Please fill out and correct these inputs";
         for(let i=0;i<Object.values(obj).length;i++) {
-            if((i===0||i===1||i===2||i===3)&& Object.values(obj)[i] === "") {
-                    alertmessage += `\n * Fill out your ${Object.keys(obj)[i]} `
-            }
+          if((i===0||i===1||i===2||i===3)&& Object.values(obj)[i] === "") {
+            alertmessage += `\n * Fill out your ${Object.keys(obj)[i]} `
+          }
         }
-
         if(Object.values(obj)[4].length!==23){
-            alertmessage += `\n * Fill out your Date `
+          alertmessage += `\n * Fill out your Date `
         }
-
         if(Object.values(obj)[5].length<4){
-            alertmessage += `\n * Fill out your Duration `
+          alertmessage += `\n * Fill out your Duration `
         }
-
         if (alertmessage!=="Please fill out and correct these inputs"){
-            return alert(alertmessage)
+          return alert(alertmessage)
         }
 
-
-        fetch('/createLesson/'+JSON.stringify(obj),{method: 'POST'}).then((res)=>{
-            return res.text();
+        fetch('/createLesson/'+JSON.stringify(obj),{method: 'POST'})
+        .then((res)=>{
+          return res.text();
         })
-        .then((data)=> {
-            console.log(data);
-
-                if (data === "Your lesson doesn't have an unique Title") {
-                    return alert(data)
-                }
-
-                if(data==="Please log in as an Admin") {
-                    return alert(data)
-                }
-
-                alert(`Lesson ${document.getElementById("Title").value} has been created`);
-                window.location.replace("/adminPage")
-                })
+        .then((data)=>{
+          console.log(data);
+          if (data === "Your lesson doesn't have an unique Title") {
+            return alert(data)
+          }
+          if(data==="Please log in as an Admin") {
+            return alert(data)
+          }
+          alert(`Lesson ${document.getElementById("Title").value} has been created`);
+          window.location.replace("/adminPage")
+        })
         .catch((e)=>{
-                console.log(e.name+"\n"+e.description);
-            });
-    })
-    document.getElementById("deleteUser").addEventListener("click", function() {
-    fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
-        if(response.ok){
+          console.log(e.name+"\n"+e.description);
+        })
+      });
+
+      // Tilføj eventlistener til knap, bruges til at slette brugere.
+      document.getElementById("deleteUser").addEventListener("click", function() {
+        fetch('/deleteUser',{method: 'DELETE'}).then(function(response) {
+          if(response.ok){
             alert("Your account has been deleted");
             window.location.replace("/login")
-        }
-        throw new Error('Request failed')
-    })
+          }
+          throw new Error('Request failed')
+        })
         .catch(function(error){
-            console.log(error)
-    })
-})
-
-
-
-
-
-
-
-</script>
-</body>
+          console.log(error)
+      })
+    });
+    </script>
+  </body>
 </html>

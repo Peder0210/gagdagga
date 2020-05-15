@@ -1,97 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_Customer') -%>
-<%- include('layouts/style') -%>
-<h1>All lessons</h1>
-<body onload="getLessonInfo()">
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_Customer') -%>
+  <%- include('layouts/style') -%>
+  <body onload="getLessonInfo()">
+    <h1>All lessons</h1>
+    <br>
 
-<br>
+    <script type="text/javascript">
+      function getLessonInfo(){
+        fetch("/findLessonsCustomer")
+        .then((res) => {
+          return  res.json();
+        })
+        .then((data) =>{
+          var parent = document.getElementById("output");
+          let listOfID = [];
+          //To loop oprettes. En med variablen j, der looper igennem alle lektioner, der skal vises på siden og et loop med variablen i, der looper igennem alle pairs i den enkelte lektion
+          for(var j = 0; j< data.length; j++){
+            var h1 = document.createElement("h1");
+            h1.appendChild(document.createTextNode(`${j+1}. Lesson`));
+            parent.appendChild(h1);
 
-    <script type="text/javascript"  >
-        function getLessonInfo () {
-                fetch("/findLessonsCustomer").then((res) => {
-                return  res.json();
-                }).then((data) =>{
+            var h1 = document.createElement("h1");
+            h1.appendChild(document.createTextNode(""));
+            parent.appendChild(h1);
 
-                var parent = document.getElementById("output");
-                let listOfID = [];
-//To loop oprettes. En med variablen j, der looper igennem alle lektioner, der skal vises på siden og et loop med variablen i, der looper igennem alle pairs i den enkelte lektion
-                for(var j = 0; j< data.length; j++) {
+            console.log(Object.keys(data[j]));
 
-                    var h1 = document.createElement("h1");
-                    h1.appendChild(document.createTextNode(`${j+1}. Lesson`));
-                    parent.appendChild(h1);
+            for(let i = 0;i<Object.keys(data[j]).length;i++){
+              if(i===8||i===7||i===0){
+                console.log(`Ignore ${i} in loop`)
+              }
+              else{
+                // Text
+                var p = document.createElement("p");
+                p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
+                parent.appendChild(p);
 
-                    var h1 = document.createElement("h1");
-                    h1.appendChild(document.createTextNode(""));
-                    parent.appendChild(h1);
+                // Value
+                var p = document.createElement("p");
+                p.appendChild
+                (document.createTextNode(data[j][Object.keys(data[j])[i]]));
+                parent.appendChild(p);
 
-                    console.log(Object.keys(data[j]));
+                console.log(data[j][Object.keys(data[j])[i]])
+              }
+            }
+            var div = document.createElement("div");
+            var button = document.createElement("button");
 
-                    for(let i = 0;i<Object.keys(data[j]).length;i++){
-                            if(i===8||i===7||i===0) {
-                            console.log(`Ignore ${i} in loop`)
-                            } else {
-
-                            // Text
-                            var p = document.createElement("p");
-                            p.appendChild(document.createTextNode(Object.keys(data[j])[i]));
-                            parent.appendChild(p);
-
-                            // Value
-                            var p = document.createElement("p");
-                            p.appendChild
-                            (document.createTextNode(data[j][Object.keys(data[j])[i]]));
-                            parent.appendChild(p);
-
-                            console.log(data[j][Object.keys(data[j])[i]])
-                        }
-                    }
-                    var div = document.createElement("div");
-                    var button = document.createElement("button");
-
-
-console.log(listOfID);
-                    button.id = data[j][Object.keys(data[j])[0]];
-                    button.addEventListener("click", function() {
-                        console.log(typeof(this.id));
-
-                        fetch('/createBooking/'+this.id,{method: 'POST'}).then((res)=>{
-                            return res.text();
-                            }).then((data)=> {
-                            console.log(data);
-
-                            if(data==="The Lesson is fully booked"){
-                            return alert(data);
-                            }
-
-                            if(data==="You cannot book the same Lesson twice"){
-                            return alert(data)
-                            }
-
-                            alert(`You have booked the lesson called ${data}`);
-                            window.location.replace("/myBookings")
-
-                        }).catch(function(error){
-                            console.log(error)
-                        })
-                    });
-
-                    button.appendChild(document.createTextNode("Book this lesson"));
-                    div.appendChild(button);
-                    parent.appendChild(div);
-
-                    var p = document.createElement("p");
-                    p.appendChild(document.createTextNode(""));
-                    parent.appendChild(p);
+            console.log(listOfID);
+            button.id = data[j][Object.keys(data[j])[0]];
+            button.addEventListener("click", function(){
+              console.log(typeof(this.id));
+              fetch('/createBooking/'+this.id,{method: 'POST'})
+              .then((res)=>{
+                return res.text();
+              })
+              .then((data)=> {
+                console.log(data);
+                if(data==="The Lesson is fully booked"){
+                  return alert(data);
                 }
-            }).catch((e) => {
-                    console.log(e.name+"\n"+e.description);
-            })
-        }
-</script>
-<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
-</body>
+                if(data==="You cannot book the same Lesson twice"){
+                  return alert(data)
+                }
+                alert(`You have booked the lesson called ${data}`);
+                window.location.replace("/myBookings");
+              })
+              .catch(function(error){
+                console.log(error);
+              })
+            });
+
+            button.appendChild(document.createTextNode("Book this lesson"));
+            div.appendChild(button);
+            parent.appendChild(div);
+
+            var p = document.createElement("p");
+            p.appendChild(document.createTextNode(""));
+            parent.appendChild(p);
+          }
+        })
+        .catch((e)=>{
+          console.log(e.name+"\n"+e.description);
+        })
+      }
+    </script>
+    <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
+  </body>
 </html>
-
-

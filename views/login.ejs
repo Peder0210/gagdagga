@@ -1,86 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_LoginAndRegister') -%>
-<%- include('layouts/style') -%>
-<body>
-<br>
-<br>
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_LoginAndRegister') -%>
+  <%- include('layouts/style') -%>
+  <body>
+    <br><br>
+    <br>Enter your username and password
+    <br><br>
 
-<br>Enter your username and password <br>
-<br>
+    <input type="text" id="Username" placeholder="Username">
+    <br><br>
+    <input type="Password" id="Password" placeholder="Password">
+    <br><br>
 
-<input
-        type="text"
-        id="Username"
-        placeholder="Username"
+    <input id="login_btn" type="submit" value="Login User">
+    <br><br>
 
->
-<br>
-<br>
-<input
-        type="Password"
-        id="Password"
-        placeholder="Password"
-
->
-<br>
-<br>
-
-<input
-        id="login_btn"
-        type="submit"
-        value="Login User"
-
-/>
-<br>
-<br>
-
-<script>
-    document.getElementById("login_btn").addEventListener("click", function() {
-//Der kontrolleres, at felterne ikke er tomme, så der ikke opstår unødvendige fetches og fejl
-if(document.getElementById("Username").value==="" && document.getElementById("Password").value==="" ){
-   return  alert("Please enter your username and password")
-}
+    <script>
+      document.getElementById("login_btn").addEventListener("click", function() {
+        //Der kontrolleres, at felterne ikke er tomme, så der ikke opstår unødvendige fetches og fejl
+        if(document.getElementById("Username").value==="" && document.getElementById("Password").value==="" ){
+          return  alert("Please enter your username and password")
+        }
         if(document.getElementById("Username").value==="" ){
-           return  alert("Please enter your username")
+          return  alert("Please enter your username")
         }
         if(document.getElementById("Password").value==="" ){
-           return  alert("Please enter your password")
+          return  alert("Please enter your password")
         }
 
         fetch("/loginuser", { //Vi sender login oplysningerne i en fetch med req.body
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify([
-                document.getElementById("Username").value,
-                document.getElementById("Password").value
-            ]),
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify([
+            document.getElementById("Username").value,
+            document.getElementById("Password").value
+          ]),
         })
-            .then((res)=>{
-                   return res.text();
-            })
-            .then((data)=>{
-                //Hvis data er en bestemt string, retuneres en alert, så brugeren ved, at de har indtastet informationer forkert
-                if(data === "Password is wrong"){
-                    return alert(data)
-                }
-                if(data === "Username doesn't exist"){
-                    return alert(data)
-                }
-                // relocated til adminside hvis man er admin 
-               if(data==="Admin"){
-                   return window.location.href = "/adminPage";
-               }
-                // relocated til mypageuser hvis man er customer 
-                if(data==="Customer"){
-                window.location.href = "/customerPage";}
-            })
-            .catch((e)=>{
-                console.log(e.name+"\n"+e.description);
-            });
-    })
-</script>
-</body>
+        .then((res)=>{
+          return res.text();
+        })
+        .then((data)=>{
+          //Hvis data er en bestemt string, retuneres en alert, så brugeren ved, at de har indtastet informationer forkert
+          if(data === "Password is wrong"){
+            return alert(data)
+          }
+          if(data === "Username doesn't exist"){
+            return alert(data)
+          }
+          // relocated til adminside hvis man er admin
+          if(data==="Admin"){
+            return window.location.href = "/adminPage";
+          }
+          // relocated til mypageuser hvis man er customer
+          if(data==="Customer"){
+            window.location.href = "/customerPage";
+          }
+        })
+        .catch((e)=>{
+          console.log(e.name+"\n"+e.description);
+        });
+      })
+    </script>
+  </body>
 </html>

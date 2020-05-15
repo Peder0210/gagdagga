@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<%- include('layouts/header_Customer') -%>
-<%- include('layouts/style') -%>
-<body onload="getUserInfo()">
-<h1>Your infomation</h1>
-<br>
-<script>
-
-    function getUserInfo () {
-        fetch("/findCustomer").then((res) => {
-            return  res.json();
-            //Handler om hvad du får tilbage. Data er det object du får tilbage i json format.
-        }).then((data) =>{
-            var parent = document.getElementById("output");
-
-
-            for(i=0;i<Object.keys(data).length;i++){
-                // ignorere nogen i'er som brugeren ikke skal se. Det er id, password, __V og tiemstamp
-if(i===0||i===10||i===7||i===9){
-    console.log(`Ignore ${i}`)
-} else{
-//Vi skaber alle vores HTML elementer i en div ved at bruge document.createElement. Her oprettes det i to kolloner: En for feltets navn og den anden for feltets værdi:
-    //Text for key
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(Object.keys(data)[i]));
-                parent.appendChild(p);
-
-    //Text for value
-                var p = document.createElement("p");
-                p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
-                parent.appendChild(p);
-            }}
-
-            var div3= document.createElement("div");
-            var button = document.createElement("button");
-            // eventlistener venter på at der bliver trykket på knappen
-            // for at ændre på info ved hjælp af window.location.replace
-            button.addEventListener("click", function() {
-                window.location.replace("/updateUser")
-            })
-
-            button.appendChild(document.createTextNode("Change your information"));
-            div3.appendChild(button);
-            parent.appendChild(div3);
-
-            var div3= document.createElement("div");
-            var button = document.createElement("button");
-
-            button.addEventListener("click", function() {
-                fetch('/deleteUser',{method: 'DELETE'})
-                .then(function(response) {
-//handler bare of at se om resposne egentlig eksisterer
-                    //et promise er noget som din computer lover at køre
-                    if(response.ok){
-                        alert("Your account has been deleted");
-                        window.location.replace("/login")
-                    }
-                    throw new Error('Request failed')
-                }).catch(function(error){
-                    console.log(error)
-                })
-            });
-
-
-            button.appendChild(document.createTextNode("Delete account"));
-            div3.appendChild(button);
-            parent.appendChild(div3);
-
-        }).catch((e) => {
-            console.log(e.name+"\n"+e.description);
+  <!-- Header hentes fra lokal fil -->
+  <%- include('layouts/header_Customer') -%>
+  <%- include('layouts/style') -%>
+  <body onload="getUserInfo()">
+    <h1>Your infomation</h1>
+    <br>
+    <script>
+      function getUserInfo(){
+        fetch("/findCustomer").then((res)=>{
+          return  res.json();
+          //Handler om hvad du får tilbage. Data er det object du får tilbage i json format.
         })
-    }
+        .then((data)=>{
+          var parent = document.getElementById("output");
 
-</script>
+          for(i=0;i<Object.keys(data).length;i++){
+            // ignorere nogen i'er som brugeren ikke skal se. Det er id, password, __V og tiemstamp
+            if(i===0||i===10||i===7||i===9){
+              console.log(`Ignore ${i}`)
+            }
+            else{
+              //Vi skaber alle vores HTML elementer i en div ved at bruge document.createElement. Her oprettes det i to kolloner: En for feltets navn og den anden for feltets værdi:
+              //Text for key
+              var p = document.createElement("p");
+              p.appendChild(document.createTextNode(Object.keys(data)[i]));
+              parent.appendChild(p);
 
-<div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
-</body>
+              //Text for value
+              var p = document.createElement("p");
+              p.appendChild(document.createTextNode(data[Object.keys(data)[i]]));
+              parent.appendChild(p);
+            }
+          }
+          var div3= document.createElement("div");
+          var button = document.createElement("button");
+          // eventlistener venter på at der bliver trykket på knappen
+          // for at ændre på info ved hjælp af window.location.replace
+          button.addEventListener("click", function() {
+            window.location.replace("/updateUser")
+          });
 
+          button.appendChild(document.createTextNode("Change your information"));
+          div3.appendChild(button);
+          parent.appendChild(div3);
+
+          var div3= document.createElement("div");
+          var button = document.createElement("button");
+
+          button.addEventListener("click", function() {
+            fetch('/deleteUser',{method: 'DELETE'})
+            .then(function(response) {
+              //handler bare of at se om resposne egentlig eksisterer
+              //et promise er noget som din computer lover at køre
+              if(response.ok){
+                alert("Your account has been deleted");
+                window.location.replace("/login")
+              }
+              throw new Error('Request failed')
+            })
+            .catch(function(error){
+              console.log(error)
+            })
+          });
+          button.appendChild(document.createTextNode("Delete account"));
+          div3.appendChild(button);
+          parent.appendChild(div3);
+        })
+        .catch((e) => {
+          console.log(e.name+"\n"+e.description);
+        })
+      }
+    </script>
+    <div id="output" style="display:grid;grid-template-columns:auto auto;"></div>
+  </body>
 </html>
